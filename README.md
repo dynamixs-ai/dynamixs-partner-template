@@ -146,10 +146,13 @@ your-project/
     └── webapp/
         ├── WEB-INF/
         │   └── web.xml            ← optional: add your own servlets/filters
-        └── resources/
-            ├── css/
-            │   └── custom.css     ← override platform styles
-            └── components/        ← add custom JSF components here
+        ├── layout/
+        │   ├── css/
+        │   │   └── custom.css     ← override platform styles
+        │   └── components/        ← add custom JSF components here
+        └── pages/
+            ├── workitems/
+                └── parts/         ← override form parts
 ```
 
 ---
@@ -160,9 +163,9 @@ The resulting WAR is deployed on Wildfly. Use the Docker Compose setup
 provided by Dynamixs.AI (available to partners) which includes:
 
 | Service    | Description              |
-|------------|--------------------------|
+| ---------- | ------------------------ |
 | Wildfly 32 | Jakarta EE App Server    |
-| PostgreSQL  | Primary database         |
+| PostgreSQL | Primary database         |
 | Cassandra  | Archive / document store |
 | OpenAI     | AI integration proxy     |
 
@@ -190,12 +193,12 @@ https://github.com/dynamixs-ai/bpmn-library
 
 ## Resources
 
-| Resource               | URL                                         |
-|------------------------|---------------------------------------------|
-| Dynamixs.AI Website    | https://www.dynamixs.ai                     |
-| Platform Documentation | https://doc.dynamixs.ai                     |
-| Imixs-Workflow         | https://www.imixs.org                       |
-| Imixs-Office-Workflow  | https://doc.office-workflow.com             |
-| Custom Build Guide     | https://doc.office-workflow.com/build/      |
-| Partner Support        | support@dynamixs.ai                         |
-| Partner Onboarding     | partner@dynamixs.ai                         |
+| Resource               | URL                                    |
+| ---------------------- | -------------------------------------- |
+| Dynamixs.AI Website    | https://www.dynamixs.ai                |
+| Platform Documentation | https://doc.dynamixs.ai                |
+| Imixs-Workflow         | https://www.imixs.org                  |
+| Imixs-Office-Workflow  | https://doc.office-workflow.com        |
+| Custom Build Guide     | https://doc.office-workflow.com/build/ |
+| Partner Support        | support@dynamixs.ai                    |
+| Partner Onboarding     | partner@dynamixs.ai                    |
