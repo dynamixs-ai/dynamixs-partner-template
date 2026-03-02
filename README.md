@@ -5,6 +5,18 @@ There are two fundamentally different approaches — choose the one that fits yo
 
 ---
 
+## Low-Code with BPMN
+
+Dynamixs.AI is a **Low-Code platform**. Business processes, AI conditions, and document handling rules are all defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
+
+[![Open-BPMN Modeler](https://www.open-bpmn.org/images/imixs-bpmn-001.png)](https://www.open-bpmn.org/)
+
+- 📦 [Install Open-BPMN](https://www.open-bpmn.org/install.html)
+- 🎓 [How to Model](https://www.open-bpmn.org/how_to_model.html)
+- 🔷 [BPMN Model Library](https://github.com/dynamixs-ai/bpmn-library)
+
+---
+
 ## Two Ways to Deploy Dynamixs.AI
 
 ### Option A – Quick Start with Docker Compose
