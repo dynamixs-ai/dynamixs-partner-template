@@ -1,25 +1,160 @@
-# Dynamixs.AI – Partner Custom Build Template
+# Dynamixs.AI – Partner Integration Guide
 
-This template shows how to create a custom build of the Dynamixs.AI platform for your customer.
-It uses the Maven WAR Overlay mechanism to extend and customize the Dynamixs.AI base UI
-without touching the platform core.
-
-## Prerequisites
-
-- Java 17+
-- Maven 3.9+
-- Docker
-- A Dynamixs.AI Partner Account on GitHub
-
-> **Becoming a Partner**
-> To access the private Dynamixs.AI Maven Registry you need a partner account.
-> Contact us at partner@dynamixs.ai
+This guide explains how to integrate the Dynamixs.AI platform into your customer projects.
+There are two fundamentally different approaches — choose the one that fits your needs.
 
 ---
 
-## Getting Started
+## Two Ways to Deploy Dynamixs.AI
 
-### 1. Configure your Maven credentials
+### Option A – Quick Start with Docker Compose
+
+The fastest way to get started. You run the pre-built Dynamixs.AI image using the official
+Docker Compose setup. No build step is required. This approach is ideal for:
+
+- Evaluating the platform
+- Standard deployments without UI customizations
+- Projects where customer-specific logic lives in external services (e.g. ERP connectors via REST)
+
+All you need is Docker, a `docker-compose.yml`, and an LLM endpoint configuration file.
+
+### Option B – Custom Build (WAR Overlay)
+
+A Maven-based build that extends the Dynamixs.AI platform with your own UI components,
+CDI beans, and Java services. This approach is ideal for:
+
+- Deep UI customization (branding, custom JSF components, form parts)
+- Customer-specific Java services deployed inside the application server
+- Long-lived partner products maintained across platform upgrades
+
+Both options use the same Docker infrastructure underneath — the difference is
+whether you use the pre-built image or build your own WAR first.
+
+---
+
+## Prerequisites
+
+- Docker & Docker Compose
+- A Dynamixs.AI Partner Account on GitHub (required for Option B)
+- An LLM endpoint compatible with the OpenAI API (for AI features)
+
+> **Becoming a Partner**
+> Contact us at partner@dynamixs.ai to get access to the Dynamixs.AI GitHub packages and partner resources.
+
+---
+
+## Option A: Quick Start with Docker Compose
+
+### 1. Get the Docker Compose file
+
+Use the official `docker-compose.yml` provided by Dynamixs.AI. It includes all required
+services out of the box:
+
+| Service              | Description                   |
+| -------------------- | ----------------------------- |
+| Wildfly 32           | Jakarta EE Application Server |
+| PostgreSQL           | Primary database              |
+| Cassandra            | Archive / document store      |
+| Apache Tika          | OCR service                   |
+| Collabora Online     | Document editing (WOPI)       |
+| Prometheus + Grafana | Monitoring                    |
+
+### 2. Configure the LLM endpoint
+
+Dynamixs.AI uses an LLM endpoint registry file (`imixs-llm.xml`) to connect to AI services.
+Create this file and place it somewhere accessible to the container (e.g. `./keys/imixs-llm.xml`).
+
+**Example `imixs-llm.xml`:**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<imixs-llm>
+
+    <!--
+        Completion endpoint - used for chat completions, conditions, and analysis.
+        Connects to a local llama.cpp server or any OpenAI-compatible API.
+    -->
+    <endpoint id="my-llm">
+        <url>http://localhost:8080/</url>
+        <apikey>${env.LLM_API_KEY}</apikey>
+        <options>
+            <temperature>0.2</temperature>
+            <max_tokens>1024</max_tokens>
+        </options>
+    </endpoint>
+
+    <!--
+        Embedding endpoint - used for RAG indexing and retrieval.
+        Can be hosted separately; no API key needed for local instances.
+    -->
+    <endpoint id="my-embeddings">
+        <url>http://localhost:8081/</url>
+        <options>
+            <max_tokens>512</max_tokens>
+        </options>
+    </endpoint>
+
+</imixs-llm>
+```
+
+Endpoints are referenced by their `id` in the BPMN process configuration:
+
+```xml
+<!-- Simple completion task -->
+<imixs-ai name="CONDITION">
+    <endpoint>my-llm</endpoint>
+</imixs-ai>
+
+<!-- RAG task with separate embeddings endpoint -->
+<imixs-ai name="RAG_INDEX">
+    <endpoint-completion>my-llm</endpoint-completion>
+    <endpoint-embeddings>my-embeddings</endpoint-embeddings>
+</imixs-ai>
+```
+
+Environment variable placeholders like `${env.LLM_API_KEY}` are resolved at runtime.
+You can define them in `./docker/.env`:
+
+```
+LLM_API_ENDPOINT=https://my.llama.cpp.foo.com/
+LLM_API_KEY=your-api-key-here
+```
+
+### 3. Start the stack
+
+```bash
+docker compose up -d
+```
+
+The application will be available at `http://localhost:8080`.
+
+---
+
+## Option B: Custom Build (WAR Overlay)
+
+This option is based on the Maven WAR Overlay mechanism. The Dynamixs.AI platform UI
+(`dynamixs-platform-ui`) is used as the base WAR. Your files in `src/main/webapp/`
+automatically take precedence over files from the base WAR.
+
+The build chain looks like this:
+
+```
+imixs-office-workflow-app   (WAR, public on Sonatype)
+        ↓ overlay
+dynamixs-platform-ui        (WAR, Dynamixs.AI GitHub Packages)
+        ↓ overlay
+acme-workflow               (WAR, your custom build)
+```
+
+Each layer only overrides what it needs — everything else is inherited from below.
+
+### Prerequisites
+
+- Java 17+
+- Maven 3.9+
+- A Dynamixs.AI Partner Account on GitHub
+
+### 1. Configure Maven credentials
 
 Add the following to your local `~/.m2/settings.xml`:
 
@@ -39,7 +174,7 @@ Add the following to your local `~/.m2/settings.xml`:
 Create a GitHub Personal Access Token with `read:packages` permission here:
 https://github.com/settings/tokens
 
-### 2. Clone this template
+### 2. Clone the partner template
 
 ```bash
 git clone https://github.com/dynamixs-ai/partner-template.git acme-workflow
@@ -48,7 +183,7 @@ cd acme-workflow
 
 ### 3. Customize `pom.xml`
 
-Change `groupId`, `artifactId` and `finalName` to match your customer project:
+Change `groupId`, `artifactId`, and `finalName` to match your customer project:
 
 ```xml
 <groupId>com.acme</groupId>
@@ -67,27 +202,7 @@ The custom WAR file will appear in `target/`.
 
 ---
 
-## How the WAR Overlay works
-
-This template is based on the Maven WAR Overlay mechanism. The Dynamixs.AI platform UI
-(`dynamixs-platform-ui`) is used as the base WAR. Your files in `src/main/webapp/`
-automatically take precedence over files from the base WAR.
-
-The build chain looks like this:
-
-```
-imixs-office-workflow-app   (WAR, public on Sonatype)
-        ↓ overlay
-dynamixs-platform-ui        (WAR, Dynamixs.AI GitHub Packages)
-        ↓ overlay
-acme-workflow               (WAR, your custom build)
-```
-
-Each layer only overrides what it needs - everything else is inherited from below.
-
----
-
-## Customizing the UI
+## Customizing the UI (Option B)
 
 To override a file (CSS, XHTML, JSF component) simply copy it into `src/main/webapp/`.
 Maven will automatically prefer your version over the base.
@@ -108,7 +223,7 @@ src/main/webapp/resources/css/custom.css
 
 ---
 
-## Adding Customer-specific Code
+## Adding Customer-specific Code (Option B)
 
 Add your own CDI beans and services under `src/main/java/`. For example a connector
 to an ERP system:
@@ -120,7 +235,7 @@ src/main/java/
         └── SAPConnector.java
 ```
 
-This code is owned by your customer - not by Dynamixs.AI.
+This code is owned by your customer — not by Dynamixs.AI.
 
 Add the corresponding dependency in your `pom.xml` if needed:
 
@@ -134,7 +249,7 @@ Add the corresponding dependency in your `pom.xml` if needed:
 
 ---
 
-## Project Structure
+## Project Structure (Option B)
 
 ```
 your-project/
@@ -151,23 +266,9 @@ your-project/
         │   │   └── custom.css     ← override platform styles
         │   └── components/        ← add custom JSF components here
         └── pages/
-            ├── workitems/
+            └── workitems/
                 └── parts/         ← override form parts
 ```
-
----
-
-## Deployment
-
-The resulting WAR is deployed on Wildfly. Use the Docker Compose setup
-provided by Dynamixs.AI (available to partners) which includes:
-
-| Service    | Description              |
-| ---------- | ------------------------ |
-| Wildfly 32 | Jakarta EE App Server    |
-| PostgreSQL | Primary database         |
-| Cassandra  | Archive / document store |
-| OpenAI     | AI integration proxy     |
 
 ---
 

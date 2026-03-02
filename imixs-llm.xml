@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    imixs-llm.xml  -  LLM Endpoint Registry
+    =========================================
+    Place this file anywhere on the filesystem and configure its path via
+    MicroProfile Config property:
+
+        llm.config.file=/opt/imixs/imixs-llm.xml
+
+    Or as environment variable:
+
+        LLM_CONFIG_FILE=/opt/imixs/imixs-llm.xml
+
+    Each <endpoint> element defines one logical LLM service endpoint - either
+    a completion model or an embedding model. The BPMN configuration references
+    them separately by their id:
+
+        <imixs-ai name="CONDITION">
+            <endpoint>my-llm</endpoint>
+            ...
+        </imixs-ai>
+
+        <imixs-ai name="RAG_INDEX">
+            <endpoint-completion>my-llm</endpoint-completion>
+            <endpoint-embeddings>my-embeddings</endpoint-embeddings>
+            ...
+        </imixs-ai>
+
+    Environment variable placeholders are supported via ${env.VAR_NAME}.
+-->
+<imixs-llm>
+
+    <!--
+        Completion endpoint - used for chat completions, conditions, analysis etc.
+        This example connects to a local llama.cpp server instance.
+    -->
+    <endpoint id="my-llm">
+        <url>http://localhost:8080/</url>
+        <apikey>${env.LLM_API_KEY}</apikey>
+        <options>
+            <temperature>0.2</temperature>
+            <max_tokens>1024</max_tokens>
+        </options>
+    </endpoint>
+
+    <!--
+        Embedding endpoint - used for RAG indexing and retrieval.
+        Hosted on a separate server, no API key needed for local instances.
+    -->
+    <endpoint id="my-embeddings">
+        <url>http://localhost:8081/</url>
+        <options>
+            <max_tokens>512</max_tokens>
+        </options>
+    </endpoint>
+
+</imixs-llm>
