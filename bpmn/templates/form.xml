@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<imixs-form>
+
+    <imixs-form-section label="Fine details" columns="2">
+        <item name="driver.name" type="text" label="Name:" />
+        <item name="Rent.date" type="date" label="From Date:" span="6" />
+        <item name="Rent.enddate" type="date" label="To Date:" span="6" />
+        <item name="fine.id" type="text" label="Fine ID:" required="true" />
+        <item name="vehicle.name" type="text" label="Vehiclename:" />
+        <item name="plate.number" type="text" label="Vehicle Number:" required="true" />
+    </imixs-form-section>
+
+    <imixs-form-section label="Violation details">
+
+        <item name="fine.category.name" type="selectOneMenu" label="Violation Category  :"
+            options="Overspeed;illegalparking;tailgating;Overtaking" required="true" />
+        <item name="fine.location.country" type="custom" path="country" required="true"
+            label="Country:" />
+        <item name="fine.violation.date" type="date" label="Violation date:" required="true"
+            span="6" />
+        <item name="fine.location.description" type="textarea" label="Location:" />
+    </imixs-form-section>
+
+    <imixs-form-section label="Payment" readonly="true">
+        <item name="payment.amount" type="currency" label="Amount:" />
+        <item name="payment.currency" type="selectOneMenu"
+            label="Currency:"
+            options="EUR;CHF;SEK;NOK;GBP;USD" />
+        <item name="payament.Bank.name" type="text" label="Bank Name: " />
+        <item name="dbtr.iban" type="iban" label="IBAN" readonly="true" />
+        <item name="dbtr.bic" type="bic" label="BIC/SWIFT" readonly="true" />
+        <item name="payament.Account.number" type="text" label="Account Number: " />
+        <item name="Payment.duedate.enddate" type="date" label="Due Date:" required="true" span="6" />
+    </imixs-form-section>
+</imixs-form>

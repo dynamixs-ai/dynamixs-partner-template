@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:BPMN2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:open-bpmn="http://open-bpmn.org/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="org.openbpmn" exporterVersion="1.0.0" targetNamespace="http://open-bpmn.org">
+  <bpmn2:extensionElements>
+    <imixs:item name="txtworkflowmodelversion" type="xs:string">
+      <imixs:value><![CDATA[contract-en-1.0]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txtplugins" type="xs:string">
+      <imixs:value><![CDATA[org.imixs.workflow.documents.OCRDocumentPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.office.plugins.WorkitemLinkPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ResultPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.RulePlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.ProfilePlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.plugins.CommentPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.plugins.SequenceNumberPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.team.TeamPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.DeputyPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.LogPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ApplicationPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.MailPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.IntervalPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.SplitAndJoinPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.ai.rag.workflow.RAGIndexPlugin]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txtfieldmapping" type="xs:string">
+      <imixs:value><![CDATA[Creator|$creator]]></imixs:value>
+      <imixs:value><![CDATA[Owner|$owner]]></imixs:value>
+      <imixs:value><![CDATA[Editor|$editor]]></imixs:value>
+    </imixs:item>
+  </bpmn2:extensionElements>
+  <bpmn2:collaboration id="collaboration_1" name="Default Collaboration">
+    <bpmn2:participant id="participant_i00umQ" name="Default Process" processRef="process_1"/>
+    <bpmn2:participant id="participant_b0ZB6w" name="Contract" processRef="process_W6vEog">
+      <bpmn2:documentation id="documentation_MwcHNw"/>
+    </bpmn2:participant>
+  </bpmn2:collaboration>
+  <bpmn2:process definitionalCollaborationRef="collaboration_1" id="process_1" name="Default Process" processType="Public">
+    <bpmn2:documentation id="documentation_0tkjlg"/>
+    <bpmn2:extensionElements>
+      <open-bpmn:auto-align>true</open-bpmn:auto-align>
+    </bpmn2:extensionElements>
+  </bpmn2:process>
+  <bpmn2:process definitionalCollaborationRef="collaboration_1" id="process_W6vEog" isExecutable="true" name="Contract" processType="Private">
+    <bpmn2:laneSet id="laneset_TSyZkA" name="Lane Set">
+      <bpmn2:lane id="lane_lzK15Q" name="SoftwareSystemSupport">
+        <bpmn2:documentation id="documentation_hsYmDQ"/>
+        <bpmn2:flowNodeRef>event_5jEfXg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_eJSlCQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_fV6H2w</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_6bBjGQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_Wpv5Qw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_xpbiMw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_nH0hNQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_WNqoxw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_79KSkQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_7anuiA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_JeUEVw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_6xCj2g</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_6VVqag</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_PDrxCQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_b740TQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_RjumqA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_6df4bw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_0nxEog</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_MuxmWQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_ZBGPcg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_kaEHxg</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+    </bpmn2:laneSet>
+    <bpmn2:startEvent id="event_5jEfXg" name="Start">
+      <bpmn2:documentation id="documentation_O06GKQ"/>
+      <bpmn2:outgoing>sequenceFlow_GRu7lg</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:intermediateCatchEvent id="event_eJSlCQ" imixs:activityid="100" name="Import">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_YkYxsg"/>
+      <bpmn2:incoming>sequenceFlow_GRu7lg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_PN6Mrg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_GRu7lg" sourceRef="event_5jEfXg" targetRef="event_eJSlCQ">
+      <bpmn2:documentation id="documentation_IfGU9w"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_fV6H2w" imixs:datatype="form-data" name="Contract Data">
+      <bpmn2:documentation id="documentation_gnvAHg"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+<imixs-form-section label="Contract details: " columns="2">
+     <item name="contract.type" type="selectOneMenu"     label="Contract Type:" 
+       options = "Internal Rent; External Rent;Purchase;Sales;Insurance;Lease" required="true"/>
+      <item name="contract.id"    type="text"  label="Contract ID:" />
+      <item name="customer.firstname" type="text"  label="Firstname:" />
+      <item name="customer.lastname"  type="text"  label="Lastname:" />
+      <item name="customer.email"  type="text"    label="Email:"  />
+      <item name="vehicle.name" type="text" label="Vehicle name:" />
+      <item name="plate.number" type="text" label="Vehicle Number:" />      
+</imixs-form-section>
+
+<imixs-form-section label="Rental details:" >
+     <item name="customer.zip" type="text"     label="ZIP:" />
+     <item name="customer.city" type="text"     label="City:" />
+     <item name="customer.country" type="custom"  path="country"  label="Membership Country:" />
+     <item name="contract.start.date" type="date" label="Start date" />
+     <item name="contract.end.date" type="date" label="End date" />
+     <item name="payment.amount" type="currency" label="Amount:" />
+     <item name="deposit.amount" type="currency" label="Deposit Amount:" />
+</imixs-form-section>
+
+</imixs-form-section>
+</imixs-form>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:task id="task_6bBjGQ" imixs:processid="100" name="Contract  data Validation">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Checks the mandatory fields in data form provided by customer]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_vvhU6g"><![CDATA[Checks the contract data provided.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_PN6Mrg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_i0u0WA</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:association id="association_HCokog" sourceRef="dataObject_fV6H2w" targetRef="task_6bBjGQ">
+      <bpmn2:documentation id="documentation_pglDLw"/>
+    </bpmn2:association>
+    <bpmn2:sequenceFlow id="sequenceFlow_PN6Mrg" sourceRef="event_eJSlCQ" targetRef="task_6bBjGQ">
+      <bpmn2:documentation id="documentation_WA0uEw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_Wpv5Qw" imixs:processid="110" name="Duplicate check">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Checks for any duplication data. ]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_0BH6lw"><![CDATA[checks any duplications]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_GlkseQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_LHlu7Q</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway gatewayDirection="Diverging" id="gateway_xpbiMw" name="Data check">
+      <bpmn2:documentation id="documentation_JyeSDA"/>
+      <bpmn2:incoming>sequenceFlow_i0u0WA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_DAd0WA</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_asZ0wQ</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="sequenceFlow_i0u0WA" sourceRef="task_6bBjGQ" targetRef="gateway_xpbiMw">
+      <bpmn2:documentation id="documentation_aJaKqA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_DAd0WA" name="" sourceRef="gateway_xpbiMw" targetRef="event_WNqoxw">
+      <bpmn2:documentation id="documentation_SQY42Q"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:endEvent id="event_nH0hNQ" name="End">
+      <bpmn2:documentation id="documentation_ENJCcA"/>
+      <bpmn2:incoming>sequenceFlow_cqFoZA</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:intermediateCatchEvent id="event_WNqoxw" imixs:activityid="20" name="Data Validated">
+      <bpmn2:extensionElements>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[All prerequisites are fullfilled]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Validation check cleared]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Required data is provided is validated.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_tJ3gjQ"><![CDATA[All prerequisites are fulfilled]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_DAd0WA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_GlkseQ</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_GlkseQ" sourceRef="event_WNqoxw" targetRef="task_Wpv5Qw">
+      <bpmn2:documentation id="documentation_t0xk8A"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_79KSkQ" imixs:activityid="30" name="Old Contract">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Contract already exists and retrives the old data]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Old contract]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Contract record exists already in system.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_0vVgEw"><![CDATA[Contract already exists.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_dxzy8g</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Unq1BA</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:task id="task_7anuiA" imixs:processid="120" name="Retrive Data">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Contract already exists.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_neeKww"><![CDATA[Retrives old data]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_Unq1BA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_onWk3w</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_Unq1BA" sourceRef="event_79KSkQ" targetRef="task_7anuiA">
+      <bpmn2:documentation id="documentation_tMZH7Q"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:endEvent id="event_JeUEVw" name="End">
+      <bpmn2:documentation id="documentation_WBZ00g"/>
+      <bpmn2:incoming>sequenceFlow_onWk3w</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_onWk3w" sourceRef="task_7anuiA" targetRef="event_JeUEVw">
+      <bpmn2:documentation id="documentation_4jD8wg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_6xCj2g" imixs:activityid="40" name="Create Contract record">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Creates Contract record]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[New Contract]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Creates Contract record]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_iepIIw"><![CDATA[Create Contract Record]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_YpqXGQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Vvxysw</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:task id="task_6VVqag" imixs:processid="130" name="Create New Reocrd">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Contract details are added in records]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_l2LX0g"><![CDATA[New Customer record is created]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_Vvxysw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_MKNQcA</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_Vvxysw" sourceRef="event_6xCj2g" targetRef="task_6VVqag">
+      <bpmn2:documentation id="documentation_LwNd7A"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:eventBasedGateway gatewayDirection="Diverging" id="gateway_PDrxCQ" name="Contract exists/no?">
+      <bpmn2:documentation id="documentation_t3BFpw"/>
+      <bpmn2:incoming>sequenceFlow_LHlu7Q</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_dxzy8g</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_YpqXGQ</bpmn2:outgoing>
+    </bpmn2:eventBasedGateway>
+    <bpmn2:sequenceFlow id="sequenceFlow_LHlu7Q" sourceRef="task_Wpv5Qw" targetRef="gateway_PDrxCQ">
+      <bpmn2:documentation id="documentation_Ke8eNA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_dxzy8g" sourceRef="gateway_PDrxCQ" targetRef="event_79KSkQ">
+      <bpmn2:documentation id="documentation_jy4v0w"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_YpqXGQ" sourceRef="gateway_PDrxCQ" targetRef="event_6xCj2g">
+      <bpmn2:documentation id="documentation_AORlUQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_b740TQ" imixs:activityid="10" name="Resubmission request">
+      <bpmn2:extensionElements>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[In complete data is detected in validation check.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Hallo, 
+
+thanks for contacting us. We cant go forward with your enquiry due to missing manadatory data. Hence we request you to please fill required data and resubmit the request. 
+
+
+
+
+
+
+
+
+
+
+
+]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Automatic reply]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_DFkPAQ"><![CDATA[Customer Validation check detected some missing data. An Automatic Email is sent to Customer requesting to refill the form and resubmit it again.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_asZ0wQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_a03x4g</bpmn2:outgoing>
+      <bpmn2:messageEventDefinition id="messageEventDefinition_vSdF0g" messageRef="message_1"/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_asZ0wQ" sourceRef="gateway_xpbiMw" targetRef="event_b740TQ">
+      <bpmn2:documentation id="documentation_1FOlpA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_a03x4g" sourceRef="event_b740TQ" targetRef="task_ZBGPcg">
+      <bpmn2:documentation id="documentation_zh0LOw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_RjumqA" imixs:processid="150" name="Contract Approval">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[New contract added is approved]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_xwDG0Q"><![CDATA[New contract is approved and updated in system]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_w0SJqQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_srToEw</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="event_6df4bw" imixs:activityid="80" name="Contract Activation">
+      <bpmn2:extensionElements>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[New contract is activated]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[New contract is activated]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[New contract is activated ]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_zG03tQ"><![CDATA[New contract is activated.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_srToEw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_MZKczw</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:task id="task_0nxEog" imixs:processid="170" name="Contract activation">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[New contract got activated.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_XaoaUQ"><![CDATA[New Contract addded is activated.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_MZKczw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_sAJc7Q</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="event_MuxmWQ" name="End">
+      <bpmn2:documentation id="documentation_FTWUDw"/>
+      <bpmn2:incoming>sequenceFlow_sAJc7Q</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_srToEw" sourceRef="task_RjumqA" targetRef="event_6df4bw">
+      <bpmn2:documentation id="documentation_0mS4OQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_MZKczw" sourceRef="event_6df4bw" targetRef="task_0nxEog">
+      <bpmn2:documentation id="documentation_Wwcyow"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_sAJc7Q" sourceRef="task_0nxEog" targetRef="event_MuxmWQ">
+      <bpmn2:documentation id="documentation_JnJTlw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_ZBGPcg" imixs:processid="180" name="Data check not cleared">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_S2b4cA"><![CDATA[Data check is not cleared. An automatic email has been sent to Customer to refill data and resbmit it.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_a03x4g</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_cqFoZA</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_cqFoZA" sourceRef="task_ZBGPcg" targetRef="event_nH0hNQ">
+      <bpmn2:documentation id="documentation_gMlj6A"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_kaEHxg" imixs:activityid="80" name="Contract Approval">
+      <bpmn2:extensionElements>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[New contract is approved and updated in the system. ]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[New Contract is added]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[New Contract is approved added to the system.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_BBLIFw"><![CDATA[New contract is Approved.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_MKNQcA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_w0SJqQ</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_MKNQcA" sourceRef="task_6VVqag" targetRef="event_kaEHxg">
+      <bpmn2:documentation id="documentation_TpxPEw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_w0SJqQ" sourceRef="event_kaEHxg" targetRef="task_RjumqA">
+      <bpmn2:documentation id="documentation_9T325Q"/>
+    </bpmn2:sequenceFlow>
+  </bpmn2:process>
+  <bpmn2:message id="message_1" name="Message 1">
+    <bpmn2:documentation id="documentation_WI2Vow"/>
+  </bpmn2:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="OpenBPMN Diagram">
+    <bpmndi:BPMNPlane bpmnElement="process_1" id="BPMNPlane_KZogpQ">
+      <bpmndi:BPMNShape bpmnElement="message_1" id="BPMNShape_R6Houg">
+        <dc:Bounds height="20.0" width="30.0" x="0.0" y="0.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_JqhYSw">
+          <dc:Bounds height="20.0" width="100.0" x="-35.0" y="25.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNPlane bpmnElement="collaboration_1" id="BPMNPlane_F9MYwA">
+      <bpmndi:BPMNShape bpmnElement="participant_b0ZB6w" id="BPMNShape_YhSHww">
+        <dc:Bounds height="880.0" width="1750.0" x="330.0" y="260.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="lane_lzK15Q" id="BPMNShape_smVZkw">
+        <dc:Bounds height="880.0" width="1720.0" x="360.0" y="260.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_5jEfXg" id="BPMNShape_yfRPcA">
+        <dc:Bounds height="36.0" width="36.0" x="447.0" y="367.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_icK91A">
+          <dc:Bounds height="20.0" width="100.0" x="415.0" y="406.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_eJSlCQ" id="BPMNShape_SSBluQ">
+        <dc:Bounds height="36.0" width="36.0" x="587.0" y="367.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_0l1WVg">
+          <dc:Bounds height="20.0" width="100.0" x="555.0" y="406.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_fV6H2w" id="BPMNShape_tJyeRw">
+        <dc:Bounds height="50.0" width="35.0" x="570.0" y="290.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_VkLfaA">
+          <dc:Bounds height="20.0" width="100.0" x="537.5" y="345.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_6bBjGQ" id="BPMNShape_nduh3g">
+        <dc:Bounds height="50.0" width="110.0" x="740.0" y="360.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_Wpv5Qw" id="BPMNShape_5LVQ8A">
+        <dc:Bounds height="50.0" width="110.0" x="940.0" y="550.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="gateway_xpbiMw" id="BPMNShape_TOuZ3g">
+        <dc:Bounds height="50.0" width="50.0" x="970.0" y="360.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_NN65xQ">
+          <dc:Bounds height="20.0" width="100.0" x="945.0" y="413.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_nH0hNQ" id="BPMNShape_JFIz5A">
+        <dc:Bounds height="36.0" width="36.0" x="1497.0" y="367.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_FKEoBQ">
+          <dc:Bounds height="20.0" width="100.0" x="1465.0" y="406.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_WNqoxw" id="BPMNShape_tHd7HA">
+        <dc:Bounds height="36.0" width="36.0" x="977.0" y="467.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_QGtYnw">
+          <dc:Bounds height="20.0" width="100.0" x="945.0" y="506.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_79KSkQ" id="BPMNShape_MlmLTw">
+        <dc:Bounds height="36.0" width="36.0" x="1267.0" y="557.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_k7znFQ">
+          <dc:Bounds height="20.0" width="100.0" x="1235.0" y="596.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_7anuiA" id="BPMNShape_2W6JhQ">
+        <dc:Bounds height="50.0" width="110.0" x="1370.0" y="550.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_JeUEVw" id="BPMNShape_KwcLig">
+        <dc:Bounds height="36.0" width="36.0" x="1537.0" y="557.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_bfVOhw">
+          <dc:Bounds height="20.0" width="100.0" x="1505.0" y="596.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_6xCj2g" id="BPMNShape_gaKm3w">
+        <dc:Bounds height="36.0" width="36.0" x="1137.0" y="667.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_XOv6Bg">
+          <dc:Bounds height="20.0" width="100.0" x="1105.0" y="706.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_6VVqag" id="BPMNShape_m1EAwQ">
+        <dc:Bounds height="50.0" width="110.0" x="1240.0" y="660.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="gateway_PDrxCQ" id="BPMNShape_x5BrUQ">
+        <dc:Bounds height="50.0" width="50.0" x="1130.0" y="550.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_CT9SPQ">
+          <dc:Bounds height="20.0" width="100.0" x="1105.0" y="603.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_b740TQ" id="BPMNShape_DeHKuQ">
+        <dc:Bounds height="36.0" width="36.0" x="1117.0" y="367.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_uyCmPw">
+          <dc:Bounds height="20.0" width="100.0" x="1085.0" y="406.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_RjumqA" id="BPMNShape_6eTeUA">
+        <dc:Bounds height="50.0" width="110.0" x="1530.0" y="660.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_6df4bw" id="BPMNShape_kWe30g">
+        <dc:Bounds height="36.0" width="36.0" x="1697.0" y="667.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_El1Rdw">
+          <dc:Bounds height="20.0" width="100.0" x="1665.0" y="706.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_0nxEog" id="BPMNShape_WT4p1A">
+        <dc:Bounds height="50.0" width="110.0" x="1820.0" y="660.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_MuxmWQ" id="BPMNShape_N8a0fw">
+        <dc:Bounds height="36.0" width="36.0" x="1987.0" y="667.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_BnZeyA">
+          <dc:Bounds height="20.0" width="100.0" x="1955.0" y="706.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_ZBGPcg" id="BPMNShape_50I0fA">
+        <dc:Bounds height="50.0" width="110.0" x="1270.0" y="360.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_kaEHxg" id="BPMNShape_vnI0rw">
+        <dc:Bounds height="36.0" width="36.0" x="1417.0" y="667.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_IpZGTQ">
+          <dc:Bounds height="20.0" width="100.0" x="1385.0" y="706.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GRu7lg" id="BPMNEdge_m6wYyg" sourceElement="BPMNShape_yfRPcA" targetElement="BPMNShape_SSBluQ">
+        <di:waypoint x="483.0" y="385.0"/>
+        <di:waypoint x="587.0" y="385.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_HCokog" id="BPMNEdge_ZWCdhg" sourceElement="BPMNShape_tJyeRw" targetElement="BPMNShape_nduh3g">
+        <di:waypoint x="605.0" y="311.0"/>
+        <di:waypoint x="795.0" y="311.0"/>
+        <di:waypoint x="795.0" y="360.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_PN6Mrg" id="BPMNEdge_PgmKVw" sourceElement="BPMNShape_SSBluQ" targetElement="BPMNShape_nduh3g">
+        <di:waypoint x="623.0" y="385.0"/>
+        <di:waypoint x="740.0" y="385.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_i0u0WA" id="BPMNEdge_PxTn3g" sourceElement="BPMNShape_nduh3g" targetElement="BPMNShape_TOuZ3g">
+        <di:waypoint x="850.0" y="385.0"/>
+        <di:waypoint x="970.0" y="385.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_DAd0WA" id="BPMNEdge_VPJz5w" sourceElement="BPMNShape_TOuZ3g" targetElement="BPMNShape_tHd7HA">
+        <di:waypoint x="995.0" y="410.0"/>
+        <di:waypoint x="995.0" y="467.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GlkseQ" id="BPMNEdge_WYZgNg" sourceElement="BPMNShape_tHd7HA" targetElement="BPMNShape_5LVQ8A">
+        <di:waypoint x="995.0" y="503.0"/>
+        <di:waypoint x="995.0" y="550.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Unq1BA" id="BPMNEdge_DtlrDg" sourceElement="BPMNShape_MlmLTw" targetElement="BPMNShape_2W6JhQ">
+        <di:waypoint x="1303.0" y="575.0"/>
+        <di:waypoint x="1370.0" y="575.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_onWk3w" id="BPMNEdge_Hcn8fg" sourceElement="BPMNShape_2W6JhQ" targetElement="BPMNShape_KwcLig">
+        <di:waypoint x="1480.0" y="575.0"/>
+        <di:waypoint x="1537.0" y="575.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Vvxysw" id="BPMNEdge_q9L07Q" sourceElement="BPMNShape_gaKm3w" targetElement="BPMNShape_m1EAwQ">
+        <di:waypoint x="1173.0" y="685.0"/>
+        <di:waypoint x="1240.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_LHlu7Q" id="BPMNEdge_msVgTA" sourceElement="BPMNShape_5LVQ8A" targetElement="BPMNShape_x5BrUQ">
+        <di:waypoint x="1050.0" y="575.0"/>
+        <di:waypoint x="1130.0" y="575.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_dxzy8g" id="BPMNEdge_q2Q0WQ" sourceElement="BPMNShape_x5BrUQ" targetElement="BPMNShape_MlmLTw">
+        <di:waypoint x="1180.0" y="575.0"/>
+        <di:waypoint x="1267.0" y="575.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_YpqXGQ" id="BPMNEdge_l7iFSw" sourceElement="BPMNShape_x5BrUQ" targetElement="BPMNShape_gaKm3w">
+        <di:waypoint x="1155.0" y="600.0"/>
+        <di:waypoint x="1155.0" y="667.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_asZ0wQ" id="BPMNEdge_BywaqA" sourceElement="BPMNShape_TOuZ3g" targetElement="BPMNShape_DeHKuQ">
+        <di:waypoint x="1020.0" y="385.0"/>
+        <di:waypoint x="1117.0" y="385.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_a03x4g" id="BPMNEdge_1e08lA" sourceElement="BPMNShape_DeHKuQ" targetElement="BPMNShape_50I0fA">
+        <di:waypoint x="1153.0" y="385.0"/>
+        <di:waypoint x="1270.0" y="385.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_srToEw" id="BPMNEdge_QTl0vg" sourceElement="BPMNShape_6eTeUA" targetElement="BPMNShape_kWe30g">
+        <di:waypoint x="1640.0" y="685.0"/>
+        <di:waypoint x="1697.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_MZKczw" id="BPMNEdge_Vb7JcA" sourceElement="BPMNShape_kWe30g" targetElement="BPMNShape_WT4p1A">
+        <di:waypoint x="1733.0" y="685.0"/>
+        <di:waypoint x="1820.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sAJc7Q" id="BPMNEdge_5FHn0w" sourceElement="BPMNShape_WT4p1A" targetElement="BPMNShape_N8a0fw">
+        <di:waypoint x="1930.0" y="685.0"/>
+        <di:waypoint x="1987.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_cqFoZA" id="BPMNEdge_0hIPdg" sourceElement="BPMNShape_50I0fA" targetElement="BPMNShape_JFIz5A">
+        <di:waypoint x="1380.0" y="385.0"/>
+        <di:waypoint x="1497.0" y="385.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_MKNQcA" id="BPMNEdge_T6Obww" sourceElement="BPMNShape_m1EAwQ" targetElement="BPMNShape_vnI0rw">
+        <di:waypoint x="1350.0" y="685.0"/>
+        <di:waypoint x="1417.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_w0SJqQ" id="BPMNEdge_4053YQ" sourceElement="BPMNShape_vnI0rw" targetElement="BPMNShape_6eTeUA">
+        <di:waypoint x="1453.0" y="685.0"/>
+        <di:waypoint x="1530.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
