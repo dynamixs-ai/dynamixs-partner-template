@@ -90,25 +90,23 @@
 <imixs-form>
 <imixs-form-section label="Contract details: " columns="2">
      <item name="contract.type" type="selectOneMenu"     label="Contract Type:" 
-       options = "Internal Rent; External Rent;Purchase;Sales;Insurance;Lease" required="true"/>
+       options = "contract.Internal Rent; External Rent;Purchase;Sales;Insurance;Lease" required="true"/>
       <item name="contract.id"    type="text"  label="Contract ID:" />
-      <item name="customer.firstname" type="text"  label="Firstname:" />
-      <item name="customer.lastname"  type="text"  label="Lastname:" />
-      <item name="customer.email"  type="text"    label="Email:"  />
-      <item name="vehicle.name" type="text" label="Vehicle name:" />
-      <item name="plate.number" type="text" label="Vehicle Number:" />      
+      <item name="contract.customer.firstname" type="text"  label="Firstname:" />
+      <item name="contract.customer.lastname"  type="text"  label="Lastname:" />
+      <item name="contract.customer.email"  type="text"    label="Email:"  />
+      <item name="contract.vehicle.name" type="text" label="Vehicle name:" />
+      <item name="contract.plate.number" type="text" label="Vehicle Number:" />      
 </imixs-form-section>
 
 <imixs-form-section label="Rental details:" >
-     <item name="customer.zip" type="text"     label="ZIP:" />
-     <item name="customer.city" type="text"     label="City:" />
-     <item name="customer.country" type="custom"  path="country"  label="Membership Country:" />
-     <item name="contract.start.date" type="date" label="Start date" />
+     <item name="contract.customer.zip" type="text"     label="ZIP:" />
+     <item name="contract.customer.city" type="text"     label="City:" />
+     <item name="contract.customer.country" type="custom"  path="country"  label="Membership Country:" />
+     <item name="contract.contract.start.date" type="date" label="Start date" />
      <item name="contract.end.date" type="date" label="End date" />
-     <item name="payment.amount" type="currency" label="Amount:" />
-     <item name="deposit.amount" type="currency" label="Deposit Amount:" />
-</imixs-form-section>
-
+     <item name="contract.payment.amount" type="currency" label="Amount:" />
+     <item name="contract.deposit.amount" type="currency" label="Deposit Amount:" />
 </imixs-form-section>
 </imixs-form>]]></bpmn2:documentation>
     </bpmn2:dataObject>
@@ -118,7 +116,7 @@
           <imixs:value><![CDATA[Checks the mandatory fields in data form provided by customer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_vvhU6g"><![CDATA[Checks the contract data provided.]]></bpmn2:documentation>
@@ -137,7 +135,7 @@
           <imixs:value><![CDATA[Checks for any duplication data. ]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_0BH6lw"><![CDATA[checks any duplications]]></bpmn2:documentation>
@@ -225,7 +223,7 @@
           <imixs:value><![CDATA[Contract already exists.]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_neeKww"><![CDATA[Retrives old data]]></bpmn2:documentation>
@@ -276,7 +274,7 @@
           <imixs:value><![CDATA[Contract details are added in records]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_l2LX0g"><![CDATA[New Customer record is created]]></bpmn2:documentation>
@@ -350,7 +348,7 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
     <bpmn2:task id="task_RjumqA" imixs:processid="150" name="Contract Approval">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[New contract added is approved]]></imixs:value>
@@ -394,7 +392,7 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
           <imixs:value><![CDATA[New contract got activated.]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_XaoaUQ"><![CDATA[New Contract addded is activated.]]></bpmn2:documentation>
@@ -417,7 +415,7 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
     <bpmn2:task id="task_ZBGPcg" imixs:processid="180" name="Data check not cleared">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_S2b4cA"><![CDATA[Data check is not cleared. An automatic email has been sent to Customer to refill data and resbmit it.]]></bpmn2:documentation>
