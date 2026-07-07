@@ -1288,7 +1288,7 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
           <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.category.name</itemvalue><itemvalue>plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_ycNUMw"/>
+      <bpmn2:documentation id="documentation_ycNUMw"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_Hyh1FQ</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_BdOJxg</bpmn2:outgoing>
     </bpmn2:task>
