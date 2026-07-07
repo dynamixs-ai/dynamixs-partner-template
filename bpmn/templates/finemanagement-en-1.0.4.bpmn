@@ -72,6 +72,10 @@
         <bpmn2:flowNodeRef>event_loaPlQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>gateway_m1kdyA</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_YKVFfg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_7o01Qw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_EXyw7A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_qCJtDA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_CJrMXw</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="lane_p7VD9A" name="Vehicle Owner">
         <bpmn2:documentation id="documentation_uM00kA"/>
@@ -105,21 +109,18 @@
     </bpmn2:laneSet>
     <bpmn2:startEvent id="event_1i00bQ" name="start">
       <bpmn2:documentation id="documentation_PmwsrQ"/>
-      <bpmn2:outgoing>sequenceFlow_EEBn4g</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_Hyh1FQ</bpmn2:outgoing>
     </bpmn2:startEvent>
     <bpmn2:intermediateCatchEvent id="event_0ut6OQ" imixs:activityid="100" name="Import">
       <bpmn2:extensionElements>
         <imixs:item name="keypublicresult" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
+          <imixs:value><![CDATA[1]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_iLfJ4A"/>
-      <bpmn2:incoming>sequenceFlow_EEBn4g</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_BdOJxg</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_px0OYQ</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_EEBn4g" sourceRef="event_1i00bQ" targetRef="event_0ut6OQ">
-      <bpmn2:documentation id="documentation_0QW2rw"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:dataObject id="dataObject_5JjCxw" imixs:datatype="form-data" name="Fine Details">
       <bpmn2:documentation id="documentation_71Uz0w"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
@@ -141,7 +142,7 @@
 
 <imixs-form-section label="Violation details:" columns="2">
 
-         <item name="fine.category.name" type="textarea" label="Violation Category:" />
+         <item name="fine.category.name" type="text" label="Violation Category:" />
         <item name="fine.location.country" type="custom" path="country"  label="Country:" span="4"/>
         <item name="fine.violation.date" type="html5datetime" label="Violation date/Time" span="4"/>
         <item name="fine.location.description" type="textarea" label="Location:" />
@@ -165,7 +166,7 @@
 
 </imixs-form>]]></bpmn2:documentation>
     </bpmn2:dataObject>
-    <bpmn2:task id="task_gUqlBw" imixs:processid="1000" name="Valiadte Fine Details">
+    <bpmn2:task id="task_gUqlBw" imixs:processid="1090" name="Valiadte Fine Details">
       <bpmn2:extensionElements>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
@@ -455,7 +456,7 @@ if ( workitem.getItemValueString('comment.user')==='' ) {
       <bpmn2:documentation id="documentation_xhiQCg"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
 
- <imixs-form-section label="Payment">
+ <imixs-form-section label="Payment" columns="2">
         <item name="fine.payment.amount" type="currency" label="Amount:" />
         <item name="fine.payment.currency" type="selectOneMenu"
             label="Currency:"
@@ -778,9 +779,6 @@ Best regards.
     </bpmn2:sequenceFlow>
     <bpmn2:task id="task_mxC3Aw" imixs:processid="1010" name="AI OCR Scan">
       <bpmn2:extensionElements>
-        <imixs:item name="txttype" type="xs:string">
-          <imixs:value><![CDATA[workitem]]></imixs:value>
-        </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.category.name</itemvalue><itemvalue>plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
@@ -807,14 +805,12 @@ Best regards.
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_sigGTg"><![CDATA[Starts OCR screening to scan data provided by customer using AI ]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_nH07ZQ</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_ku7BCA</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_kjKNZg</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="signalEventDefinition_YS7sBA" signalRef="signal_1"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:task id="task_w8Yzeg" imixs:processid="1020" name="AI Summarization">
       <bpmn2:extensionElements>
-        <imixs:item name="txttype" type="xs:string">
-          <imixs:value><![CDATA[workitem]]></imixs:value>
-        </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.category.name</itemvalue><itemvalue>plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
@@ -842,14 +838,12 @@ Best regards.
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_QEzj5g"><![CDATA[AI summarizes data which is scanned.]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_qnM40Q</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_RZ9duQ</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_DMWCeA</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="signalEventDefinition_KJIVfA" signalRef="signal_2"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:task id="task_yDyjyw" imixs:processid="1030" name="AI Extract">
       <bpmn2:extensionElements>
-        <imixs:item name="txttype" type="xs:string">
-          <imixs:value><![CDATA[workitem]]></imixs:value>
-        </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.category.name</itemvalue><itemvalue>plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
@@ -878,6 +872,7 @@ Best regards.
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_jF1GNw"><![CDATA[AI extracts data which is scanned.]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_4aDEhw</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_3WU4Cw</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_OCJkJw</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="signalEventDefinition_vaeEjQ" signalRef="signal_2"/>
     </bpmn2:intermediateCatchEvent>
@@ -1056,6 +1051,7 @@ Rules:
     <bpmn2:dataObject id="dataObject_NOWGrQ" imixs:datatype="form-data" name="Fine Details">
       <bpmn2:documentation id="documentation_VYCVeQ"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
+  <imixs-form-section label="AI Assistant" path="ai/agent_status" />
   <imixs-form-section columns="1" label="Fine Summary" readonly="true" >
     <item name="fine.summary" type="custom" path="markdown" />
   </imixs-form-section>
@@ -1102,13 +1098,11 @@ Transfer the individual data to the XML tags, taking into account the following 
  - payment bank name==>"fine.payment.bank.name" (Bank Name)
  - payment currency==>"fine.payment.currency" (Type of currency to pay fine)
  - payment location country==>"fine.location.country" (Country where vioaltion took place)
- - account number==>"fine.payment.account.number" (Account number  given in payment details section in the file where amount should be transferred and extract the account number if given as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the account number. Any ambiquity leave it empty.)
+ - account number==>"fine.payment.account.number" (Account number  given in payment details section in the file where amount should be transferred)
  - reference number==>"fine.payment.reference" (The bank reference number given in payment details section in the file)
  -violation category name==>"fine.category.name" (The violation category because of which violation happened example: Overspeeding, illegal parking, Red light violation, Toll violation, No parking, etc.)
 
-Note: Output only the XML object! Don't add explanations or comments. Use only the XML structure specified in this example and do not create any other XML tags. If you don't have data for some fields, leave the corresponding XML tags blank. Format date values (type="date") into the ISO 8601 format (YYYY-MM-DD). Format numbers and amounts (type="double") according to ISO 4217. In fine.volation.category extract violation category into this using a standardized category name. If not mentioned leave XML tag empty. Extract the vehicle registeration as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the registeration number. Extract the account number if given as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the account number. Any ambiquity leave it empty. For IBAN, BIC, Bank name extract as it is, preserve spaces and any ambiquity in extracting leave it empty.
-
-
+Note: Output only the XML object! Don't add explanations or comments. Use only the XML structure specified in this example and do not create any other XML tags. If you don't have data for some fields, leave the corresponding XML tags blank. Format date values (type="date") into the ISO 8601 format (YYYY-MM-DD). Format numbers and amounts (type="double") according to ISO 4217. In fine.volation.category extract violation category into this using a standardized category name. If not mentioned leave XML tag empty. Extract the vehicle registeration as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the registeration number. Extract the account number if given as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the account number. Any ambiquity leave it empty. For IBAN and BIC donot preserve spaces. 
 ]]]]><![CDATA[>
 </prompt>
 <prompt role="user"><itemvalue>fine.summary</itemvalue></prompt>
@@ -1236,7 +1230,7 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
     <bpmn2:association id="association_eoo0dg" sourceRef="dataObject_gHKvTQ" targetRef="task_HWTTWg">
       <bpmn2:documentation id="documentation_1mXEJQ"/>
     </bpmn2:association>
-    <bpmn2:intermediateCatchEvent id="event_YKVFfg" imixs:activityid="20" name="Back">
+    <bpmn2:intermediateCatchEvent id="event_YKVFfg" imixs:activityid="50" name="Back">
       <bpmn2:extensionElements>
         <imixs:item name="keypublicresult" type="xs:string">
           <imixs:value><![CDATA[1]]></imixs:value>
@@ -1251,6 +1245,58 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_tHbtRw" sourceRef="event_YKVFfg" targetRef="task_w8Yzeg">
       <bpmn2:documentation id="documentation_K4EuZw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:boundaryEvent attachedToRef="task_mxC3Aw" id="event_7o01Qw" name="">
+      <bpmn2:documentation id="documentation_1hZa6A"/>
+      <bpmn2:outgoing>sequenceFlow_ku7BCA</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="timerEventDefinition_gALszQ">
+        <bpmn2:timeDuration id="FormalExpression_0" xsi:type="bpmn2:tFormalExpression"/>
+      </bpmn2:timerEventDefinition>
+    </bpmn2:boundaryEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_ku7BCA" sourceRef="event_7o01Qw" targetRef="event_4CC4Nw">
+      <bpmn2:documentation id="documentation_MSzDmA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:boundaryEvent attachedToRef="task_w8Yzeg" id="event_EXyw7A" name="">
+      <bpmn2:documentation id="documentation_XzPu6w"/>
+      <bpmn2:outgoing>sequenceFlow_RZ9duQ</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="timerEventDefinition_05acZw">
+        <bpmn2:timeDuration id="FormalExpression_0" xsi:type="bpmn2:tFormalExpression"/>
+      </bpmn2:timerEventDefinition>
+    </bpmn2:boundaryEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_RZ9duQ" sourceRef="event_EXyw7A" targetRef="event_843Nrw">
+      <bpmn2:documentation id="documentation_l59pXg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:boundaryEvent attachedToRef="task_yDyjyw" id="event_qCJtDA" name="">
+      <bpmn2:documentation id="documentation_uXAYMg"/>
+      <bpmn2:outgoing>sequenceFlow_3WU4Cw</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="timerEventDefinition_gw2X4A">
+        <bpmn2:timeDuration id="FormalExpression_0" xsi:type="bpmn2:tFormalExpression"/>
+      </bpmn2:timerEventDefinition>
+    </bpmn2:boundaryEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_3WU4Cw" sourceRef="event_qCJtDA" targetRef="event_V0SwBw">
+      <bpmn2:documentation id="documentation_9AuY2w"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:association id="association_6J0ELA" sourceRef="dataObject_NOWGrQ" targetRef="task_w8Yzeg">
+      <bpmn2:documentation id="documentation_LU0CRA"/>
+    </bpmn2:association>
+    <bpmn2:association id="association_JH1QXQ" sourceRef="dataObject_NOWGrQ" targetRef="task_mxC3Aw">
+      <bpmn2:documentation id="documentation_qK92ZQ"/>
+    </bpmn2:association>
+    <bpmn2:task id="task_CJrMXw" imixs:processid="1000" name="Import">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.category.name</itemvalue><itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_ycNUMw"/>
+      <bpmn2:incoming>sequenceFlow_Hyh1FQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_BdOJxg</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_Hyh1FQ" sourceRef="event_1i00bQ" targetRef="task_CJrMXw">
+      <bpmn2:documentation id="documentation_xfLzyA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_BdOJxg" sourceRef="task_CJrMXw" targetRef="event_0ut6OQ">
+      <bpmn2:documentation id="documentation_ClMgAA"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
@@ -1284,9 +1330,9 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_0ut6OQ" id="BPMNShape_cBJqow">
-        <dc:Bounds height="36.0" width="36.0" x="157.0" y="-123.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="287.0" y="-53.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_0r3b5g">
-          <dc:Bounds height="20.0" width="100.0" x="125.0" y="-84.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="255.0" y="-14.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="dataObject_5JjCxw" id="BPMNShape_cCagbw">
@@ -1455,7 +1501,7 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_w8Yzeg" id="BPMNShape_ejbm3Q">
-        <dc:Bounds height="50.0" width="110.0" x="490.0" y="-130.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="500.0" y="-130.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_843Nrw" id="BPMNShape_Swp02w">
         <dc:Bounds height="36.0" width="36.0" x="667.0" y="-123.0"/>
@@ -1514,13 +1560,30 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
           <dc:Bounds height="20.0" width="100.0" x="785.0" y="-4.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_EEBn4g" id="BPMNEdge_adeQ6w" sourceElement="BPMNShape_0umf0w" targetElement="BPMNShape_cBJqow">
-        <di:waypoint x="103.0" y="-105.0"/>
-        <di:waypoint x="157.0" y="-105.0"/>
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="event_7o01Qw" id="BPMNShape_0g2jkQ">
+        <dc:Bounds height="36.0" width="36.0" x="317.0" y="-143.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1nbS8g">
+          <dc:Bounds height="20.0" width="100.0" x="285.0" y="-104.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_EXyw7A" id="BPMNShape_dFAqyQ">
+        <dc:Bounds height="36.0" width="36.0" x="567.0" y="-153.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_cKq5mA">
+          <dc:Bounds height="20.0" width="100.0" x="535.0" y="-114.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_qCJtDA" id="BPMNShape_gnYf5A">
+        <dc:Bounds height="36.0" width="36.0" x="847.0" y="-153.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_td8EAg">
+          <dc:Bounds height="20.0" width="100.0" x="815.0" y="-114.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_CJrMXw" id="BPMNShape_xRcCuQ">
+        <dc:Bounds height="50.0" width="110.0" x="240.0" y="10.0"/>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_px0OYQ" id="BPMNEdge_ry70SA" sourceElement="BPMNShape_cBJqow" targetElement="BPMNShape_YyBAlQ">
-        <di:waypoint x="193.0" y="-105.0"/>
-        <di:waypoint x="250.0" y="-105.0"/>
+        <di:waypoint x="305.0" y="-53.0"/>
+        <di:waypoint x="305.0" y="-80.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_0N0lWQ" id="BPMNEdge_cgofaw" sourceElement="BPMNShape_SH5H3Q" targetElement="BPMNShape_l198xw">
         <di:waypoint x="1453.0" y="-105.0"/>
@@ -1641,10 +1704,10 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_kjKNZg" id="BPMNEdge_40heog" sourceElement="BPMNShape_xzjaBw" targetElement="BPMNShape_ejbm3Q">
         <di:waypoint x="433.0" y="-105.0"/>
-        <di:waypoint x="490.0" y="-105.0"/>
+        <di:waypoint x="500.0" y="-105.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_qnM40Q" id="BPMNEdge_tIgb8A" sourceElement="BPMNShape_ejbm3Q" targetElement="BPMNShape_Swp02w">
-        <di:waypoint x="600.0" y="-105.0"/>
+        <di:waypoint x="610.0" y="-105.0"/>
         <di:waypoint x="667.0" y="-105.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_DMWCeA" id="BPMNEdge_4B86Fw" sourceElement="BPMNShape_Swp02w" targetElement="BPMNShape_XMUNZA">
@@ -1718,8 +1781,8 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_S0Ry0w" id="BPMNEdge_GUA5Zg" sourceElement="BPMNShape_TQcgBw" targetElement="BPMNShape_XMUNZA">
         <di:waypoint x="745.0" y="-165.0"/>
-        <di:waypoint x="823.0" y="-165.0"/>
-        <di:waypoint x="823.0" y="-130.0"/>
+        <di:waypoint x="835.0" y="-165.0"/>
+        <di:waypoint x="835.0" y="-130.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_8W0pyQ" id="BPMNEdge_9GjuoA" sourceElement="BPMNShape_iG5kzQ" targetElement="BPMNShape_IbiMSw">
         <di:waypoint x="965.0" y="-87.0"/>
@@ -1773,10 +1836,52 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
         <di:waypoint x="835.0" y="-43.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_tHbtRw" id="BPMNEdge_MoyeAQ" sourceElement="BPMNShape_ypPNdA" targetElement="BPMNShape_ejbm3Q">
-        <di:waypoint x="817.0" y="-25.0"/>
-        <di:waypoint x="709.0" y="-25.0"/>
-        <di:waypoint x="709.0" y="-105.0"/>
-        <di:waypoint x="600.0" y="-105.0"/>
+        <di:waypoint x="835.0" y="-7.0"/>
+        <di:waypoint x="835.0" y="68.0"/>
+        <di:waypoint x="555.0" y="68.0"/>
+        <di:waypoint x="555.0" y="-80.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ku7BCA" id="BPMNEdge_EsaWcQ" sourceElement="BPMNShape_0g2jkQ" targetElement="BPMNShape_xzjaBw">
+        <di:waypoint x="335.0" y="-143.0"/>
+        <di:waypoint x="335.0" y="-160.0"/>
+        <di:waypoint x="415.0" y="-160.0"/>
+        <di:waypoint x="415.0" y="-123.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_RZ9duQ" id="BPMNEdge_geF3Tw" sourceElement="BPMNShape_dFAqyQ" targetElement="BPMNShape_Swp02w">
+        <di:waypoint x="585.0" y="-153.0"/>
+        <di:waypoint x="585.0" y="-182.0"/>
+        <di:waypoint x="685.0" y="-182.0"/>
+        <di:waypoint x="685.0" y="-123.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_3WU4Cw" id="BPMNEdge_eEWhAg" sourceElement="BPMNShape_gnYf5A" targetElement="BPMNShape_iG5kzQ">
+        <di:waypoint x="865.0" y="-153.0"/>
+        <di:waypoint x="865.0" y="-176.0"/>
+        <di:waypoint x="965.0" y="-176.0"/>
+        <di:waypoint x="965.0" y="-123.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_6J0ELA" id="BPMNEdge_nvnduw" sourceElement="BPMNShape_TQcgBw" targetElement="BPMNShape_ejbm3Q">
+        <di:waypoint x="710.0" y="-165.0"/>
+        <di:waypoint x="660.0" y="-165.0"/>
+        <di:waypoint x="660.0" y="-105.0"/>
+        <di:waypoint x="610.0" y="-105.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_JH1QXQ" id="BPMNEdge_EouWFQ" sourceElement="BPMNShape_TQcgBw" targetElement="BPMNShape_YyBAlQ">
+        <di:waypoint x="710.0" y="-165.0"/>
+        <di:waypoint x="535.0" y="-165.0"/>
+        <di:waypoint x="535.0" y="-105.0"/>
+        <di:waypoint x="360.0" y="-105.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Hyh1FQ" id="BPMNEdge_fbt6fQ" sourceElement="BPMNShape_0umf0w" targetElement="BPMNShape_xRcCuQ">
+        <di:waypoint x="103.0" y="-105.0"/>
+        <di:waypoint x="172.0" y="-105.0"/>
+        <di:waypoint x="172.0" y="35.0"/>
+        <di:waypoint x="240.0" y="35.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_BdOJxg" id="BPMNEdge_W2dQ8A" sourceElement="BPMNShape_xRcCuQ" targetElement="BPMNShape_cBJqow">
+        <di:waypoint x="295.0" y="10.0"/>
+        <di:waypoint x="295.0" y="-2.0"/>
+        <di:waypoint x="305.0" y="-2.0"/>
+        <di:waypoint x="305.0" y="-17.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
