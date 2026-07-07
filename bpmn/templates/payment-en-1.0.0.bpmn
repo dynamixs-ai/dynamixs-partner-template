@@ -247,6 +247,7 @@ Best regards.]]></imixs:value>
     <bpmn2:endEvent id="event_JeUEVw" name="End">
       <bpmn2:documentation id="documentation_WBZ00g"/>
       <bpmn2:incoming>sequenceFlow_onWk3w</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_ZJY4yg</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_onWk3w" sourceRef="task_7anuiA" targetRef="event_JeUEVw">
       <bpmn2:documentation id="documentation_4jD8wg"/>
@@ -349,7 +350,7 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
     <bpmn2:sequenceFlow id="sequenceFlow_a03x4g" sourceRef="event_b740TQ" targetRef="task_ZBGPcg">
       <bpmn2:documentation id="documentation_zh0LOw"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:task id="task_RjumqA" imixs:processid="150" name="Process payment">
+    <bpmn2:task id="task_RjumqA" imixs:processid="160" name="Process payment">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
@@ -544,9 +545,13 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_SQYMVw"><![CDATA[The Amount transferred did not match with amount required. Hence transaction got failed and amount is refunded.]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_sNKESg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_ZJY4yg</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="sequenceFlow_sNKESg" sourceRef="event_bKSyqQ" targetRef="task_0WvrSg">
       <bpmn2:documentation id="documentation_YFs93g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_ZJY4yg" sourceRef="task_0WvrSg" targetRef="event_JeUEVw">
+      <bpmn2:documentation id="documentation_2hmyHg"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
@@ -787,6 +792,12 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sNKESg" id="BPMNEdge_qx70YQ" sourceElement="BPMNShape_9YzI3w" targetElement="BPMNShape_K6IqQw">
         <di:waypoint x="1533.0" y="705.0"/>
         <di:waypoint x="1610.0" y="705.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ZJY4yg" id="BPMNEdge_nCOdBw" sourceElement="BPMNShape_K6IqQw" targetElement="BPMNShape_KwcLig">
+        <di:waypoint x="1665.0" y="680.0"/>
+        <di:waypoint x="1665.0" y="637.0"/>
+        <di:waypoint x="1705.0" y="637.0"/>
+        <di:waypoint x="1705.0" y="593.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
