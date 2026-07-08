@@ -62,14 +62,17 @@
         <bpmn2:flowNodeRef>event_b740TQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_RjumqA</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_6df4bw</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>task_0nxEog</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_MuxmWQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_ZBGPcg</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>event_kaEHxg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_SXLB6A</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>gateway_rITI2A</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_bKSyqQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_0WvrSg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_GGb9RQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_9eYrew</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_DqTGPw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_WnDimg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_tktNhw</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:startEvent id="event_5jEfXg" name="Start">
@@ -92,30 +95,29 @@
     <bpmn2:dataObject id="dataObject_fV6H2w" imixs:datatype="form-data" name="Payment Data">
       <bpmn2:documentation id="documentation_gnvAHg"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
-<imixs-form-section label="Payment details: " columns="2">
+<imixs-form-section label="Payment details:"  columns="2">   
+      <item name="finemanagement.ref"
+        type="custom"
+        path="workitemlink"
+        readonly="false"
+        options="$workflowgroup:finemanagement" />
      <item name="payment.type" type="selectOneMenu"     label="Payment Type:" 
        options = "EC; VISA; PayPal" required="false"/>
       <item name="payment.id"    type="text"  label="Paymnet ID:" />
       <item name="payment.customer.firstname" type="text"  label="Firstname:" />
       <item name="payment.customer.lastname"  type="text"  label="Lastname:" />
       <item name="payment.customer.email"  type="text"    label="Email:"  />
-</imixs-form-section>
-
-<imixs-form-section label="Payment details:" >
-     <item name="payment.customer.zip" type="text"     label="ZIP:" />
-     <item name="payment.customer.city" type="text"     label="City:" />
-     <item name="payment.customer.country" type="custom"  path="country"  label="Membership Country:" />
-     <item name="payment.currency" type="selectOneMenu"
+      <item name="payment.posting.date" type="date" label="Posting date:" />
+      <item name="payment.value.date" type="date" label="Value date:" />
+      <item name="payment.transaction.date" type="date" label="Transaction date:" />     
+      <item name="payment.bank.name" type="text" label="Bank Name:" />
+      <item name="payment.reference.number" type="text" label="Paymnet Reference:" />
+      <item name="payment.amount" type="currency" label="Amount:" />
+      <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
             options="EUR;CHF;SEK;NOK;GBP;USD" />
-        <item name="payment.posting.date" type="text" label="Posting date: " />
-        <item name="payment.value.date" type="text" label="Value date:" />
-        <item name="payment.transaction.date" type="date" label="Transaction date:" />     
-        <item name="payment.bank.name" type="text" label="Bank Name: " />
-        <item name="payment.reference.number" type="text" label="Paymnet Reference: " />
-        <item name="payment.dbtr.iban" type="iban" label="IBAN" />
-        <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" />
-     
+      <item name="payment.dbtr.iban" type="iban" label="IBAN" />
+      <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" /> 
 </imixs-form-section>
 </imixs-form>]]></bpmn2:documentation>
     </bpmn2:dataObject>
@@ -151,7 +153,7 @@
       <bpmn2:incoming>sequenceFlow_GlkseQ</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_LHlu7Q</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:exclusiveGateway gatewayDirection="Diverging" id="gateway_xpbiMw" name="Data check">
+    <bpmn2:exclusiveGateway default="sequenceFlow_DAd0WA" gatewayDirection="Diverging" id="gateway_xpbiMw" name="Data check">
       <bpmn2:documentation id="documentation_JyeSDA"/>
       <bpmn2:incoming>sequenceFlow_GSGtog</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_DAd0WA</bpmn2:outgoing>
@@ -247,7 +249,6 @@ Best regards.]]></imixs:value>
     <bpmn2:endEvent id="event_JeUEVw" name="End">
       <bpmn2:documentation id="documentation_WBZ00g"/>
       <bpmn2:incoming>sequenceFlow_onWk3w</bpmn2:incoming>
-      <bpmn2:incoming>sequenceFlow_ZJY4yg</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_onWk3w" sourceRef="task_7anuiA" targetRef="event_JeUEVw">
       <bpmn2:documentation id="documentation_4jD8wg"/>
@@ -275,6 +276,7 @@ Best regards.]]></imixs:value>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_iepIIw"><![CDATA[Amount matches with required amount. Payment gets accepted.]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_ha7MAw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_uzDSHA</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:task id="task_6VVqag" imixs:processid="140" name="Match payment">
       <bpmn2:extensionElements>
@@ -283,7 +285,7 @@ Best regards.]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_l2LX0g"><![CDATA[Matching the amount paid by customer to required amount.]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_YpqXGQ</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_tplHEg</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_JYPNFA</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:eventBasedGateway gatewayDirection="Diverging" id="gateway_PDrxCQ" name="Payed already?">
@@ -298,7 +300,7 @@ Best regards.]]></imixs:value>
     <bpmn2:sequenceFlow id="sequenceFlow_dxzy8g" sourceRef="gateway_PDrxCQ" targetRef="event_79KSkQ">
       <bpmn2:documentation id="documentation_jy4v0w"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_YpqXGQ" sourceRef="gateway_PDrxCQ" targetRef="task_6VVqag">
+    <bpmn2:sequenceFlow id="sequenceFlow_YpqXGQ" sourceRef="gateway_PDrxCQ" targetRef="event_WnDimg">
       <bpmn2:documentation id="documentation_AORlUQ"/>
     </bpmn2:sequenceFlow>
     <bpmn2:intermediateCatchEvent id="event_b740TQ" imixs:activityid="100" name="Repayment request">
@@ -346,30 +348,44 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_asZ0wQ" sourceRef="gateway_xpbiMw" targetRef="event_b740TQ">
       <bpmn2:documentation id="documentation_1FOlpA"/>
+      <bpmn2:conditionExpression id="formalExpression_0442HQ" xsi:type="bpmn2:tFormalExpression"><![CDATA[var fineAccount=workitem.getItemValueString("fine.payment.account.number");
+var fineBank=workitem.getItemValueString("fine.payment.bank.name");
+var fineReference=workitem.getItemValueString("fine.payment.reference.number");
+var fineIban=workitem.getItemValueString("fine.dbtr.iban");
+var fineBIC=workitem.getItemValueString("fine.dbtr.bic");
+var paymentAccount=workitem.getItemValueString("payment.account.number");
+var paymentBank=workitem.getItemValueString("payment.bank.name");
+var paymentReference=workitem.getItemValueString("payment.reference.number");
+var paymentIban=workitem.getItemValueString("payment.dbtr.iban");
+var paymentBIC=workitem.getItemValueString("payment.dbtr.bic");
+
+
+fineAccount!=paymentAccount
+fineBank!=paymentBank
+fineReference!=paymentReference
+fineIban!=paymentIban
+fineBIC!=paymentBIC]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_a03x4g" sourceRef="event_b740TQ" targetRef="task_ZBGPcg">
       <bpmn2:documentation id="documentation_zh0LOw"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:task id="task_RjumqA" imixs:processid="160" name="Process payment">
+    <bpmn2:task id="task_RjumqA" imixs:processid="170" name="Case closed">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[New contract added is approved]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>payment.id</itemvalue> <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_xwDG0Q"><![CDATA[New contract is approved and updated in system]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_w0SJqQ</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_srToEw</bpmn2:outgoing>
+      <bpmn2:documentation id="documentation_xwDG0Q"><![CDATA[Payment is sucessful and hence case is closed.]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_sgjE2A</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_mg0Lqg</bpmn2:incoming>
     </bpmn2:task>
-    <bpmn2:intermediateCatchEvent id="event_6df4bw" imixs:activityid="80" name="Contract Activation">
+    <bpmn2:intermediateCatchEvent id="event_6df4bw" imixs:activityid="150" name="Email notification">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[New contract is activated]]></imixs:value>
+          <imixs:value><![CDATA[Email sent to customer about sucessful payment]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[New contract is activated]]></imixs:value>
+          <imixs:value><![CDATA[Paymnet sucessful]]></imixs:value>
         </imixs:item>
         <imixs:item name="nammailreceiver" type="xs:string">
           <imixs:value/>
@@ -381,42 +397,25 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
           <imixs:value/>
         </imixs:item>
         <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[New contract is activated ]]></imixs:value>
+          <imixs:value><![CDATA[Hallo,
+
+we are notifying you in this email that your payment is sucessful. 
+
+Regards.]]></imixs:value>
         </imixs:item>
         <imixs:item name="keypublicresult" type="xs:string">
           <imixs:value><![CDATA[1]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_zG03tQ"><![CDATA[New contract is activated.]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_srToEw</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_MZKczw</bpmn2:outgoing>
+      <bpmn2:documentation id="documentation_zG03tQ"><![CDATA[An Email has been sent to customer about the sucessful payment.]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_BKYNmg</bpmn2:outgoing>
+      <bpmn2:messageEventDefinition id="messageEventDefinition_VXuujw" messageRef="message_1"/>
+      <bpmn2:incoming>sequenceFlow_ixy9qQ</bpmn2:incoming>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:task id="task_0nxEog" imixs:processid="170" name="Contract activation">
-      <bpmn2:extensionElements>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[New contract got activated.]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_XaoaUQ"><![CDATA[New Contract addded is activated.]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_MZKczw</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_sAJc7Q</bpmn2:outgoing>
-    </bpmn2:task>
     <bpmn2:endEvent id="event_MuxmWQ" name="End">
       <bpmn2:documentation id="documentation_FTWUDw"/>
-      <bpmn2:incoming>sequenceFlow_sAJc7Q</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_sgjE2A</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_srToEw" sourceRef="task_RjumqA" targetRef="event_6df4bw">
-      <bpmn2:documentation id="documentation_0mS4OQ"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_MZKczw" sourceRef="event_6df4bw" targetRef="task_0nxEog">
-      <bpmn2:documentation id="documentation_Wwcyow"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_sAJc7Q" sourceRef="task_0nxEog" targetRef="event_MuxmWQ">
-      <bpmn2:documentation id="documentation_JnJTlw"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:task id="task_ZBGPcg" imixs:processid="110" name="Data check not cleared">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
@@ -429,36 +428,6 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
     </bpmn2:task>
     <bpmn2:sequenceFlow id="sequenceFlow_cqFoZA" sourceRef="task_ZBGPcg" targetRef="event_nH0hNQ">
       <bpmn2:documentation id="documentation_gMlj6A"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:intermediateCatchEvent id="event_kaEHxg" imixs:activityid="80" name="Contract Approval">
-      <bpmn2:extensionElements>
-        <imixs:item name="nammailreceiver" type="xs:string">
-          <imixs:value/>
-        </imixs:item>
-        <imixs:item name="nammailreceivercc" type="xs:string">
-          <imixs:value/>
-        </imixs:item>
-        <imixs:item name="nammailreceiverbcc" type="xs:string">
-          <imixs:value/>
-        </imixs:item>
-        <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[New contract is approved and updated in the system. ]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keypublicresult" type="xs:string">
-          <imixs:value><![CDATA[1]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[New Contract is added]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[New Contract is approved added to the system.]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_BBLIFw"><![CDATA[New contract is Approved.]]></bpmn2:documentation>
-      <bpmn2:outgoing>sequenceFlow_w0SJqQ</bpmn2:outgoing>
-    </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_w0SJqQ" sourceRef="event_kaEHxg" targetRef="task_RjumqA">
-      <bpmn2:documentation id="documentation_9T325Q"/>
     </bpmn2:sequenceFlow>
     <bpmn2:intermediateCatchEvent id="event_SXLB6A" imixs:activityid="10" name="Submit">
       <bpmn2:extensionElements>
@@ -494,7 +463,7 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
     <bpmn2:sequenceFlow id="sequenceFlow_GSGtog" sourceRef="event_SXLB6A" targetRef="gateway_xpbiMw">
       <bpmn2:documentation id="documentation_Y5xpLA"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:exclusiveGateway gatewayDirection="Diverging" id="gateway_rITI2A" name="Gateway-3">
+    <bpmn2:exclusiveGateway default="sequenceFlow_ha7MAw" gatewayDirection="Diverging" id="gateway_rITI2A" name="Gateway-3">
       <bpmn2:documentation id="documentation_jjXWfw"/>
       <bpmn2:incoming>sequenceFlow_JYPNFA</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_ha7MAw</bpmn2:outgoing>
@@ -533,25 +502,130 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_YuBSmw" sourceRef="gateway_rITI2A" targetRef="event_bKSyqQ">
       <bpmn2:documentation id="documentation_JAiJhw"/>
+      <bpmn2:conditionExpression id="formalExpression_5zCd5A" xsi:type="bpmn2:tFormalExpression"><![CDATA[fine.payment.amount!=payment.amount]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:task id="task_0WvrSg" imixs:processid="150" name="Refunded">
+    <bpmn2:task id="task_0WvrSg" imixs:processid="150" name="Failed Transaction">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[Sice Amount transferred did not match with amount required, the transaction got declined and maount is refunded.]]></imixs:value>
+          <imixs:value><![CDATA[Since Amount transferred did not match with amount required, the transaction got declined and maount is refunded.]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>payment.id</itemvalue> <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_SQYMVw"><![CDATA[The Amount transferred did not match with amount required. Hence transaction got failed and amount is refunded.]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_sNKESg</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_ZJY4yg</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_DR8xfQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_k5d6ng</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="sequenceFlow_sNKESg" sourceRef="event_bKSyqQ" targetRef="task_0WvrSg">
+    <bpmn2:sequenceFlow id="sequenceFlow_sNKESg" sourceRef="event_bKSyqQ" targetRef="event_tktNhw">
       <bpmn2:documentation id="documentation_YFs93g"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_ZJY4yg" sourceRef="task_0WvrSg" targetRef="event_JeUEVw">
-      <bpmn2:documentation id="documentation_2hmyHg"/>
+    <bpmn2:task id="task_GGb9RQ" imixs:processid="160" name="Process payment">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>payment.id</itemvalue> <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_0bsuzg"><![CDATA[Processing the Payment]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_uzDSHA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_ixy9qQ</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_uzDSHA" sourceRef="event_6xCj2g" targetRef="task_GGb9RQ">
+      <bpmn2:documentation id="documentation_SNvZIA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_9eYrew" imixs:activityid="160" name="Status Closed">
+      <bpmn2:extensionElements>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Updated in system as paid ans case is closed.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_gYJkRw"><![CDATA[Update status as paid. Case is closed.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_BKYNmg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_mg0Lqg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_ixy9qQ" sourceRef="task_GGb9RQ" targetRef="event_6df4bw">
+      <bpmn2:documentation id="documentation_UILZxw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_mg0Lqg" sourceRef="event_9eYrew" targetRef="task_RjumqA">
+      <bpmn2:documentation id="documentation_0O3tWA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_sgjE2A" sourceRef="task_RjumqA" targetRef="event_MuxmWQ">
+      <bpmn2:documentation id="documentation_1V14Eg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:endEvent id="event_DqTGPw" name="End">
+      <bpmn2:documentation id="documentation_A4MvzQ"/>
+      <bpmn2:incoming>sequenceFlow_k5d6ng</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_k5d6ng" sourceRef="task_0WvrSg" targetRef="event_DqTGPw">
+      <bpmn2:documentation id="documentation_stMYyw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_WnDimg" imixs:activityid="170" name="Approve">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[New Payment]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Payment is approved.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_cYGntQ"><![CDATA[Validation and double check are cleared. Approved the payment. ]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_YpqXGQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_tplHEg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_tplHEg" sourceRef="event_WnDimg" targetRef="task_6VVqag">
+      <bpmn2:documentation id="documentation_JZLJZw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_tktNhw" imixs:activityid="170" name="Status Active">
+      <bpmn2:extensionElements>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Updated in system as still active and payment is due]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_06mUjA"><![CDATA[Update status as active which means case is still active. Payment due.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_sNKESg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_DR8xfQ</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_DR8xfQ" sourceRef="event_tktNhw" targetRef="task_0WvrSg">
+      <bpmn2:documentation id="documentation_dLP9Hg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_BKYNmg" sourceRef="event_6df4bw" targetRef="event_9eYrew">
+      <bpmn2:documentation id="documentation_HLhquQ"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
@@ -595,7 +669,7 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         <dc:Bounds height="50.0" width="110.0" x="740.0" y="360.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_Wpv5Qw" id="BPMNShape_5LVQ8A">
-        <dc:Bounds height="50.0" width="110.0" x="1050.0" y="550.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="1050.0" y="520.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="gateway_xpbiMw" id="BPMNShape_TOuZ3g">
         <dc:Bounds height="50.0" width="50.0" x="1080.0" y="360.0"/>
@@ -610,24 +684,24 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_WNqoxw" id="BPMNShape_tHd7HA">
-        <dc:Bounds height="36.0" width="36.0" x="1087.0" y="457.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1087.0" y="447.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_QGtYnw">
-          <dc:Bounds height="20.0" width="100.0" x="1055.0" y="496.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1055.0" y="486.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_79KSkQ" id="BPMNShape_MlmLTw">
-        <dc:Bounds height="36.0" width="36.0" x="1377.0" y="557.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1377.0" y="527.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_k7znFQ">
-          <dc:Bounds height="20.0" width="100.0" x="1345.0" y="596.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1345.0" y="566.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_7anuiA" id="BPMNShape_2W6JhQ">
-        <dc:Bounds height="50.0" width="110.0" x="1500.0" y="550.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="1500.0" y="520.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_JeUEVw" id="BPMNShape_KwcLig">
-        <dc:Bounds height="36.0" width="36.0" x="1687.0" y="557.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1697.0" y="527.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_bfVOhw">
-          <dc:Bounds height="20.0" width="100.0" x="1655.0" y="596.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1665.0" y="566.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_6xCj2g" id="BPMNShape_gaKm3w">
@@ -640,9 +714,9 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         <dc:Bounds height="50.0" width="110.0" x="1210.0" y="680.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="gateway_PDrxCQ" id="BPMNShape_x5BrUQ">
-        <dc:Bounds height="50.0" width="50.0" x="1240.0" y="550.0"/>
+        <dc:Bounds height="50.0" width="50.0" x="1240.0" y="520.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_CT9SPQ">
-          <dc:Bounds height="20.0" width="100.0" x="1215.0" y="603.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1215.0" y="573.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_b740TQ" id="BPMNShape_DeHKuQ">
@@ -652,31 +726,22 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_RjumqA" id="BPMNShape_6eTeUA">
-        <dc:Bounds height="50.0" width="110.0" x="1050.0" y="930.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="1850.0" y="780.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_6df4bw" id="BPMNShape_kWe30g">
-        <dc:Bounds height="36.0" width="36.0" x="1217.0" y="937.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1667.0" y="787.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_El1Rdw">
-          <dc:Bounds height="20.0" width="100.0" x="1185.0" y="976.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1635.0" y="826.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="task_0nxEog" id="BPMNShape_WT4p1A">
-        <dc:Bounds height="50.0" width="110.0" x="1340.0" y="930.0"/>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_MuxmWQ" id="BPMNShape_N8a0fw">
-        <dc:Bounds height="36.0" width="36.0" x="1537.0" y="937.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="2007.0" y="787.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_BnZeyA">
-          <dc:Bounds height="20.0" width="100.0" x="1505.0" y="976.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1975.0" y="826.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_ZBGPcg" id="BPMNShape_50I0fA">
         <dc:Bounds height="50.0" width="110.0" x="1380.0" y="360.0"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="event_kaEHxg" id="BPMNShape_vnI0rw">
-        <dc:Bounds height="36.0" width="36.0" x="1017.0" y="1017.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_IpZGTQ">
-          <dc:Bounds height="20.0" width="100.0" x="985.0" y="1056.0"/>
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_SXLB6A" id="BPMNShape_506cog">
         <dc:Bounds height="36.0" width="36.0" x="927.0" y="367.0"/>
@@ -697,7 +762,34 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_0WvrSg" id="BPMNShape_K6IqQw">
-        <dc:Bounds height="50.0" width="110.0" x="1610.0" y="680.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="1730.0" y="680.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_GGb9RQ" id="BPMNShape_8tYmtw">
+        <dc:Bounds height="50.0" width="110.0" x="1500.0" y="780.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_9eYrew" id="BPMNShape_IcLnpw">
+        <dc:Bounds height="36.0" width="36.0" x="1757.0" y="787.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_iY86Ww">
+          <dc:Bounds height="20.0" width="100.0" x="1725.0" y="826.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_DqTGPw" id="BPMNShape_ooQniA">
+        <dc:Bounds height="36.0" width="36.0" x="1917.0" y="687.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_DfSW4w">
+          <dc:Bounds height="20.0" width="100.0" x="1885.0" y="726.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_WnDimg" id="BPMNShape_DbItew">
+        <dc:Bounds height="36.0" width="36.0" x="1247.0" y="607.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_lSnclg">
+          <dc:Bounds height="20.0" width="100.0" x="1215.0" y="646.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_tktNhw" id="BPMNShape_YYq00g">
+        <dc:Bounds height="36.0" width="36.0" x="1607.0" y="687.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_TPZZ1Q">
+          <dc:Bounds height="20.0" width="100.0" x="1575.0" y="726.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GRu7lg" id="BPMNEdge_m6wYyg" sourceElement="BPMNShape_yfRPcA" targetElement="BPMNShape_SSBluQ">
         <di:waypoint x="483.0" y="385.0"/>
@@ -714,31 +806,31 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_DAd0WA" id="BPMNEdge_VPJz5w" sourceElement="BPMNShape_TOuZ3g" targetElement="BPMNShape_tHd7HA">
         <di:waypoint x="1105.0" y="410.0"/>
-        <di:waypoint x="1105.0" y="457.0"/>
+        <di:waypoint x="1105.0" y="447.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GlkseQ" id="BPMNEdge_WYZgNg" sourceElement="BPMNShape_tHd7HA" targetElement="BPMNShape_5LVQ8A">
-        <di:waypoint x="1105.0" y="493.0"/>
-        <di:waypoint x="1105.0" y="550.0"/>
+        <di:waypoint x="1105.0" y="483.0"/>
+        <di:waypoint x="1105.0" y="520.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Unq1BA" id="BPMNEdge_DtlrDg" sourceElement="BPMNShape_MlmLTw" targetElement="BPMNShape_2W6JhQ">
-        <di:waypoint x="1413.0" y="575.0"/>
-        <di:waypoint x="1500.0" y="575.0"/>
+        <di:waypoint x="1413.0" y="545.0"/>
+        <di:waypoint x="1500.0" y="545.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_onWk3w" id="BPMNEdge_Hcn8fg" sourceElement="BPMNShape_2W6JhQ" targetElement="BPMNShape_KwcLig">
-        <di:waypoint x="1610.0" y="575.0"/>
-        <di:waypoint x="1687.0" y="575.0"/>
+        <di:waypoint x="1610.0" y="545.0"/>
+        <di:waypoint x="1697.0" y="545.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_LHlu7Q" id="BPMNEdge_msVgTA" sourceElement="BPMNShape_5LVQ8A" targetElement="BPMNShape_x5BrUQ">
-        <di:waypoint x="1160.0" y="575.0"/>
-        <di:waypoint x="1240.0" y="575.0"/>
+        <di:waypoint x="1160.0" y="545.0"/>
+        <di:waypoint x="1240.0" y="545.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_dxzy8g" id="BPMNEdge_q2Q0WQ" sourceElement="BPMNShape_x5BrUQ" targetElement="BPMNShape_MlmLTw">
-        <di:waypoint x="1290.0" y="575.0"/>
-        <di:waypoint x="1377.0" y="575.0"/>
+        <di:waypoint x="1290.0" y="545.0"/>
+        <di:waypoint x="1377.0" y="545.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_YpqXGQ" id="BPMNEdge_l7iFSw" sourceElement="BPMNShape_x5BrUQ" targetElement="BPMNShape_m1EAwQ">
-        <di:waypoint x="1265.0" y="600.0"/>
-        <di:waypoint x="1265.0" y="680.0"/>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_YpqXGQ" id="BPMNEdge_l7iFSw" sourceElement="BPMNShape_x5BrUQ" targetElement="BPMNShape_DbItew">
+        <di:waypoint x="1265.0" y="570.0"/>
+        <di:waypoint x="1265.0" y="607.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_asZ0wQ" id="BPMNEdge_BywaqA" sourceElement="BPMNShape_TOuZ3g" targetElement="BPMNShape_DeHKuQ">
         <di:waypoint x="1130.0" y="385.0"/>
@@ -748,26 +840,9 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         <di:waypoint x="1273.0" y="385.0"/>
         <di:waypoint x="1380.0" y="385.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_srToEw" id="BPMNEdge_QTl0vg" sourceElement="BPMNShape_6eTeUA" targetElement="BPMNShape_kWe30g">
-        <di:waypoint x="1160.0" y="955.0"/>
-        <di:waypoint x="1217.0" y="955.0"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_MZKczw" id="BPMNEdge_Vb7JcA" sourceElement="BPMNShape_kWe30g" targetElement="BPMNShape_WT4p1A">
-        <di:waypoint x="1253.0" y="955.0"/>
-        <di:waypoint x="1340.0" y="955.0"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sAJc7Q" id="BPMNEdge_5FHn0w" sourceElement="BPMNShape_WT4p1A" targetElement="BPMNShape_N8a0fw">
-        <di:waypoint x="1450.0" y="955.0"/>
-        <di:waypoint x="1537.0" y="955.0"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_cqFoZA" id="BPMNEdge_0hIPdg" sourceElement="BPMNShape_50I0fA" targetElement="BPMNShape_JFIz5A">
         <di:waypoint x="1490.0" y="385.0"/>
         <di:waypoint x="1607.0" y="385.0"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_w0SJqQ" id="BPMNEdge_4053YQ" sourceElement="BPMNShape_vnI0rw" targetElement="BPMNShape_6eTeUA">
-        <di:waypoint x="1053.0" y="1035.0"/>
-        <di:waypoint x="1105.0" y="1035.0"/>
-        <di:waypoint x="1105.0" y="980.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_tbXUpw" id="BPMNEdge_iqsSKQ" sourceElement="BPMNShape_nduh3g" targetElement="BPMNShape_506cog">
         <di:waypoint x="850.0" y="385.0"/>
@@ -789,15 +864,42 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
         <di:waypoint x="1440.0" y="705.0"/>
         <di:waypoint x="1497.0" y="705.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sNKESg" id="BPMNEdge_qx70YQ" sourceElement="BPMNShape_9YzI3w" targetElement="BPMNShape_K6IqQw">
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sNKESg" id="BPMNEdge_qx70YQ" sourceElement="BPMNShape_9YzI3w" targetElement="BPMNShape_YYq00g">
         <di:waypoint x="1533.0" y="705.0"/>
-        <di:waypoint x="1610.0" y="705.0"/>
+        <di:waypoint x="1607.0" y="705.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ZJY4yg" id="BPMNEdge_nCOdBw" sourceElement="BPMNShape_K6IqQw" targetElement="BPMNShape_KwcLig">
-        <di:waypoint x="1665.0" y="680.0"/>
-        <di:waypoint x="1665.0" y="637.0"/>
-        <di:waypoint x="1705.0" y="637.0"/>
-        <di:waypoint x="1705.0" y="593.0"/>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_uzDSHA" id="BPMNEdge_SzJVRQ" sourceElement="BPMNShape_gaKm3w" targetElement="BPMNShape_8tYmtw">
+        <di:waypoint x="1433.0" y="805.0"/>
+        <di:waypoint x="1500.0" y="805.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ixy9qQ" id="BPMNEdge_Etz1hw" sourceElement="BPMNShape_8tYmtw" targetElement="BPMNShape_kWe30g">
+        <di:waypoint x="1610.0" y="805.0"/>
+        <di:waypoint x="1667.0" y="805.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_mg0Lqg" id="BPMNEdge_c1AfcA" sourceElement="BPMNShape_IcLnpw" targetElement="BPMNShape_6eTeUA">
+        <di:waypoint x="1793.0" y="805.0"/>
+        <di:waypoint x="1850.0" y="805.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sgjE2A" id="BPMNEdge_GfwUZw" sourceElement="BPMNShape_6eTeUA" targetElement="BPMNShape_N8a0fw">
+        <di:waypoint x="1960.0" y="805.0"/>
+        <di:waypoint x="2007.0" y="805.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_k5d6ng" id="BPMNEdge_7U6nUw" sourceElement="BPMNShape_K6IqQw" targetElement="BPMNShape_ooQniA">
+        <di:waypoint x="1840.0" y="705.0"/>
+        <di:waypoint x="1917.0" y="705.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_tplHEg" id="BPMNEdge_3x44Nw" sourceElement="BPMNShape_DbItew" targetElement="BPMNShape_m1EAwQ">
+        <di:waypoint x="1265.0" y="607.0"/>
+        <di:waypoint x="1265.0" y="597.0"/>
+        <di:waypoint x="1265.0" y="680.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_DR8xfQ" id="BPMNEdge_0reRFQ" sourceElement="BPMNShape_YYq00g" targetElement="BPMNShape_K6IqQw">
+        <di:waypoint x="1643.0" y="705.0"/>
+        <di:waypoint x="1730.0" y="705.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_BKYNmg" id="BPMNEdge_aOlZcA" sourceElement="BPMNShape_kWe30g" targetElement="BPMNShape_IcLnpw">
+        <di:waypoint x="1703.0" y="805.0"/>
+        <di:waypoint x="1757.0" y="805.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
