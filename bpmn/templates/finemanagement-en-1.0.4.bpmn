@@ -88,6 +88,7 @@
         <bpmn2:flowNodeRef>event_yC0fuw</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>dataObject_Rg2kMQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>dataObject_gHKvTQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_r01q0Q</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="lane_uXLakQ" name="Finance">
         <bpmn2:documentation id="documentation_uCCyyA"/>
@@ -105,6 +106,7 @@
         <bpmn2:flowNodeRef>event_S09evw</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_46ebVg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_UOr0Hw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>textAnnotation_DRbj2Q</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:startEvent id="event_1i00bQ" name="start">
@@ -362,6 +364,7 @@ Best regards.
       <bpmn2:documentation id="documentation_6t8EKg"><![CDATA[Please use this link to verify the details.
 https://demo.dynamixs.ai/pages/workitems/workitem.jsf?id=<itemvalue>$uniqueid</itemvalue>]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_SewMRA</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_I5zCUw</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_tDivkA</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:exclusiveGateway gatewayDirection="Diverging" id="gateway_Rg0C0w" name="Review">
@@ -433,11 +436,12 @@ if ( workitem.getItemValueString('comment.user')==='' ) {
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<split name="subprocess_create">
-<model>payment-en-1.0</model>
-<task>100</task>
-<event>100</event>
+  <modelversion>payment-en-1.0</modelversion>
+  <task>100</task>
+  <event>100</event>
   <items>(^customer),(^contract)</items>
   <action>/pages/workitems/workitem.jsf?id=<itemvalue>$uniqueid</itemvalue></action>
+  <debug>true</debug>
 </split>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
@@ -478,7 +482,16 @@ if ( workitem.getItemValueString('comment.user')==='' ) {
         <item name="fine.dbtr.iban" type="iban" label="IBAN" />
         <item name="fine.dbtr.bic" type="bic" label="BIC/SWIFT" />
        
-    </imixs-form-section>
+  </imixs-form-section>
+
+  <imixs-form-section label="Payments">
+     <item name="payment.ref"
+        type="custom"
+        path="workitemlink_inbound_table"
+        options="($workflowgroup:Payment) "
+        label="" />
+  </imixs-form-section>
+
 </imixs-form>
         
      ]]></bpmn2:documentation>
@@ -690,6 +703,7 @@ Best regards.
       <bpmn2:incoming>sequenceFlow_WLNY2w</bpmn2:incoming>
       <bpmn2:incoming>sequenceFlow_aFu24w</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_Rq00WA</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_0OSEdg</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:sequenceFlow id="sequenceFlow_0jJ2MA" sourceRef="event_UPbD4w" targetRef="task_NGhutg">
       <bpmn2:documentation id="documentation_LFlHxw"/>
@@ -1307,6 +1321,30 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
     <bpmn2:sequenceFlow id="sequenceFlow_BdOJxg" sourceRef="task_CJrMXw" targetRef="event_0ut6OQ">
       <bpmn2:documentation id="documentation_ClMgAA"/>
     </bpmn2:sequenceFlow>
+    <bpmn2:textAnnotation id="textAnnotation_DRbj2Q" textFormat="">
+      <bpmn2:documentation id="documentation_ptCLVQ"/>
+      <bpmn2:text id="text_r86hIQ"><![CDATA[Create new sub process
+payment-en-1.0 100.100]]></bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="association_y1ur0g" sourceRef="textAnnotation_DRbj2Q" targetRef="event_52zfhw">
+      <bpmn2:documentation id="documentation_0TCnMA"/>
+    </bpmn2:association>
+    <bpmn2:intermediateCatchEvent id="event_r01q0Q" imixs:activityid="50" name="Back">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_orKn2A"/>
+      <bpmn2:incoming>sequenceFlow_0OSEdg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_I5zCUw</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_0OSEdg" sourceRef="task_uqCCDQ" targetRef="event_r01q0Q">
+      <bpmn2:documentation id="documentation_peCeBA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_I5zCUw" sourceRef="event_r01q0Q" targetRef="task_HWTTWg">
+      <bpmn2:documentation id="documentation_Me6TBw"/>
+    </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
     <bpmn2:documentation id="documentation_QQrn3Q"/>
@@ -1589,6 +1627,15 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_CJrMXw" id="BPMNShape_xRcCuQ">
         <dc:Bounds height="50.0" width="110.0" x="250.0" y="10.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="textAnnotation_DRbj2Q" id="BPMNShape_OU2E3w">
+        <dc:Bounds height="50.0" width="205.0" x="1180.0" y="540.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_r01q0Q" id="BPMNShape_VyFw0g">
+        <dc:Bounds height="36.0" width="36.0" x="1607.0" y="417.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_7A7Xwg">
+          <dc:Bounds height="20.0" width="100.0" x="1575.0" y="456.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_px0OYQ" id="BPMNEdge_ry70SA" sourceElement="BPMNShape_cBJqow" targetElement="BPMNShape_YyBAlQ">
         <di:waypoint x="305.0" y="-53.0"/>
@@ -1879,6 +1926,22 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_BdOJxg" id="BPMNEdge_W2dQ8A" sourceElement="BPMNShape_xRcCuQ" targetElement="BPMNShape_cBJqow">
         <di:waypoint x="305.0" y="10.0"/>
         <di:waypoint x="305.0" y="-17.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_y1ur0g" id="BPMNEdge_8cd10w" sourceElement="BPMNShape_OU2E3w" targetElement="BPMNShape_vlogpA">
+        <di:waypoint x="1385.0" y="565.0"/>
+        <di:waypoint x="1527.0" y="565.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_0OSEdg" id="BPMNEdge_0biIMg" sourceElement="BPMNShape_p2PS2Q" targetElement="BPMNShape_VyFw0g">
+        <di:waypoint x="1675.0" y="540.0"/>
+        <di:waypoint x="1675.0" y="497.0"/>
+        <di:waypoint x="1625.0" y="497.0"/>
+        <di:waypoint x="1625.0" y="453.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_I5zCUw" id="BPMNEdge_Cobfug" sourceElement="BPMNShape_VyFw0g" targetElement="BPMNShape_iHIRuQ">
+        <di:waypoint x="1625.0" y="417.0"/>
+        <di:waypoint x="1625.0" y="400.0"/>
+        <di:waypoint x="1795.0" y="400.0"/>
+        <di:waypoint x="1795.0" y="380.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
