@@ -105,7 +105,17 @@
      <item name="contract.customer.country" type="custom"  path="country"  label="Membership Country:" />
      <item name="contract.start.date" type="date" label="Start date" />
      <item name="contract.end.date" type="date" label="End date" />
+</imixs-form-section>
+
+<imixs-form-section label="Payment details:" >
      <item name="contract.payment.amount" type="currency" label="Amount:" />
+     <item name="contract.payment.bank.name" type="text" label="Bank Name:" />
+     <item name="contract.payment.iban" type="text" label="IBAN:" />
+     <item name="contract.payment.bic" type="text" label="BIC:" />
+     <item name="contract.payment.account.number" type="text" label="Account Number:" />
+     <item name="contract.payment.currency" type="selectOneMenu"
+            label="Currency:"
+            options="EUR;CHF;SEK;NOK;GBP;USD" />
      <item name="contract.deposit.amount" type="currency" label="Deposit Amount:" />
 </imixs-form-section>
 </imixs-form>]]></bpmn2:documentation>

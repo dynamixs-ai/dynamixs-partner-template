@@ -70,6 +70,7 @@
         <bpmn2:flowNodeRef>event_koSJBg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_Ub1hoQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_clVJAQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_6bBjGQ</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:startEvent id="event_5jEfXg" name="Start">
@@ -147,7 +148,7 @@
       <bpmn2:incoming>sequenceFlow_q0dkRw</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_5lBoPg</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:intermediateCatchEvent id="event_WNqoxw" imixs:activityid="30" name="summaraize">
+    <bpmn2:intermediateCatchEvent id="event_WNqoxw" imixs:activityid="200" name="summaraize">
       <bpmn2:extensionElements>
         <imixs:item name="txtmailsubject" type="xs:string">
           <imixs:value><![CDATA[Validation check cleared]]></imixs:value>
@@ -204,8 +205,11 @@
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<split name="origin_update">
+       <modelversion>finemanagement-en-1.0</modelversion>
 	<event>210</event>
-	<items>xxx</items>
+        <task>(1\d{3})</task>
+	<items>(^transferred)</items>
+        <debug>true</debug>
 </split>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
@@ -262,7 +266,7 @@ Regards.]]></imixs:value>
     </bpmn2:endEvent>
     <bpmn2:exclusiveGateway default="sequenceFlow_ha7MAw" gatewayDirection="Diverging" id="gateway_rITI2A" name="">
       <bpmn2:documentation id="documentation_jjXWfw"/>
-      <bpmn2:incoming>sequenceFlow_WepLkA</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_t9Cb7w</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_ha7MAw</bpmn2:outgoing>
       <bpmn2:outgoing>sequenceFlow_YuBSmw</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
@@ -291,8 +295,11 @@ Regards.]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<split name="origin_update">
-	<event>220</event>
-	<items>xxx</items>
+       <modelversion>finemanagement-en-1.0</modelversion>
+       <event>220</event>
+       <task>(1\d{3})</task>
+       <items>(^transferred)</items>
+       <debug>true</debug>
 </split>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
@@ -426,7 +433,7 @@ Regards.]]></imixs:value>
       <bpmn2:incoming>sequenceFlow_ScoNkQ</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_tJ0FBQ</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:intermediateCatchEvent id="event_ABSI8g" imixs:activityid="20" name="Start OCR">
+    <bpmn2:intermediateCatchEvent id="event_ABSI8g" imixs:activityid="200" name="Start OCR">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="xs:string">
           <imixs:value><![CDATA[AI Starts scaning.]]></imixs:value>
@@ -456,7 +463,7 @@ Regards.]]></imixs:value>
       <bpmn2:outgoing>sequenceFlow_ScoNkQ</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="signalEventDefinition_7ecqZA" signalRef="signal_1"/>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:intermediateCatchEvent id="event_Kqb1BA" imixs:activityid="40" name="Extract data">
+    <bpmn2:intermediateCatchEvent id="event_Kqb1BA" imixs:activityid="200" name="Extract data">
       <bpmn2:extensionElements>
         <imixs:item name="txtmailsubject" type="xs:string">
           <imixs:value><![CDATA[Validation check cleared]]></imixs:value>
@@ -490,7 +497,7 @@ Regards.]]></imixs:value>
       <bpmn2:documentation id="documentation_AbRJmw"/>
       <bpmn2:incoming>sequenceFlow_AI7amA</bpmn2:incoming>
       <bpmn2:incoming>sequenceFlow_GHQBJQ</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_WepLkA</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_t9Cb7w</bpmn2:outgoing>
       <bpmn2:signalEventDefinition id="signalEventDefinition_ty1Pbg" signalRef="signal_2"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_q0dkRw" sourceRef="event_eJSlCQ" targetRef="task_Wpv5Qw">
@@ -694,15 +701,15 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
     <bpmn2:sequenceFlow id="sequenceFlow_JxJnfg" sourceRef="event_akVcbw" targetRef="task_6bBjGQ">
       <bpmn2:documentation id="documentation_1Acklw"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_WepLkA" sourceRef="event_Kqb1BA" targetRef="gateway_rITI2A">
-      <bpmn2:documentation id="documentation_24NaWQ"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:association id="association_xvl0GA" sourceRef="task_GGb9RQ" targetRef="dataObject_gzO04w">
       <bpmn2:documentation id="documentation_OrSS6Q"/>
     </bpmn2:association>
     <bpmn2:association id="association_UznzlQ" sourceRef="dataObject_gzO04w" targetRef="task_0WvrSg">
       <bpmn2:documentation id="documentation_uO1o9w"/>
     </bpmn2:association>
+    <bpmn2:sequenceFlow id="sequenceFlow_t9Cb7w" sourceRef="event_Kqb1BA" targetRef="gateway_rITI2A">
+      <bpmn2:documentation id="documentation_2EoK7A"/>
+    </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
     <bpmn2:documentation id="documentation_WI2Vow"/>
@@ -756,9 +763,9 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_6xCj2g" id="BPMNShape_gaKm3w">
-        <dc:Bounds height="36.0" width="36.0" x="1567.0" y="417.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1557.0" y="417.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_XOv6Bg">
-          <dc:Bounds height="20.0" width="100.0" x="1535.0" y="456.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1525.0" y="456.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_RjumqA" id="BPMNShape_6eTeUA">
@@ -777,9 +784,9 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="gateway_rITI2A" id="BPMNShape_ydLt4Q">
-        <dc:Bounds height="50.0" width="50.0" x="1560.0" y="250.0"/>
+        <dc:Bounds height="50.0" width="50.0" x="1550.0" y="250.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_2vrCRw">
-          <dc:Bounds height="20.0" width="100.0" x="1535.0" y="303.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1525.0" y="313.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_bKSyqQ" id="BPMNShape_9YzI3w">
@@ -885,11 +892,11 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ha7MAw" id="BPMNEdge_RKgmeg" sourceElement="BPMNShape_ydLt4Q" targetElement="BPMNShape_gaKm3w">
-        <di:waypoint x="1585.0" y="300.0"/>
-        <di:waypoint x="1585.0" y="417.0"/>
+        <di:waypoint x="1575.0" y="300.0"/>
+        <di:waypoint x="1575.0" y="417.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_YuBSmw" id="BPMNEdge_8eOv6Q" sourceElement="BPMNShape_ydLt4Q" targetElement="BPMNShape_9YzI3w">
-        <di:waypoint x="1610.0" y="275.0"/>
+        <di:waypoint x="1600.0" y="275.0"/>
         <di:waypoint x="1707.0" y="275.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sNKESg" id="BPMNEdge_qx70YQ" sourceElement="BPMNShape_9YzI3w" targetElement="BPMNShape_YYq00g">
@@ -897,7 +904,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <di:waypoint x="1817.0" y="275.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_uzDSHA" id="BPMNEdge_SzJVRQ" sourceElement="BPMNShape_gaKm3w" targetElement="BPMNShape_8tYmtw">
-        <di:waypoint x="1603.0" y="435.0"/>
+        <di:waypoint x="1593.0" y="435.0"/>
         <di:waypoint x="1680.0" y="435.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ixy9qQ" id="BPMNEdge_Etz1hw" sourceElement="BPMNShape_8tYmtw" targetElement="BPMNShape_kWe30g">
@@ -974,7 +981,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <di:waypoint x="1443.0" y="185.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_gvZuxw" id="BPMNEdge_Nktfcw" sourceElement="BPMNShape_gaKm3w" targetElement="BPMNShape_y4obTQ">
-        <di:waypoint x="1567.0" y="435.0"/>
+        <di:waypoint x="1557.0" y="435.0"/>
         <di:waypoint x="1507.0" y="435.0"/>
         <di:waypoint x="1507.0" y="408.0"/>
         <di:waypoint x="1451.0" y="408.0"/>
@@ -1025,12 +1032,6 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <di:waypoint x="343.0" y="185.0"/>
         <di:waypoint x="410.0" y="185.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_WepLkA" id="BPMNEdge_XBdcIA" sourceElement="BPMNShape_6nmQQw" targetElement="BPMNShape_ydLt4Q">
-        <di:waypoint x="1443.0" y="185.0"/>
-        <di:waypoint x="1502.0" y="185.0"/>
-        <di:waypoint x="1502.0" y="275.0"/>
-        <di:waypoint x="1560.0" y="275.0"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_xvl0GA" id="BPMNEdge_F8mO3w" sourceElement="BPMNShape_8tYmtw" targetElement="BPMNShape_ReOwTg">
         <di:waypoint x="1735.0" y="410.0"/>
         <di:waypoint x="1735.0" y="345.0"/>
@@ -1040,6 +1041,12 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <di:waypoint x="1895.0" y="339.0"/>
         <di:waypoint x="1995.0" y="339.0"/>
         <di:waypoint x="1995.0" y="300.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_t9Cb7w" id="BPMNEdge_Q2Tr7w" sourceElement="BPMNShape_6nmQQw" targetElement="BPMNShape_ydLt4Q">
+        <di:waypoint x="1443.0" y="185.0"/>
+        <di:waypoint x="1497.0" y="185.0"/>
+        <di:waypoint x="1497.0" y="275.0"/>
+        <di:waypoint x="1550.0" y="275.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
