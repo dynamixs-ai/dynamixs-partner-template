@@ -1,0 +1,1558 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- origin at X=0.0 Y=0.0 --><bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:open-bpmn="http://open-bpmn.org/XMLSchema" xmlns:tl="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.4.RC1-v20220528-0836-B1" id="Definitions_1" targetNamespace="http://www.imixs.org/bpmn2">
+  <bpmn2:extensionElements>
+    <imixs:item name="txtfieldmapping" type="xs:string">
+      <imixs:value><![CDATA[Creator|$Creator]]></imixs:value>
+      <imixs:value><![CDATA[Current Editor|$Editor]]></imixs:value>
+      <imixs:value><![CDATA[Owner|$owner]]></imixs:value>
+      <imixs:value><![CDATA[Prozess-Manager|process.manager]]></imixs:value>
+      <imixs:value><![CDATA[Prozess-Team|process.team]]></imixs:value>
+      <imixs:value><![CDATA[Prozess-Assistanz|process.assist]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txttimefieldmapping" type="xs:string">
+      <imixs:value><![CDATA[Vertragsende|contract.end]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txtplugins" type="xs:string">
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ResultPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.RulePlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.ProfilePlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.plugins.CommentPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.plugins.SequenceNumberPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.team.TeamPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.DeputyPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.LogPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ApplicationPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.SplitAndJoinPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.MailPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.EventLogPlugin]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txtworkflowmodelversion" type="xs:string">
+      <imixs:value><![CDATA[inbox-en-4.0]]></imixs:value>
+    </imixs:item>
+    <open-bpmn:auto-align>true</open-bpmn:auto-align>
+  </bpmn2:extensionElements>
+  <bpmn2:signal id="Signal_1" name="org.imixs.workflow.documents.OCRDocumentAdapter"/>
+  <bpmn2:collaboration id="Collaboration_1" name="Default Collaboration">
+    <bpmn2:participant id="Participant_1" name="Inbox" processRef="Process_1">
+      <bpmn2:documentation id="documentation_m9vQ5g"/>
+    </bpmn2:participant>
+    <bpmn2:participant id="participant_GUMWGQ" name="Default Process" processRef="process_2"/>
+  </bpmn2:collaboration>
+  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Inbox" processType="Private">
+    <bpmn2:laneSet id="LaneSet_1" name="Lane Set 1">
+      <bpmn2:lane id="Lane_2" name="Team">
+        <bpmn2:flowNodeRef>BoundaryEvent_1</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>Task_2</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>IntermediateCatchEvent_3</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>StartEvent_1</bpmn2:flowNodeRef>
+        <bpmn2:documentation id="documentation_tW5ivg"/>
+        <bpmn2:flowNodeRef>dataObject_FS1r0Q</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_uB6BGQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>textAnnotation_CtU05A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_yvr5AA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_qDAhHw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_9mJrhQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_gd9zQQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_fQzylQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_ZAPEXA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_1Cou8Q</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_T74r2A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_sZKNUg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_uJ1fgA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_QalZ1A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_tSLHgg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>TextAnnotation_1</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_yTSEDw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_0xzj6Q</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_jXzK6g</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_lsZq4g</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_NT0e9g</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_84FZxg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_LIKHpg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_V9hgpA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_MHoI2w</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+    </bpmn2:laneSet>
+    <bpmn2:startEvent id="StartEvent_1" name="Start">
+      <bpmn2:documentation id="documentation_MhefQQ"/>
+      <bpmn2:outgoing>sequenceFlow_cQk85Q</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="Task_2" imixs:processid="110" name="OCR Analyse">
+      <bpmn2:extensionElements>
+        <imixs:item name="txteditorid" type="xs:string">
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[Analysis....]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>true</imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="Documentation_13"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_GmfGiw</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_Q6A4Tw</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="IntermediateCatchEvent_3" imixs:activityid="20" name="OCR">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="comment" ignore="true"/>
+<imixs-ocr name="RMETA">
+  <filepattern>(pdf|PDF|eml|msg)$</filepattern>
+  <embeddingsPattern>(pdf|PDF)$</embeddingsPattern>
+  <maxpdfpages>20</maxpdfpages>
+  <option>X-Tika-PDFocrStrategy=AUTO</option>
+  <debug>true</debug>
+</imixs-ocr>  
+
+]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[OCR Processing]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="Documentation_4"><![CDATA[Zwischenspeichern]]></bpmn2:documentation>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:dataOutput id="DataOutput_1" name="Signal_1_Output"/>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="OutputSet_1" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:signalEventDefinition id="SignalEventDefinition_1" signalRef="Signal_1"/>
+      <bpmn2:outgoing>sequenceFlow_VlPVJg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:boundaryEvent attachedToRef="Task_2" id="BoundaryEvent_1" name="">
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="TimerEventDefinition_1">
+        <bpmn2:timeDuration id="FormalExpression_0" xsi:type="bpmn2:tFormalExpression">1000</bpmn2:timeDuration>
+      </bpmn2:timerEventDefinition>
+      <bpmn2:documentation id="documentation_xBAZWg"/>
+    </bpmn2:boundaryEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="BoundaryEvent_1" targetRef="IntermediateCatchEvent_3">
+      <bpmn2:documentation id="documentation_yRaNRg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_FS1r0Q" imixs:datatype="form-data" name="Form">
+      <bpmn2:documentation id="documentation_ccrk4A"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section columns="3"  readonly="true" >
+    <item name="document.company" type="text" label="Company: "  />
+    <item name="document.type" type="text" label="Document Type: " />
+    <item name="document.language" type="text" label="Language: " />
+  </imixs-form-section>
+
+  <imixs-form-section columns="1" label="Document Summary" readonly="true" >
+    <item name="invoice.summary" type="custom" path="markdown" />
+  </imixs-form-section>
+
+
+</imixs-form>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:task id="task_uB6BGQ" imixs:processid="120" name="Workflow Assistant">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[Analysis]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>true</imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_A2VzkA"/>
+      <bpmn2:incoming>sequenceFlow_GAK0SA</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_lhODPQ</bpmn2:incoming>
+      <bpmn2:outgoing>association_je321g</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_PgyOMw</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:textAnnotation id="textAnnotation_CtU05A" textFormat="">
+      <bpmn2:text id="text_ykDpyw"><![CDATA[Imixs AI Integration
+
+Assign documents to process 'Front Desk']]></bpmn2:text>
+      <bpmn2:documentation id="documentation_vNKNMA"/>
+    </bpmn2:textAnnotation>
+    <bpmn2:sequenceFlow id="sequenceFlow_VlPVJg" sourceRef="IntermediateCatchEvent_3" targetRef="gateway_gd9zQQ">
+      <bpmn2:documentation id="documentation_mCzUDA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_PgyOMw" sourceRef="task_uB6BGQ" targetRef="gateway_qDAhHw">
+      <bpmn2:documentation id="documentation_8vVNCA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_yvr5AA" imixs:activityid="1" name="Save">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
+
+Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
+<itemvalue>_description</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keymailreceiverfields" type="xs:string"/>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5005]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="action">home</item>
+<validation name="required">false</validation>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_LL26tw"/>
+      <bpmn2:outgoing>sequenceFlow_GAK0SA</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_GAK0SA" sourceRef="event_yvr5AA" targetRef="task_uB6BGQ">
+      <bpmn2:documentation id="documentation_c6Hn0g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:exclusiveGateway default="sequenceFlow_cY0PYg" gatewayDirection="Diverging" id="gateway_qDAhHw" name="">
+      <bpmn2:documentation id="documentation_Cg34hg"/>
+      <bpmn2:outgoing>sequenceFlow_tcjWAA</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_vEJ59A</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_5UDImg</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_PgyOMw</bpmn2:incoming>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:intermediateCatchEvent id="event_9mJrhQ" imixs:activityid="300" name="API-Error">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>adapter.error_code</itemvalue>: <itemvalue>adapter.error_message</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_XCRxlQ"/>
+      <bpmn2:dataOutput id="dataOutput_QHDXJg" name="Signal_2_Output"/>
+      <bpmn2:dataOutputAssociation id="dataOutputAssociation_vX00GA">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="outputSet_EuHIzg" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:incoming>sequenceFlow_tcjWAA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_gpPDLg</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_d0zSHA</bpmn2:incoming>
+      <bpmn2:errorEventDefinition id="errorEventDefinition_17TdSw"/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_tcjWAA" name="PROMPT Error" sourceRef="gateway_qDAhHw" targetRef="event_9mJrhQ">
+      <bpmn2:documentation id="documentation_jE0MLA"/>
+      <bpmn2:conditionExpression id="formalExpression_Ocib0Q" xsi:type="bpmn2:tFormalExpression"><![CDATA[''!=workitem.getItemValueString('adapter.error_code');  ]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_gpPDLg" sourceRef="event_9mJrhQ" targetRef="task_1Cou8Q">
+      <bpmn2:documentation id="documentation_ykXPyg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:exclusiveGateway default="sequenceFlow_bh4DIw" gatewayDirection="Diverging" id="gateway_gd9zQQ" name="">
+      <bpmn2:documentation id="documentation_0rgWkA"/>
+      <bpmn2:incoming>sequenceFlow_C3KIYA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_I8o4DA</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_VlPVJg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_bh4DIw</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_d0zSHA</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="sequenceFlow_bh4DIw" sourceRef="gateway_gd9zQQ" targetRef="event_LIKHpg">
+      <bpmn2:documentation id="documentation_0EzFwA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_d0zSHA" name="DOCUMENT Error" sourceRef="gateway_gd9zQQ" targetRef="event_9mJrhQ">
+      <bpmn2:documentation id="documentation_AJkXtg"/>
+      <bpmn2:conditionExpression id="formalExpression_WutmBw" xsi:type="bpmn2:tFormalExpression"><![CDATA[''!=workitem.getItemValueString('adapter.error_code'); ]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_fQzylQ" imixs:processid="100" name="Import">
+      <bpmn2:extensionElements>
+        <imixs:item name="txteditorid" type="xs:string">
+          <imixs:value><![CDATA[form_basic]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[Analysis....]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>true</imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_2WCBpg"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_cQk85Q</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_tk7ttQ</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="event_ZAPEXA" imixs:activityid="100" name="[Data Import}">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
+
+Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
+<itemvalue>_description</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keymailreceiverfields" type="xs:string"/>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5005]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="process">Contract Management</item>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Dokument importiert]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_9QXIZw"/>
+      <bpmn2:outgoing>sequenceFlow_lD8jrQ</bpmn2:outgoing>
+      <bpmn2:compensationEventDefinition id="compensationEventDefinition_sNHh8w"/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:task id="task_1Cou8Q" imixs:processid="300" name="Error">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:string">
+          <imixs:value><![CDATA[true]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="namownershipnames" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddreadaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddwriteaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> (<itemvalue>invoice.language</itemvalue>)]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_a152xA"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_gpPDLg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_VqjGQg</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_yhNfvw</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="event_T74r2A" name="End">
+      <bpmn2:documentation id="documentation_g5vLcw"/>
+      <bpmn2:incoming>sequenceFlow_VqjGQg</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_VqjGQg" sourceRef="task_1Cou8Q" targetRef="event_T74r2A">
+      <bpmn2:documentation id="documentation_30KSkQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_sZKNUg" imixs:processid="290" name="Start Workflow">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:string">
+          <imixs:value><![CDATA[true]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="namownershipnames" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddreadaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddwriteaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> (<itemvalue>invoice.language</itemvalue>)]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_dm0h8Q"><![CDATA[New Wworkflow started]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_LZX10Q</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_Lk0V9A</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:endEvent id="event_uJ1fgA" name="End">
+      <bpmn2:documentation id="documentation_GS6z5w"/>
+      <bpmn2:incoming>sequenceFlow_LZX10Q</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_LZX10Q" sourceRef="task_sZKNUg" targetRef="event_uJ1fgA">
+      <bpmn2:documentation id="documentation_FVQ3oQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_QalZ1A" imixs:datatype="prompt-data" name="Prompt  find Workflow">
+      <bpmn2:documentation id="documentation_UbexKw"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+    <prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
+    <prompt role="system"><![CDATA[
+You are a workflow assistant.
+
+YOUR TASK:
+
+1. Categorize the document into the following categories:
+   - document.sender = The sender of this document (e.g. the customer, the supplier, or the contract partner)
+   - document.language = The language the document is written in
+    
+2. Based on the content of the document find a appropriate workflow with the modelversion, taskid and process.ref from the list below.
+
+
+DECISSION:
+
+Can you assign the process to a workflow based on the document content?
+
+YES → Call task_complete with the following XML in the result parameter:
+
+<agent.result>
+  <document.sender>The sender of this document </document.sender>
+  <document.language>The language of the document</document.language> 
+  <modelversion>model version</modelversion>
+  <taskid>the taskid</taskid> 
+  <eventid>the eventid</eventid> 
+</agent.result>
+
+
+NO → Answer in free text.  
+Formulate exactly ONE specific question for the user whose answer would help you assign the process to one of the workflows.
+
+
+WORKFLOWS:
+
+<bpmnskills/>
+]]]]><![CDATA[>
+    </prompt>
+  <prompt role="user"><![CDATA[
+      <FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
+  ]]]]><![CDATA[>
+  </prompt>
+</PromptDefinition>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:association id="association_je321g" sourceRef="task_uB6BGQ" targetRef="dataObject_QalZ1A">
+      <bpmn2:documentation id="documentation_xRDdpw"/>
+    </bpmn2:association>
+    <bpmn2:intermediateCatchEvent id="event_tSLHgg" imixs:activityid="200" name="Start Workflow">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Starte Workflow]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_FiPdVQ"/>
+      <bpmn2:incoming>sequenceFlow_5UDImg</bpmn2:incoming>
+      <bpmn2:dataOutput id="dataOutput_JeHNBQ" name="Signal_2_Output"/>
+      <bpmn2:dataOutputAssociation id="dataOutputAssociation_afq3Ug">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="outputSet_GzYA4Q" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:incoming>sequenceFlow_7t6YqQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Lk0V9A</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_Lk0V9A" sourceRef="event_tSLHgg" targetRef="task_sZKNUg">
+      <bpmn2:documentation id="documentation_z0J6Zg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:textAnnotation id="TextAnnotation_1" textFormat="">
+      <bpmn2:text><![CDATA[For the OCR Adapter the following minimal options should be set:
+
+  * X-Tika-PDFocrStrategy=OCR_AND_TEXT_EXTRACTION
+  * X-Tika-OCRLanguage=eng+deu
+
+These options allow OCR and text extraction suporting English and German language.
+
+Additional Tika Options can be set but are NOT needed in most cases:
+
+  * X-Tika-PDFOcrImageType=RGB (setting the RGB color mode)
+  * X-Tika-PDFOcrDPI=400 (setting DPI)
+
+Setting the OcrDPI is only recommended if the DPI is know!
+
+Possible ImageTypes are:
+
+  * ARGB Alpha, Red, Green, Blue
+  * GRAY Shades of gray
+  * RGB Red, Green, Blue
+]]></bpmn2:text>
+      <bpmn2:documentation id="documentation_EIjG2Q"/>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="association_RUf6TA" sourceRef="dataObject_FS1r0Q" targetRef="task_fQzylQ">
+      <bpmn2:documentation id="documentation_Iw4v9A"/>
+    </bpmn2:association>
+    <bpmn2:intermediateCatchEvent id="event_yTSEDw" imixs:activityid="10" name="Import">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
+
+Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
+<itemvalue>_description</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keymailreceiverfields" type="xs:string"/>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5005]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Dokument importiert]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtbusinessrule" type="xs:string">
+          <imixs:value><![CDATA[var result={};
+result.isValid=true;
+
+if (workitem.getItemValueInteger('$file.count')==0) {
+     result.isValid=false;
+     result.errorMessage='Bitte fügen Sie eine PDF Datei an.';
+}]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_qzbf3w"/>
+      <bpmn2:incoming>sequenceFlow_tk7ttQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_8Cpbiw</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_tk7ttQ" sourceRef="task_fQzylQ" targetRef="event_yTSEDw">
+      <bpmn2:documentation id="documentation_pqWjxg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_8Cpbiw" sourceRef="event_yTSEDw" targetRef="gateway_0xzj6Q">
+      <bpmn2:documentation id="documentation_PzU3GQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_cQk85Q" sourceRef="StartEvent_1" targetRef="task_fQzylQ">
+      <bpmn2:documentation id="documentation_owu0Pg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:exclusiveGateway gatewayDirection="Diverging" id="gateway_0xzj6Q" name="">
+      <bpmn2:documentation id="documentation_f3Rkcw"/>
+      <bpmn2:incoming>sequenceFlow_8Cpbiw</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_lD8jrQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_GmfGiw</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="sequenceFlow_GmfGiw" sourceRef="gateway_0xzj6Q" targetRef="Task_2">
+      <bpmn2:documentation id="documentation_9UueAg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_lD8jrQ" sourceRef="event_ZAPEXA" targetRef="gateway_0xzj6Q">
+      <bpmn2:documentation id="documentation_QXB0Xw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:association id="association_9ORDTg" sourceRef="IntermediateCatchEvent_3" targetRef="TextAnnotation_1">
+      <bpmn2:documentation id="documentation_L7fB8Q"/>
+    </bpmn2:association>
+    <bpmn2:task id="task_jXzK6g" imixs:processid="130" name="Ask">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:string">
+          <imixs:value><![CDATA[true]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="namownershipnames" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddreadaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddwriteaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> (<itemvalue>invoice.language</itemvalue>)]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_fnT4kQ"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_HvTD0g</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Wnq0vg</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="event_lsZq4g" imixs:activityid="100" name="[next]">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Starte Rechnungseingang]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_FQkm8Q"/>
+      <bpmn2:incoming>sequenceFlow_vEJ59A</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_HvTD0g</bpmn2:outgoing>
+      <bpmn2:dataOutput id="dataOutput_NQYaUg" name="Signal_2_Output"/>
+      <bpmn2:dataOutputAssociation id="dataOutputAssociation_yjOclg">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="outputSet_vGjDtg" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:incoming>sequenceFlow_7t6YqQ</bpmn2:incoming>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_vEJ59A" sourceRef="gateway_qDAhHw" targetRef="event_lsZq4g">
+      <bpmn2:documentation id="documentation_tqd5Dg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_HvTD0g" sourceRef="event_lsZq4g" targetRef="task_jXzK6g">
+      <bpmn2:documentation id="documentation_Q0zIlQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_C3KIYA" sourceRef="event_NT0e9g" targetRef="gateway_gd9zQQ">
+      <bpmn2:documentation id="documentation_M0GRjA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_NT0e9g" imixs:activityid="1" name="Submit">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
+
+Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
+<itemvalue>_description</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keymailreceiverfields" type="xs:string"/>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5005]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="action">home</item>
+<validation name="required">false</validation>
+<item name="process">Contract Management</item>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Dokument importiert]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtbusinessrule" type="xs:string">
+          <imixs:value><![CDATA[var result={};
+result.isValid=true;
+
+if (workitem.getItemValueInteger('$file.count')==0) {
+     result.isValid=false;
+     result.errorMessage='Bitte fügen Sie eine PDF Datei an.';
+}]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_SUCu3w"><![CDATA[Ask User for additional input]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_Wnq0vg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_C3KIYA</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_Wnq0vg" sourceRef="task_jXzK6g" targetRef="event_NT0e9g">
+      <bpmn2:documentation id="documentation_1CTZXA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_84FZxg" imixs:datatype="form-data" name="Form">
+      <bpmn2:documentation id="documentation_z9LoYA"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+
+  <imixs-form-section label="AI Assistant" columns="1">
+     <item name="bpmn.agent.user.input" type="custom" path="ai/user" label="Ihre Antwort:" readonly="false"/>
+     <item name="bpmn.agent.user.output" type="custom" path="ai/assistance" label="Frage:"  readonly="true"/>
+  </imixs-form-section>
+
+  <imixs-form-section label="Materialanalyse" columns="3">
+    <item name="document.sender" type="text"  label="Sender :" readonly="true"/>
+    <item name="document.language" type="text"  label="Language :" readonly="true"/>
+    <item name="agent.result.material" type="text"  label="Begründung :" readonly="true" span="12" />
+  </imixs-form-section>
+
+
+</imixs-form>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:association id="association_qJDgXA" sourceRef="dataObject_84FZxg" targetRef="task_jXzK6g">
+      <bpmn2:documentation id="documentation_ep0xcg"/>
+    </bpmn2:association>
+    <bpmn2:sequenceFlow id="sequenceFlow_5UDImg" sourceRef="gateway_qDAhHw" targetRef="event_tSLHgg">
+      <bpmn2:documentation id="documentation_w2af0g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_LIKHpg" imixs:activityid="100" name="Start AI Assistant">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Start the AI Assistant.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<eventlog name="ai.agent.process">
+    <ref><itemvalue>$uniqueid</itemvalue></ref>
+    <document>
+        <agent.context.item>agent.context.inbox</agent.context.item>
+        <agent.user.item>bpmn.agent.user.input</agent.user.item>
+        <agent.endpoint>api.llama.cpp.imixs.com</agent.endpoint>
+        <agent.timeout>120000</agent.timeout>
+        <agent.max-iterations>10</agent.max-iterations>
+        <agent.event.next>20</agent.event.next>
+        <agent.event.success>200</agent.event.success>
+        <agent.event.error>300</agent.event.error>
+        <agent.result.type>XML</agent.result.type>
+        <agent.debug>true</agent.debug>
+    </document>
+</eventlog>
+]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_CZ29zA"><![CDATA[Start the AI Assistant.]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_lhODPQ</bpmn2:outgoing>
+      <bpmn2:dataOutput id="dataOutput_0c8l5w" name="Signal_2_Output"/>
+      <bpmn2:dataOutputAssociation id="dataOutputAssociation_H9TU5g">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="outputSet_wiDGgA" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:outgoing>sequenceFlow_naZnAA</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_bh4DIw</bpmn2:incoming>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_lhODPQ" sourceRef="event_LIKHpg" targetRef="task_uB6BGQ">
+      <bpmn2:documentation id="documentation_DZmGQA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_V9hgpA" imixs:activityid="30" name="Restart">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Starte Rechnungseingang]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_NswZeQ"/>
+      <bpmn2:incoming>sequenceFlow_yhNfvw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Q6A4Tw</bpmn2:outgoing>
+      <bpmn2:dataOutput id="dataOutput_xBa3Vw" name="Signal_2_Output"/>
+      <bpmn2:dataOutputAssociation id="dataOutputAssociation_TE0mSg">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="outputSet_uPAzfw" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:incoming>sequenceFlow_7t6YqQ</bpmn2:incoming>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_yhNfvw" sourceRef="task_1Cou8Q" targetRef="event_V9hgpA">
+      <bpmn2:documentation id="documentation_Ei01jA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_Q6A4Tw" sourceRef="event_V9hgpA" targetRef="Task_2">
+      <bpmn2:documentation id="documentation_EiamBA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_MHoI2w" imixs:datatype="prompt-data" name="Prompt  find Workflow">
+      <bpmn2:documentation id="documentation_0LUHSQ"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+    <prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
+    <prompt role="system"><![CDATA[
+You are a workflow assistant.
+
+Follow these rules strictly:
+
+1. Categorize the document into the following categories and store each category in a item:
+   - document.sender = The sender of this document (e.g. the customer, the supplier, or the contract partner)
+   - document.language = The languate the document is written in
+    
+2. Based on the content of the coument find a appropriate workflow and call update_workitem with the matching modelversion, taskid and process.ref from the list below.
+
+3. Based on the content of the coument find a appropriate workflow and call update_workitem with the matching modelversion, taskid and process.ref from the list below. Also update all category field values you extracted from the categorization.
+
+4. If it is not clear which workflow to choose or form fields are still missing after update_workitem, 
+   ask the user for exactly those missing values and the workflow to choose. 
+   Then call update_workitem again with the new values.
+
+5. Call submit_workitem with an appropriate workflow event.
+
+6. Do NOT explain what you are doing. Just call the tools directly.
+
+
+NOTE: You are already operating on an existing workitem with $uniqueid = "<itemvalue>$uniqueid</itemvalue>".
+Do NOT call create_workitem unless you explicitly need to start a NEW process instance.
+Use update_workitem with this $uniqueid to write category and workflow field values.
+
+<bpmnskills/>
+]]]]><![CDATA[>
+    </prompt>
+  <prompt role="user"><![CDATA[
+      <FILECONTEXT>^.+\.([pP][dD][fF])$</FILECONTEXT>
+  ]]]]><![CDATA[>
+  </prompt>
+</PromptDefinition>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+  </bpmn2:process>
+  <bpmn2:process id="process_2" name="Imixs AI" processType="Public">
+    <bpmn2:documentation id="documentation_dDLFbw"/>
+    <bpmn2:extensionElements>
+      <open-bpmn:auto-align>true</open-bpmn:auto-align>
+    </bpmn2:extensionElements>
+  </bpmn2:process>
+  <bpmn2:signal id="signal_3" name="org.imixs.ai.workflow.OpenAIAPIAdapter"/>
+  <bpmn2:signal id="signal_4" name="org.imixs.archive.documents.EInvoiceAutoAdapter"/>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="Default Collaboration Diagram">
+    <bpmndi:BPMNPlane bpmnElement="Collaboration_1" id="BPMNPlane_1">
+      <bpmndi:BPMNShape bpmnElement="Participant_1" id="BPMNShape_1" isHorizontal="true">
+        <dc:Bounds height="1030.0" width="2330.0" x="100.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Lane_2" id="BPMNShape_Lane_2" isHorizontal="true">
+        <dc:Bounds height="1030.0" width="2300.0" x="130.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_7">
+        <dc:Bounds height="50.0" width="110.0" x="0.0" y="0.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4">
+          <dc:Bounds height="14.0" width="103.0" x="3.0" y="18.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="BPMNShape_StartEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="247.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_9" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds height="20.0" width="100.0" x="223.5" y="489.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Task_2" id="BPMNShape_Task_2">
+        <dc:Bounds height="50.0" width="110.0" x="700.0" y="440.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="IntermediateCatchEvent_3" id="BPMNShape_IntermediateCatchEvent_3">
+        <dc:Bounds height="36.0" width="36.0" x="877.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_14" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds height="20.0" width="100.0" x="849.5" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BoundaryEvent_1" id="BPMNShape_BoundaryEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="787.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_11" labelStyle="BPMNLabelStyle_1">
+          <dc:Bounds height="20.0" width="100.0" x="755.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TextAnnotation_1" id="BPMNShape_TextAnnotation_1">
+        <dc:Bounds height="313.0" width="506.0" x="190.0" y="783.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_yTSEDw" id="BPMNShape_IS0X7g">
+        <dc:Bounds height="36.0" width="36.0" x="527.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_pwWYwA">
+          <dc:Bounds height="20.0" width="100.0" x="502.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="gateway_0xzj6Q" id="BPMNShape_HNEFmg">
+        <dc:Bounds height="50.0" width="50.0" x="620.0" y="440.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_Ql0NSg">
+          <dc:Bounds height="20.0" width="100.0" x="595.0" y="493.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_jXzK6g" id="BPMNShape_EoGO1g">
+        <dc:Bounds height="50.0" width="110.0" x="1770.0" y="570.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_lsZq4g" id="BPMNShape_XqwGjA">
+        <dc:Bounds height="36.0" width="36.0" x="1637.0" y="577.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_VG0vLQ">
+          <dc:Bounds height="20.0" width="100.0" x="1603.0" y="623.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_NT0e9g" id="BPMNShape_CjOIQA">
+        <dc:Bounds height="36.0" width="36.0" x="1927.0" y="577.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_RkqP5Q">
+          <dc:Bounds height="20.0" width="100.0" x="1895.0" y="616.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_84FZxg" id="BPMNShape_h8QoWw">
+        <dc:Bounds height="50.0" width="35.0" x="1800.0" y="480.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_lPfqjg">
+          <dc:Bounds height="20.0" width="100.0" x="1764.5" y="558.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_LIKHpg" id="BPMNShape_ePfIog">
+        <dc:Bounds height="36.0" width="36.0" x="1097.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_ekVBuQ">
+          <dc:Bounds height="20.0" width="100.0" x="1065.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_V9hgpA" id="BPMNShape_75r3eg">
+        <dc:Bounds height="36.0" width="36.0" x="1807.0" y="137.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_rBwkAQ">
+          <dc:Bounds height="20.0" width="100.0" x="1775.0" y="176.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_MHoI2w" id="BPMNShape_PdNZ0Q">
+        <dc:Bounds height="50.0" width="35.0" x="1056.0" y="310.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_Oy0zVA">
+          <dc:Bounds height="20.0" width="100.0" x="1023.5" y="365.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" sourceElement="BPMNShape_BoundaryEvent_1" targetElement="BPMNShape_IntermediateCatchEvent_3">
+        <di:waypoint x="823.0" y="465.0"/>
+        <di:waypoint x="877.0" y="465.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_20"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="dataObject_FS1r0Q" id="BPMNShape_Cn1HMQ">
+        <dc:Bounds height="50.0" width="35.0" x="250.0" y="530.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_he9OHg">
+          <dc:Bounds height="20.0" width="100.0" x="217.5" y="585.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_uB6BGQ" id="BPMNShape_027JKQ">
+        <dc:Bounds height="50.0" width="110.0" x="1240.0" y="440.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="textAnnotation_CtU05A" id="BPMNShape_b8pQXg">
+        <dc:Bounds height="312.0" width="580.0" x="987.0" y="783.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_VlPVJg" id="BPMNEdge_RLNCCQ" sourceElement="BPMNShape_IntermediateCatchEvent_3" targetElement="BPMNShape_PyGqlg">
+        <di:waypoint x="913.0" y="465.0"/>
+        <di:waypoint x="960.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_PgyOMw" id="BPMNEdge_kptDVQ" sourceElement="BPMNShape_027JKQ" targetElement="BPMNShape_UxYL0A">
+        <di:waypoint x="1350.0" y="465.0"/>
+        <di:waypoint x="1520.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="event_yvr5AA" id="BPMNShape_PF0K0w">
+        <dc:Bounds height="36.0" width="36.0" x="1277.0" y="537.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_LOaumg">
+          <dc:Bounds height="20.0" width="100.0" x="1249.0" y="577.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GAK0SA" id="BPMNEdge_MRoyvA" sourceElement="BPMNShape_PF0K0w" targetElement="BPMNShape_027JKQ">
+        <di:waypoint x="1295.0" y="537.0"/>
+        <di:waypoint x="1295.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="gateway_qDAhHw" id="BPMNShape_UxYL0A">
+        <dc:Bounds height="50.0" width="50.0" x="1520.0" y="440.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_DNxqOQ">
+          <dc:Bounds height="20.0" width="100.0" x="1495.0" y="493.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_9mJrhQ" id="BPMNShape_JG1UQQ">
+        <dc:Bounds height="36.0" width="36.0" x="1527.0" y="237.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_2BxNjg">
+          <dc:Bounds height="20.0" width="100.0" x="1496.5" y="278.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_tcjWAA" id="BPMNEdge_fIE5pg" sourceElement="BPMNShape_UxYL0A" targetElement="BPMNShape_JG1UQQ">
+        <di:waypoint x="1545.0" y="440.0"/>
+        <di:waypoint x="1545.0" y="273.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_gpPDLg" id="BPMNEdge_oi9YWw" sourceElement="BPMNShape_JG1UQQ" targetElement="BPMNShape_IZvUhg">
+        <di:waypoint x="1563.0" y="255.0"/>
+        <di:waypoint x="2030.0" y="255.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="gateway_gd9zQQ" id="BPMNShape_PyGqlg">
+        <dc:Bounds height="50.0" width="50.0" x="960.0" y="440.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_B6j38A">
+          <dc:Bounds height="20.0" width="100.0" x="935.0" y="493.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_bh4DIw" id="BPMNEdge_cjFGmA" sourceElement="BPMNShape_PyGqlg" targetElement="BPMNShape_ePfIog">
+        <di:waypoint x="1010.0" y="465.0"/>
+        <di:waypoint x="1097.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_d0zSHA" id="BPMNEdge_YVrWMA" sourceElement="BPMNShape_PyGqlg" targetElement="BPMNShape_JG1UQQ">
+        <di:waypoint x="984.0" y="441.0"/>
+        <di:waypoint x="984.0" y="255.0"/>
+        <di:waypoint x="1527.0" y="255.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="task_fQzylQ" id="BPMNShape_ELW5JA">
+        <dc:Bounds height="50.0" width="110.0" x="360.0" y="440.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_ZAPEXA" id="BPMNShape_uZ0lEQ">
+        <dc:Bounds height="36.0" width="36.0" x="247.0" y="367.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_y62X7w">
+          <dc:Bounds height="20.0" width="100.0" x="221.0" y="404.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_1Cou8Q" id="BPMNShape_IZvUhg">
+        <dc:Bounds height="50.0" width="110.0" x="2030.0" y="230.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_T74r2A" id="BPMNShape_iAg5Vg">
+        <dc:Bounds height="36.0" width="36.0" x="2197.0" y="237.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1jfwsw">
+          <dc:Bounds height="20.0" width="100.0" x="2165.0" y="278.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_VqjGQg" id="BPMNEdge_WBoZsA" sourceElement="BPMNShape_IZvUhg" targetElement="BPMNShape_iAg5Vg">
+        <di:waypoint x="2140.0" y="255.0"/>
+        <di:waypoint x="2197.0" y="255.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="task_sZKNUg" id="BPMNShape_OR9EVA">
+        <dc:Bounds height="50.0" width="110.0" x="2030.0" y="440.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_uJ1fgA" id="BPMNShape_9Gb2iQ">
+        <dc:Bounds height="36.0" width="36.0" x="2197.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_Wxj7vQ">
+          <dc:Bounds height="20.0" width="100.0" x="2165.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_LZX10Q" id="BPMNEdge_1pYuRg" sourceElement="BPMNShape_OR9EVA" targetElement="BPMNShape_9Gb2iQ">
+        <di:waypoint x="2140.0" y="465.0"/>
+        <di:waypoint x="2197.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="dataObject_QalZ1A" id="BPMNShape_AJy4vQ">
+        <dc:Bounds height="50.0" width="35.0" x="1270.0" y="310.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_quM3WA">
+          <dc:Bounds height="20.0" width="100.0" x="1233.0" y="365.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="association_je321g" id="BPMNEdge_C0vZmw" sourceElement="BPMNShape_027JKQ" targetElement="BPMNShape_AJy4vQ">
+        <di:waypoint x="1295.0" y="440.0"/>
+        <di:waypoint x="1295.0" y="402.0"/>
+        <di:waypoint x="1288.0" y="402.0"/>
+        <di:waypoint x="1288.0" y="360.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="event_tSLHgg" id="BPMNShape_NFkpAQ">
+        <dc:Bounds height="36.0" width="36.0" x="1637.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_ayoeGw">
+          <dc:Bounds height="20.0" width="100.0" x="1605.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Lk0V9A" id="BPMNEdge_OAwUuQ" sourceElement="BPMNShape_NFkpAQ" targetElement="BPMNShape_OR9EVA">
+        <di:waypoint x="1673.0" y="465.0"/>
+        <di:waypoint x="2030.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_RUf6TA" id="BPMNEdge_BmOWRA" sourceElement="BPMNShape_Cn1HMQ" targetElement="BPMNShape_ELW5JA">
+        <di:waypoint x="285.0" y="544.0"/>
+        <di:waypoint x="415.0" y="544.0"/>
+        <di:waypoint x="415.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_tk7ttQ" id="BPMNEdge_8vXhlg" sourceElement="BPMNShape_ELW5JA" targetElement="BPMNShape_IS0X7g">
+        <di:waypoint x="470.0" y="465.0"/>
+        <di:waypoint x="527.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_8Cpbiw" id="BPMNEdge_fjvOvQ" sourceElement="BPMNShape_IS0X7g" targetElement="BPMNShape_HNEFmg">
+        <di:waypoint x="563.0" y="465.0"/>
+        <di:waypoint x="620.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_cQk85Q" id="BPMNEdge_8g13iw" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_ELW5JA">
+        <di:waypoint x="283.0" y="465.0"/>
+        <di:waypoint x="360.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GmfGiw" id="BPMNEdge_9MKeVQ" sourceElement="BPMNShape_HNEFmg" targetElement="BPMNShape_Task_2">
+        <di:waypoint x="670.0" y="465.0"/>
+        <di:waypoint x="700.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_lD8jrQ" id="BPMNEdge_K8dp0w" sourceElement="BPMNShape_uZ0lEQ" targetElement="BPMNShape_HNEFmg">
+        <di:waypoint x="283.0" y="385.0"/>
+        <di:waypoint x="645.0" y="385.0"/>
+        <di:waypoint x="645.0" y="440.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_9ORDTg" id="BPMNEdge_8rHLuw" sourceElement="BPMNShape_IntermediateCatchEvent_3" targetElement="BPMNShape_TextAnnotation_1">
+        <di:waypoint x="895.0" y="483.0"/>
+        <di:waypoint x="895.0" y="940.0"/>
+        <di:waypoint x="696.0" y="940.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_vEJ59A" id="BPMNEdge_yF5Rpw" sourceElement="BPMNShape_UxYL0A" targetElement="BPMNShape_XqwGjA">
+        <di:waypoint x="1549.0" y="486.0"/>
+        <di:waypoint x="1549.0" y="595.0"/>
+        <di:waypoint x="1637.0" y="595.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_HvTD0g" id="BPMNEdge_0dUw4g" sourceElement="BPMNShape_XqwGjA" targetElement="BPMNShape_EoGO1g">
+        <di:waypoint x="1673.0" y="595.0"/>
+        <di:waypoint x="1770.0" y="595.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_C3KIYA" id="BPMNEdge_u47pMQ" sourceElement="BPMNShape_CjOIQA" targetElement="BPMNShape_PyGqlg">
+        <di:waypoint x="1945.0" y="613.0"/>
+        <di:waypoint x="1945.0" y="704.0"/>
+        <di:waypoint x="985.0" y="704.0"/>
+        <di:waypoint x="985.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Wnq0vg" id="BPMNEdge_b3utSQ" sourceElement="BPMNShape_EoGO1g" targetElement="BPMNShape_CjOIQA">
+        <di:waypoint x="1880.0" y="595.0"/>
+        <di:waypoint x="1927.0" y="595.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_qJDgXA" id="BPMNEdge_VMcR2A" sourceElement="BPMNShape_h8QoWw" targetElement="BPMNShape_EoGO1g">
+        <di:waypoint x="1818.0" y="530.0"/>
+        <di:waypoint x="1818.0" y="552.0"/>
+        <di:waypoint x="1825.0" y="552.0"/>
+        <di:waypoint x="1825.0" y="570.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_5UDImg" id="BPMNEdge_BGiqzg" sourceElement="BPMNShape_UxYL0A" targetElement="BPMNShape_NFkpAQ">
+        <di:waypoint x="1570.0" y="465.0"/>
+        <di:waypoint x="1637.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_lhODPQ" id="BPMNEdge_KSEs6Q" sourceElement="BPMNShape_ePfIog" targetElement="BPMNShape_027JKQ">
+        <di:waypoint x="1133.0" y="465.0"/>
+        <di:waypoint x="1240.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_yhNfvw" id="BPMNEdge_q9imlg" sourceElement="BPMNShape_IZvUhg" targetElement="BPMNShape_75r3eg">
+        <di:waypoint x="2030.0" y="255.0"/>
+        <di:waypoint x="1936.0" y="255.0"/>
+        <di:waypoint x="1936.0" y="155.0"/>
+        <di:waypoint x="1843.0" y="155.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Q6A4Tw" id="BPMNEdge_NQMncA" sourceElement="BPMNShape_75r3eg" targetElement="BPMNShape_Task_2">
+        <di:waypoint x="1807.0" y="155.0"/>
+        <di:waypoint x="755.0" y="155.0"/>
+        <di:waypoint x="755.0" y="440.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
+      <dc:Font name="arial" size="9.0"/>
+    </bpmndi:BPMNLabelStyle>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

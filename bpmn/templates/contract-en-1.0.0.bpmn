@@ -66,6 +66,7 @@
         <bpmn2:flowNodeRef>event_MuxmWQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_ZBGPcg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_kaEHxg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_z8Ep6A</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:startEvent id="event_5jEfXg" name="Start">
@@ -150,6 +151,7 @@
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_0BH6lw"><![CDATA[checks any duplications]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_GlkseQ</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_OJlMHw</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_LHlu7Q</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:exclusiveGateway gatewayDirection="Diverging" id="gateway_xpbiMw" name="Data check">
@@ -469,6 +471,36 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
     <bpmn2:sequenceFlow id="sequenceFlow_w0SJqQ" sourceRef="event_kaEHxg" targetRef="task_RjumqA">
       <bpmn2:documentation id="documentation_9T325Q"/>
     </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_z8Ep6A" imixs:activityid="10" name="Save">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Contract already exists and retrives the old data]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Old contract]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="id"><itemvalue>contract.id</itemvalue></item>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_fd5bEw"/>
+      <bpmn2:outgoing>sequenceFlow_OJlMHw</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_OJlMHw" sourceRef="event_z8Ep6A" targetRef="task_Wpv5Qw">
+      <bpmn2:documentation id="documentation_aEV3DQ"/>
+    </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
     <bpmn2:documentation id="documentation_WI2Vow"/>
@@ -594,6 +626,12 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
           <dc:Bounds height="20.0" width="100.0" x="1385.0" y="706.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_z8Ep6A" id="BPMNShape_vR2hig">
+        <dc:Bounds height="36.0" width="36.0" x="977.0" y="667.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_kLvu4w">
+          <dc:Bounds height="20.0" width="100.0" x="945.0" y="706.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GRu7lg" id="BPMNEdge_m6wYyg" sourceElement="BPMNShape_yfRPcA" targetElement="BPMNShape_SSBluQ">
         <di:waypoint x="483.0" y="385.0"/>
         <di:waypoint x="587.0" y="385.0"/>
@@ -674,6 +712,10 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_w0SJqQ" id="BPMNEdge_4053YQ" sourceElement="BPMNShape_vnI0rw" targetElement="BPMNShape_6eTeUA">
         <di:waypoint x="1453.0" y="685.0"/>
         <di:waypoint x="1530.0" y="685.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_OJlMHw" id="BPMNEdge_em96Og" sourceElement="BPMNShape_vR2hig" targetElement="BPMNShape_5LVQ8A">
+        <di:waypoint x="995.0" y="667.0"/>
+        <di:waypoint x="995.0" y="600.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
