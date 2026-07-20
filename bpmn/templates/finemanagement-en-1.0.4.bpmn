@@ -151,16 +151,16 @@
  </imixs-form-section>
 
 <imixs-form-section label="Payment details: " columns="2">
-        <item name="fine.payment.amount" type="currency" label="Amount:" span="4"/>
-        <item name="fine.payment.currency" type="selectOneMenu"
+        <item name="payment.amount" type="currency" label="Amount:" span="4"/>
+        <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
             options="EUR;CHF;SEK;NOK;GBP;USD" span="4"/>
-        <item name="fine.payment.bank.name" type="text" label="Bank Name: " span="6"/>
-        <item name="fine.payment.account.number" type="text" label="Account Number: " span="4"/>
-        <item name="fine.payment.reference" type="text" label="Payment Reference: " />
-        <item name="fine.dbtr.iban" type="iban" label="IBAN" span="4"/>
-        <item name="fine.dbtr.bic" type="bic" label="BIC/SWIFT" span="4"/> 
-        <item name="fine.payment.duedate" type="date" label="Due Date:" span="6" />
+        <item name="payment.bank.name" type="text" label="Bank Name: " span="6"/>
+        <item name="payment.account.number" type="text" label="Account Number: " span="4"/>
+        <item name="payment.reference" type="text" label="Payment Reference: " />
+        <item name="payment.dbtr.iban" type="iban" label="IBAN" span="4"/>
+        <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" span="4"/> 
+        <item name="payment.duedate" type="date" label="Due Date:" span="6" />
 </imixs-form-section>
 <imixs-form-section columns="1" label="Fine Summary" readonly="true" >
       <item name="fine.summary" type="custom" path="markdown" />
@@ -168,7 +168,7 @@
 
 </imixs-form>]]></bpmn2:documentation>
     </bpmn2:dataObject>
-    <bpmn2:task id="task_gUqlBw" imixs:processid="1090" name="Valiadte Fine Details">
+    <bpmn2:task id="task_gUqlBw" imixs:processid="1090" name="Valiadte Fine Data">
       <bpmn2:extensionElements>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
@@ -439,7 +439,7 @@ if ( workitem.getItemValueString('comment.user')==='' ) {
   <modelversion>payment-en-1.0</modelversion>
   <task>100</task>
   <event>100</event>
-  <items>(^customer),(^contract)</items>
+  <items>(^customer),(^contract),(^fine),(^payment)</items>
   <action>/pages/workitems/workitem.jsf?id=<itemvalue>$uniqueid</itemvalue></action>
   <debug>true</debug>
 </split>]]></imixs:value>
@@ -470,18 +470,14 @@ if ( workitem.getItemValueString('comment.user')==='' ) {
 <imixs-form>
 
  <imixs-form-section label="Payment" columns="2">
-        <item name="fine.payment.amount" type="currency" label="Amount:" />
-        <item name="fine.payment.currency" type="selectOneMenu"
+        <item name="payment.amount" type="currency" label="Amount:" />
+        <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
-            options="EUR;CHF;SEK;NOK;GBP;USD" />
-      <item name="fine.posting.date" type="text" label="Posting date: " />
-        <item name="fine.value.date" type="text" label="Value date:" />
-        <item name="fine.transaction.date" type="date" label="Transaction date:" />     
-        <item name="fine.payment.bank.name" type="text" label="Bank Name: " />
-        <item name="fine.payment.reference" type="text" label="Payment Reference: " />
-        <item name="fine.dbtr.iban" type="iban" label="IBAN" />
-        <item name="fine.dbtr.bic" type="bic" label="BIC/SWIFT" />
-       
+            options="EUR;CHF;SEK;NOK;GBP;USD" />   
+        <item name="payment.bank.name" type="text" label="Bank Name: " />
+        <item name="payment.reference" type="text" label="Payment Reference: " />
+        <item name="payment.dbtr.iban" type="iban" label="IBAN" />
+        <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" />     
   </imixs-form-section>
 
   <imixs-form-section label="Payments">
@@ -519,16 +515,16 @@ if ( workitem.getItemValueString('comment.user')==='' ) {
     </imixs-form-section>
 
     <imixs-form-section label="Payment" readonly="false">
-        <item name="fine.payment.amount" type="currency" label="Amount:" />
-        <item name="fine.payment.reference" type="text" label="Payment Reference: " />
-        <item name="fine.payment.currency" type="selectOneMenu"
+        <item name="payment.amount" type="currency" label="Amount:" />
+        <item name="payment.reference" type="text" label="Payment Reference: " />
+        <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
             options="EUR;CHF;SEK;NOK;GBP;USD" />
-        <item name="fine.payment.bank.name" type="text" label="Bank Name: " />
-        <item name="fine.dbtr.iban" type="iban" label="IBAN"  />
-        <item name="fine.dbtr.bic" type="bic" label="BIC/SWIFT" />
-        <item name="fine.payment.account.number" type="text" label="Account Number: "  />
-        <item name="fine.payment.duedate" type="date" label="Due Date:" span="6" />
+        <item name="payment.bank.name" type="text" label="Bank Name: " />
+        <item name="payment.dbtr.iban" type="iban" label="IBAN"  />
+        <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" />
+        <item name="payment.account.number" type="text" label="Account Number: "  />
+        <item name="payment.duedate" type="date" label="Due Date:" span="6" />
     </imixs-form-section>
 
    <imixs-form-section columns="1" label="Fine Summary" readonly="true" >
@@ -996,16 +992,16 @@ Best regards.
     </imixs-form-section>
 
     <imixs-form-section label="Payment" readonly="true">
-        <item name="fine.payment.amount" type="currency" label="Amount:" />
-        <item name="fine.payment.currency" type="selectOneMenu"
+        <item name="payment.amount" type="currency" label="Amount:" />
+        <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
             options="EUR;CHF;SEK;NOK;GBP;USD" />
-        <item name="fine.payment.bank.name" type="text" label="Bank Name: " />
-        <item name="fine.dbtr.iban" type="iban" label="IBAN" readonly="true" />
-        <item name="fine.dbtr.bic" type="bic" label="BIC/SWIFT" readonly="true" />
-        <item name="fine.payment.account.number" type="text" label="Account Number: " />
-        <item name="fine.payment.reference" type="text" label="Payment Reference: " />
-        <item name="fine.payment.duedate" type="date" label="Due Date:" span="6" />
+        <item name="payment.bank.name" type="text" label="Bank Name: " />
+        <item name="payment.dbtr.iban" type="iban" label="IBAN" readonly="true" />
+        <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" readonly="true" />
+        <item name="payment.account.number" type="text" label="Account Number: " />
+        <item name="payment.reference" type="text" label="Payment Reference: " />
+        <item name="payment.duedate" type="date" label="Due Date:" span="6" />
     </imixs-form-section>
   
    <imixs-form-section columns="1" label="Fine Summary" readonly="true" >
@@ -1096,15 +1092,15 @@ Transfer the fine data into an XML object with the following structure:
   <fine.violation.date type="date">...</fine.violation.date>
   <fine.category.name>...</fine.category.name>
   <fine.location.description>...</fine.location.description>
-  <fine.payment.amount type="double">...</fine.payment.amount>
-  <fine.payment.duedate type="date">...</fine.payment.duedate>
-  <fiine.dbtr.iban>...</fine.dbtr.iban>
-  <fine.dbtr.bic>...</fine.dbtr.bic>
-  <fine.payment.bank.name>...</fine.payment.bank.name>
-  <fine.payment.currency>...</fine.payment.currency>
-  <fine.location.country>...</fine.location.country>
-  <fine.payment.account.number>...</fine.payment.account.number>
-  <fine.payment.reference>...>/fine.payment.reference>
+ <fine.location.country>...</fine.location.country>
+  <payment.amount type="double">...</payment.amount>
+  <payment.duedate type="date">...</payment.duedate>
+  <payment.dbtr.iban>...</payment.dbtr.iban>
+  <payment.dbtr.bic>...</payment.dbtr.bic>
+  <payment.bank.name>...</payment.bank.name>
+  <payment.currency>...</payment.currency>
+  <payment.account.number>...</payment.account.number>
+  <payment.reference>...>/payment.reference>
 </fine>
 
 Transfer the individual data to the XML tags, taking into account the following suggestions for mapping:
@@ -1114,15 +1110,15 @@ Transfer the individual data to the XML tags, taking into account the following 
  - violation date ==> "fine.violation.date" (the day of the violation)
  - location description==>"fine.location.description" (The exact location where the violation was happend)
  - fine id ==>"fine.id" (alloting fine id)
- - payment amount ==>"fine.payment.amount" (amount need to pay)
- - payment duedate ==>"fine.payment.duedate" (before when amount should be paid)
+ - payment amount ==>"payment.amount" (amount need to pay)
+ - payment duedate ==>"payment.duedate" (before when amount should be paid)
  - paymnet iban ==>>"payment.iban"(IBAN given in the payment details, to where the customer need to transfer amount)
- - payment bic ==>>"fine.payment.bic" (BIC given in the payment details, to where the customer need to transfer amount)
- - payment bank name==>"fine.payment.bank.name" (Bank Name)
- - payment currency==>"fine.payment.currency" (Type of currency to pay fine)
+ - payment bic ==>>"payment.bic" (BIC given in the payment details, to where the customer need to transfer amount)
+ - payment bank name==>"payment.bank.name" (Bank Name)
+ - payment currency==>"payment.currency" (Type of currency to pay fine)
  - payment location country==>"fine.location.country" (Country where vioaltion took place)
- - account number==>"fine.payment.account.number" (Account number  given in payment details section in the file where amount should be transferred)
- - reference number==>"fine.payment.reference" (The bank reference number given in payment details section in the file)
+ - payment account number==>"payment.account.number" (Account number  given in payment details section in the file where amount should be transferred)
+ - reference number==>"payment.reference" (The bank reference number given in payment details section in the file)
  -violation category name==>"fine.category.name" (The violation category because of which violation happened example: Overspeeding, illegal parking, Red light violation, Toll violation, No parking, etc.)
 
 Note: Output only the XML object! Don't add explanations or comments. Use only the XML structure specified in this example and do not create any other XML tags. If you don't have data for some fields, leave the corresponding XML tags blank. Format date values (type="date") into the ISO 8601 format (YYYY-MM-DD). Format numbers and amounts (type="double") according to ISO 4217. In fine.volation.category extract violation category into this using a standardized category name. If not mentioned leave XML tag empty. Extract the vehicle registeration as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the registeration number. Extract the account number if given as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the account number. Any ambiquity leave it empty. For IBAN and BIC donot preserve spaces. 
@@ -1233,16 +1229,16 @@ plateContract!=plateFine;]]></bpmn2:conditionExpression>
     </imixs-form-section>
 
     <imixs-form-section label="Payment" readonly="false">
-        <item name="fine.payment.amount" type="currency" label="Amount:" />
-        <item name="fine.payment.reference" type="text" label="Payment Reference: " />
-        <item name="fine.payment.currency" type="selectOneMenu"
+        <item name="payment.amount" type="currency" label="Amount:" />
+        <item name="payment.reference" type="text" label="Payment Reference: " />
+        <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
             options="EUR;CHF;SEK;NOK;GBP;USD" />
-        <item name="fine.payment.bank.name" type="text" label="Bank Name: " />
-        <item name="fine.dbtr.iban" type="iban" label="IBAN"  />
-        <item name="fine.dbtr.bic" type="bic" label="BIC/SWIFT" />
-        <item name="fine.payment.account.number" type="text" label="Account Number: " />
-        <item name="fine.payment.duedate" type="date" label="Due Date:" span="6" />
+        <item name="payment.bank.name" type="text" label="Bank Name: " />
+        <item name="payment.dbtr.iban" type="iban" label="IBAN"  />
+        <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" />
+        <item name="payment.account.number" type="text" label="Account Number: " />
+        <item name="payment.duedate" type="date" label="Due Date:" span="6" />
     </imixs-form-section>
 
    <imixs-form-section columns="1" label="Fine Summary" readonly="true" >

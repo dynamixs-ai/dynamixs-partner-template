@@ -95,23 +95,25 @@
     <bpmn2:dataObject id="dataObject_fV6H2w" imixs:datatype="form-data" name="Payment Data">
       <bpmn2:documentation id="documentation_gnvAHg"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
-<imixs-form-section label="Payment details:"  columns="2">   
+<imixs-form-section columns="3">   
       <item name="finemanagement.ref"
         type="custom"
         path="workitemlink"
         readonly="false"
-        options="$workflowgroup:finemanagement" />
-     <item name="payment.type" type="selectOneMenu"     label="Payment Type:" 
-       options = "EC; VISA; PayPal" required="false"/>
-      <item name="payment.id"    type="text"  label="Paymnet ID:" />
-      <item name="payment.customer.firstname" type="text"  label="Firstname:" />
-      <item name="payment.customer.lastname"  type="text"  label="Lastname:" />
-      <item name="payment.customer.email"  type="text"    label="Email:"  />
-      <item name="payment.posting.date" type="date" label="Posting date:" />
-      <item name="payment.value.date" type="date" label="Value date:" />
-      <item name="payment.transaction.date" type="date" label="Transaction date:" />     
+        options="$workflowgroup:finemanagement"
+        label="Payment Category" />
+      
+     
+     <item name="fine.category.name" type="text" label="Violation Category:" />
+      <item name="fine.id"    type="text"  label="Fine ID:" />
+      <item name="contract.customer.firstname" type="text"  label="Firstname:" />
+      <item name="contract.customer.lastname"  type="text"  label="Lastname:" />
+      <item name="contract.customer.email"  type="text"    label="Email:"  />
       <item name="payment.bank.name" type="text" label="Bank Name:" />
-      <item name="payment.reference.number" type="text" label="Paymnet Reference:" />
+      <item name="payment.account.number" type="text" label="Account Number" />
+      <item name="payment.reference" type="text" label="Payment Reference:" />
+      <item name="payment.type" type="selectOneMenu"     label="Payment Type:" 
+       options = "EC; VISA; PayPal" required="false"/>
       <item name="payment.amount" type="currency" label="Amount:" />
       <item name="payment.currency" type="selectOneMenu"
             label="Currency:"
@@ -127,7 +129,7 @@
           <imixs:value><![CDATA[Checks the mandatory fields in data form provided by customer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>payment.id</itemvalue> <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>payment.id</itemvalue> <itemvalue>payment.reference.number</itemvalue><itemvalue>payment.reason</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_vvhU6g"><![CDATA[Screens the payment received.]]></bpmn2:documentation>
@@ -153,7 +155,7 @@
       <bpmn2:incoming>sequenceFlow_GlkseQ</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_LHlu7Q</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:exclusiveGateway default="sequenceFlow_DAd0WA" gatewayDirection="Diverging" id="gateway_xpbiMw" name="Data check">
+    <bpmn2:exclusiveGateway default="" gatewayDirection="Diverging" id="gateway_xpbiMw" name="Data check">
       <bpmn2:documentation id="documentation_JyeSDA"/>
       <bpmn2:incoming>sequenceFlow_GSGtog</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_DAd0WA</bpmn2:outgoing>
@@ -273,6 +275,12 @@ Best regards.]]></imixs:value>
         <imixs:item name="rtfresultlog" type="xs:string">
           <imixs:value><![CDATA[transerred amount matches with required amount. Paymnet gets accepted ]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<split name="origin_update">
+	<event>210</event>
+	<items>xxx</items>
+</split>]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_iepIIw"><![CDATA[Amount matches with required amount. Payment gets accepted.]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_ha7MAw</bpmn2:incoming>
@@ -348,23 +356,6 @@ thanks for contacting us. We cant go forward with your payment due to missmatch 
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_asZ0wQ" sourceRef="gateway_xpbiMw" targetRef="event_b740TQ">
       <bpmn2:documentation id="documentation_1FOlpA"/>
-      <bpmn2:conditionExpression id="formalExpression_0442HQ" xsi:type="bpmn2:tFormalExpression"><![CDATA[var fineAccount=workitem.getItemValueString("fine.payment.account.number");
-var fineBank=workitem.getItemValueString("fine.payment.bank.name");
-var fineReference=workitem.getItemValueString("fine.payment.reference.number");
-var fineIban=workitem.getItemValueString("fine.dbtr.iban");
-var fineBIC=workitem.getItemValueString("fine.dbtr.bic");
-var paymentAccount=workitem.getItemValueString("payment.account.number");
-var paymentBank=workitem.getItemValueString("payment.bank.name");
-var paymentReference=workitem.getItemValueString("payment.reference.number");
-var paymentIban=workitem.getItemValueString("payment.dbtr.iban");
-var paymentBIC=workitem.getItemValueString("payment.dbtr.bic");
-
-
-fineAccount!=paymentAccount
-fineBank!=paymentBank
-fineReference!=paymentReference
-fineIban!=paymentIban
-fineBIC!=paymentBIC]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_a03x4g" sourceRef="event_b740TQ" targetRef="task_ZBGPcg">
       <bpmn2:documentation id="documentation_zh0LOw"/>

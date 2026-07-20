@@ -122,7 +122,7 @@
        options = "Iron; Aluminium;Steel" required="true"/>
       <item name="quantity.number" type="text"     label="Quantity :" required="true" span="6" />
       <item name="delivery.date" type="date"     label="Expected delivery date :" required="true" span="6" />
- <item name="customer.comment"  type="text" label="Comment:"   />
+      <item name="customer.comment"  type="text" label="Comment:"   />
 </imixs-form-section>
 
 
