@@ -33,7 +33,7 @@
   <bpmn2:collaboration id="collaboration_1" name="Default Collaboration">
     <bpmn2:participant id="participant_f0g5Ug" name="Default Process" processRef="process_1"/>
     <bpmn2:participant id="participant_Z8irtw" name="finemanagement" processRef="process_trU6HQ">
-      <bpmn2:documentation id="documentation_tS0RdQ"/>
+      <bpmn2:documentation id="documentation_tS0RdQ"><![CDATA[This workflow supports the end-to-end processing of traffic fines in a large enterprise. It covers the receipt of violation notices, identification of the responsible driver, internal approval steps, communication with the issuing authority, and the final settlement or reassignment of liability.]]></bpmn2:documentation>
       <bpmn2:incoming>association_y1ur0g</bpmn2:incoming>
     </bpmn2:participant>
   </bpmn2:collaboration>
@@ -1643,7 +1643,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="dataObject_1zcxeg" id="BPMNShape_xsXaqA">
-        <dc:Bounds height="50.0" width="35.0" x="975.4561309318465" y="-65.62277617642894"/>
+        <dc:Bounds height="50.0" width="35.0" x="975.4561157226562" y="-65.6227798461914"/>
         <bpmndi:BPMNLabel id="BPMNLabel_4oIqbA">
           <dc:Bounds height="20.0" width="100.0" x="942.9561157226562" y="-10.622779846191406"/>
         </bpmndi:BPMNLabel>
@@ -1655,7 +1655,7 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_pe0TQw" id="BPMNShape_dcivwA">
-        <dc:Bounds height="36.0" width="36.0" x="1018.3010112918627" y="36.9794373172941"/>
+        <dc:Bounds height="36.0" width="36.0" x="1018.301025390625" y="36.97943878173828"/>
         <bpmndi:BPMNLabel id="BPMNLabel_Sf1xkw">
           <dc:Bounds height="20.0" width="100.0" x="986.301025390625" y="75.97943878173828"/>
         </bpmndi:BPMNLabel>
@@ -1929,7 +1929,6 @@ Note: Output only the XML object! Don't add explanations or comments. Use only t
         <di:waypoint x="1054.0" y="55.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_vQLuPA" id="BPMNEdge_J3wzHQ" sourceElement="BPMNShape_dcivwA" targetElement="BPMNShape_XMUNZA">
-        <di:waypoint x="1018.0" y="55.0"/>
         <di:waypoint x="1018.0" y="55.0"/>
         <di:waypoint x="959.0" y="55.0"/>
         <di:waypoint x="959.0" y="105.0"/>
