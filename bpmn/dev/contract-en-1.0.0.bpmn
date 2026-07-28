@@ -32,11 +32,11 @@
   <bpmn2:collaboration id="collaboration_1" name="Default Collaboration">
     <bpmn2:participant id="participant_i00umQ" name="Default Process" processRef="process_1"/>
     <bpmn2:participant id="participant_b0ZB6w" name="Contract" processRef="process_W6vEog">
-      <bpmn2:documentation id="documentation_MwcHNw"/>
+      <bpmn2:documentation id="documentation_MwcHNw"><![CDATA[This Contract workflow help us in maintaing the contract details like leasing contracts, rental contracts etc.]]></bpmn2:documentation>
     </bpmn2:participant>
   </bpmn2:collaboration>
   <bpmn2:process definitionalCollaborationRef="collaboration_1" id="process_1" name="Default Process" processType="Public">
-    <bpmn2:documentation id="documentation_0tkjlg"/>
+    <bpmn2:documentation id="documentation_0tkjlg"><![CDATA[This Contract workflow help us in maintaing the contract details like leasing contracts, rental contracts etc.]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <open-bpmn:auto-align>true</open-bpmn:auto-align>
     </bpmn2:extensionElements>
@@ -60,7 +60,6 @@
         <bpmn2:flowNodeRef>task_6VVqag</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>gateway_PDrxCQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_b740TQ</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>task_RjumqA</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_6df4bw</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_0nxEog</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_MuxmWQ</bpmn2:flowNodeRef>
@@ -194,6 +193,9 @@
         <imixs:item name="keypublicresult" type="xs:string">
           <imixs:value><![CDATA[1]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="id"><itemvalue>contract.plate.number</itemvalue></item>]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_tJ3gjQ"><![CDATA[All prerequisites are fulfilled]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_DAd0WA</bpmn2:incoming>
@@ -224,6 +226,9 @@
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
           <imixs:value><![CDATA[Contract record exists already in system.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="id"><itemvalue>contract.plate.number</itemvalue></item>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_0vVgEw"><![CDATA[Contract already exists.]]></bpmn2:documentation>
@@ -276,12 +281,15 @@
         <imixs:item name="rtfmailbody" type="xs:string">
           <imixs:value><![CDATA[Creates Contract record]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="id"><itemvalue>contract.plate.number</itemvalue></item>]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_iepIIw"><![CDATA[Create Contract Record]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_YpqXGQ</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_Vvxysw</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:task id="task_6VVqag" imixs:processid="130" name="Create New Reocrd">
+    <bpmn2:task id="task_6VVqag" imixs:processid="130" name="Create New Record">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[Contract details are added in records]]></imixs:value>
@@ -358,19 +366,6 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
     <bpmn2:sequenceFlow id="sequenceFlow_a03x4g" sourceRef="event_b740TQ" targetRef="task_ZBGPcg">
       <bpmn2:documentation id="documentation_zh0LOw"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:task id="task_RjumqA" imixs:processid="150" name="Contract Approval">
-      <bpmn2:extensionElements>
-        <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[New contract added is approved]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_xwDG0Q"><![CDATA[New contract is approved and updated in system]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_w0SJqQ</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_srToEw</bpmn2:outgoing>
-    </bpmn2:task>
     <bpmn2:intermediateCatchEvent id="event_6df4bw" imixs:activityid="80" name="Contract Activation">
       <bpmn2:extensionElements>
         <imixs:item name="rtfresultlog" type="xs:string">
@@ -399,10 +394,10 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_zG03tQ"><![CDATA[New contract is activated.]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_srToEw</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_WU68sA</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_MZKczw</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:task id="task_0nxEog" imixs:processid="170" name="Contract activation">
+    <bpmn2:task id="task_0nxEog" imixs:processid="170" name="Contract Active">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[New contract got activated.]]></imixs:value>
@@ -420,9 +415,6 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmn2:documentation id="documentation_FTWUDw"/>
       <bpmn2:incoming>sequenceFlow_sAJc7Q</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_srToEw" sourceRef="task_RjumqA" targetRef="event_6df4bw">
-      <bpmn2:documentation id="documentation_0mS4OQ"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_MZKczw" sourceRef="event_6df4bw" targetRef="task_0nxEog">
       <bpmn2:documentation id="documentation_Wwcyow"/>
     </bpmn2:sequenceFlow>
@@ -465,16 +457,16 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
         <imixs:item name="rtfresultlog" type="xs:string">
           <imixs:value><![CDATA[New Contract is approved added to the system.]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="id"><itemvalue>contract.plate.number</itemvalue></item>]]></imixs:value>
+        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_BBLIFw"><![CDATA[New contract is Approved.]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_MKNQcA</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_w0SJqQ</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_WU68sA</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_MKNQcA" sourceRef="task_6VVqag" targetRef="event_kaEHxg">
       <bpmn2:documentation id="documentation_TpxPEw"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_w0SJqQ" sourceRef="event_kaEHxg" targetRef="task_RjumqA">
-      <bpmn2:documentation id="documentation_9T325Q"/>
     </bpmn2:sequenceFlow>
     <bpmn2:intermediateCatchEvent id="event_z8Ep6A" imixs:activityid="10" name="Save">
       <bpmn2:extensionElements>
@@ -535,6 +527,9 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
     </bpmn2:intermediateCatchEvent>
     <bpmn2:sequenceFlow id="sequenceFlow_A0I2Rw" sourceRef="event_VcqSrQ" targetRef="task_0nxEog">
       <bpmn2:documentation id="documentation_HVOy9Q"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_WU68sA" sourceRef="event_kaEHxg" targetRef="event_6df4bw">
+      <bpmn2:documentation id="documentation_n1y6qw"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
@@ -634,13 +629,10 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
           <dc:Bounds height="20.0" width="100.0" x="1085.0" y="406.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="task_RjumqA" id="BPMNShape_6eTeUA">
-        <dc:Bounds height="50.0" width="110.0" x="1530.0" y="660.0"/>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_6df4bw" id="BPMNShape_kWe30g">
-        <dc:Bounds height="36.0" width="36.0" x="1697.0" y="667.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1607.0" y="667.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_El1Rdw">
-          <dc:Bounds height="20.0" width="100.0" x="1665.0" y="706.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1575.0" y="706.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_0nxEog" id="BPMNShape_WT4p1A">
@@ -730,12 +722,8 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
         <di:waypoint x="1153.0" y="385.0"/>
         <di:waypoint x="1270.0" y="385.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_srToEw" id="BPMNEdge_QTl0vg" sourceElement="BPMNShape_6eTeUA" targetElement="BPMNShape_kWe30g">
-        <di:waypoint x="1640.0" y="685.0"/>
-        <di:waypoint x="1697.0" y="685.0"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_MZKczw" id="BPMNEdge_Vb7JcA" sourceElement="BPMNShape_kWe30g" targetElement="BPMNShape_WT4p1A">
-        <di:waypoint x="1733.0" y="685.0"/>
+        <di:waypoint x="1643.0" y="685.0"/>
         <di:waypoint x="1820.0" y="685.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sAJc7Q" id="BPMNEdge_5FHn0w" sourceElement="BPMNShape_WT4p1A" targetElement="BPMNShape_N8a0fw">
@@ -750,10 +738,6 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
         <di:waypoint x="1350.0" y="685.0"/>
         <di:waypoint x="1417.0" y="685.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_w0SJqQ" id="BPMNEdge_4053YQ" sourceElement="BPMNShape_vnI0rw" targetElement="BPMNShape_6eTeUA">
-        <di:waypoint x="1453.0" y="685.0"/>
-        <di:waypoint x="1530.0" y="685.0"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_OJlMHw" id="BPMNEdge_em96Og" sourceElement="BPMNShape_vR2hig" targetElement="BPMNShape_5LVQ8A">
         <di:waypoint x="995.0" y="667.0"/>
         <di:waypoint x="995.0" y="600.0"/>
@@ -761,6 +745,10 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_A0I2Rw" id="BPMNEdge_5TFukw" sourceElement="BPMNShape_IXlurg" targetElement="BPMNShape_WT4p1A">
         <di:waypoint x="1875.0" y="747.0"/>
         <di:waypoint x="1875.0" y="710.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_WU68sA" id="BPMNEdge_qNwh8Q" sourceElement="BPMNShape_vnI0rw" targetElement="BPMNShape_kWe30g">
+        <di:waypoint x="1453.0" y="685.0"/>
+        <di:waypoint x="1607.0" y="685.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

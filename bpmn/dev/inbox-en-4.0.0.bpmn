@@ -36,7 +36,7 @@
   <bpmn2:signal id="Signal_1" name="org.imixs.workflow.documents.OCRDocumentAdapter"/>
   <bpmn2:collaboration id="Collaboration_1" name="Default Collaboration">
     <bpmn2:participant id="Participant_1" name="Inbox" processRef="Process_1">
-      <bpmn2:documentation id="documentation_m9vQ5g"><![CDATA[The system utilizes OCR to analyze incoming emails, automatically detecting their document type and language. Once analyzed, the email undergoes classification to determine its core intent. Finally, the email is dynamically routed to the appropriate operational workflow (Support, Sales, Finance, or Legal) for processing.]]></bpmn2:documentation>
+      <bpmn2:documentation id="documentation_m9vQ5g"/>
     </bpmn2:participant>
     <bpmn2:participant id="participant_GUMWGQ" name="Default Process" processRef="process_2"/>
   </bpmn2:collaboration>
@@ -59,6 +59,7 @@
         <bpmn2:flowNodeRef>event_ZAPEXA</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_1Cou8Q</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_T74r2A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_sZKNUg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_uJ1fgA</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>dataObject_QalZ1A</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_tSLHgg</bpmn2:flowNodeRef>
@@ -74,13 +75,16 @@
         <bpmn2:flowNodeRef>dataObject_MHoI2w</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>dataObject_hvISxg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_NLzV0A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_bXa7Jw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_xX0LcA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_P5CJEg</bpmn2:flowNodeRef>
       </bpmn2:lane>
     </bpmn2:laneSet>
     <bpmn2:startEvent id="StartEvent_1" name="Start">
       <bpmn2:documentation id="documentation_MhefQQ"/>
       <bpmn2:outgoing>sequenceFlow_cQk85Q</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <bpmn2:task id="Task_2" imixs:processid="110" name="Analyse the Email">
+    <bpmn2:task id="Task_2" imixs:processid="110" name="OCR Analyse">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
           <imixs:value><![CDATA[form_basic]]></imixs:value>
@@ -91,6 +95,9 @@
         <imixs:item name="txtimageurl" type="xs:string">
           <imixs:value><![CDATA[typcn-printer]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[Analysis....]]></imixs:value>
+        </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
         </imixs:item>
@@ -99,13 +106,8 @@
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
         </imixs:item>
-        <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[Analyzing Incoming Emails]]></imixs:value>
-        </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_13"><![CDATA[Analyzing Incoming Emails to automate routing into the appropriate workflows.
-
-<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
+      <bpmn2:documentation id="Documentation_13"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_GmfGiw</bpmn2:incoming>
       <bpmn2:incoming>sequenceFlow_Q6A4Tw</bpmn2:incoming>
     </bpmn2:task>
@@ -171,13 +173,13 @@
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[OCR starts the process of analysing the Emails.]]></imixs:value>
+          <imixs:value><![CDATA[OCR Processing]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_4"><![CDATA[The OCR engine analyzes incoming emails to determine their type and language for routing.]]></bpmn2:documentation>
+      <bpmn2:documentation id="Documentation_4"><![CDATA[Zwischenspeichern]]></bpmn2:documentation>
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:dataOutput id="DataOutput_1" name="Signal_1_Output"/>
       <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
@@ -215,7 +217,7 @@
 
 </imixs-form>]]></bpmn2:documentation>
     </bpmn2:dataObject>
-    <bpmn2:task id="task_uB6BGQ" imixs:processid="120" name="Classify the Email">
+    <bpmn2:task id="task_uB6BGQ" imixs:processid="120" name="Workflow Assistant">
       <bpmn2:extensionElements>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
@@ -224,7 +226,7 @@
           <imixs:value><![CDATA[typcn-printer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[Classifying Emails]]></imixs:value>
+          <imixs:value><![CDATA[Analysis]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -235,7 +237,7 @@
           <imixs:value><![CDATA[workitem]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_A2VzkA"><![CDATA[Processing email classification. ]]></bpmn2:documentation>
+      <bpmn2:documentation id="documentation_A2VzkA"/>
       <bpmn2:incoming>sequenceFlow_GAK0SA</bpmn2:incoming>
       <bpmn2:incoming>sequenceFlow_lhODPQ</bpmn2:incoming>
       <bpmn2:outgoing>association_je321g</bpmn2:outgoing>
@@ -253,7 +255,7 @@ Assign documents to process 'Front Desk']]></bpmn2:text>
     <bpmn2:sequenceFlow id="sequenceFlow_PgyOMw" sourceRef="task_uB6BGQ" targetRef="gateway_qDAhHw">
       <bpmn2:documentation id="documentation_8vVNCA"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:intermediateCatchEvent id="event_yvr5AA" imixs:activityid="30" name="Save">
+    <bpmn2:intermediateCatchEvent id="event_yvr5AA" imixs:activityid="1" name="Save">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -313,9 +315,6 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
-        <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Submits the content.]]></imixs:value>
-        </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_LL26tw"/>
       <bpmn2:outgoing>sequenceFlow_GAK0SA</bpmn2:outgoing>
@@ -323,7 +322,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="sequenceFlow_GAK0SA" sourceRef="event_yvr5AA" targetRef="task_uB6BGQ">
       <bpmn2:documentation id="documentation_c6Hn0g"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:exclusiveGateway default="sequenceFlow_cY0PYg" gatewayDirection="Diverging" id="gateway_qDAhHw" name="Email routing to its relvant workflow">
+    <bpmn2:exclusiveGateway default="sequenceFlow_cY0PYg" gatewayDirection="Diverging" id="gateway_qDAhHw" name="">
       <bpmn2:documentation id="documentation_Cg34hg"/>
       <bpmn2:outgoing>sequenceFlow_tcjWAA</bpmn2:outgoing>
       <bpmn2:outgoing>sequenceFlow_vEJ59A</bpmn2:outgoing>
@@ -421,7 +420,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:documentation id="documentation_AJkXtg"/>
       <bpmn2:conditionExpression id="formalExpression_WutmBw" xsi:type="bpmn2:tFormalExpression"><![CDATA[''!=workitem.getItemValueString('adapter.error_code'); ]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:task id="task_fQzylQ" imixs:processid="100" name="Import Email received">
+    <bpmn2:task id="task_fQzylQ" imixs:processid="100" name="Import">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
           <imixs:value><![CDATA[form_basic]]></imixs:value>
@@ -433,7 +432,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[typcn-printer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[A New Email is received in the inbox. ]]></imixs:value>
+          <imixs:value><![CDATA[Analysis....]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -515,7 +514,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:outgoing>sequenceFlow_lD8jrQ</bpmn2:outgoing>
       <bpmn2:compensationEventDefinition id="compensationEventDefinition_sNHh8w"/>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:task id="task_1Cou8Q" imixs:processid="300" name="Classification Failed">
+    <bpmn2:task id="task_1Cou8Q" imixs:processid="300" name="Error">
       <bpmn2:extensionElements>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
@@ -554,6 +553,40 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="sequenceFlow_VqjGQg" sourceRef="task_1Cou8Q" targetRef="event_T74r2A">
       <bpmn2:documentation id="documentation_30KSkQ"/>
     </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_sZKNUg" imixs:processid="290" name="Start Workflow">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-printer|typcn-tick,imixs-success,icon-sub-ne]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:string">
+          <imixs:value><![CDATA[true]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitem]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="namownershipnames" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddreadaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="namaddwriteaccess" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>document.sender</itemvalue> - <itemvalue>document.type</itemvalue> (<itemvalue>document.language</itemvalue>)]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_dm0h8Q"><![CDATA[New Wworkflow started]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_Lk0V9A</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_o5nAYA</bpmn2:incoming>
+    </bpmn2:task>
     <bpmn2:endEvent id="event_uJ1fgA" name="End">
       <bpmn2:documentation id="documentation_GS6z5w"/>
       <bpmn2:incoming>sequenceFlow_LZX10Q</bpmn2:incoming>
@@ -561,7 +594,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="sequenceFlow_LZX10Q" sourceRef="task_NLzV0A" targetRef="event_uJ1fgA">
       <bpmn2:documentation id="documentation_FVQ3oQ"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:dataObject id="dataObject_QalZ1A" imixs:datatype="prompt-data" name="Prompt  [determine Workflow]">
+    <bpmn2:dataObject id="dataObject_QalZ1A" imixs:datatype="prompt-data" name="Prompt  find Workflow">
       <bpmn2:documentation id="documentation_UbexKw"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <PromptDefinition>
     <prompt_options>{"n_predict": 4096, "temperature": 0}</prompt_options>
@@ -606,7 +639,7 @@ WORKFLOW LIST:
     <bpmn2:association id="association_je321g" sourceRef="task_uB6BGQ" targetRef="dataObject_QalZ1A">
       <bpmn2:documentation id="documentation_xRDdpw"/>
     </bpmn2:association>
-    <bpmn2:intermediateCatchEvent id="event_tSLHgg" imixs:activityid="200" name="Routing decision made">
+    <bpmn2:intermediateCatchEvent id="event_tSLHgg" imixs:activityid="200" name="[success]">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -655,26 +688,19 @@ WORKFLOW LIST:
         <imixs:item name="keyownershipmode" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Starte Workflow]]></imixs:value>
+        </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<model>     
-     <version><itemvalue>document.modelversion</itemvalue></version>
-     <task><itemvalue>document.taskid</itemvalue></task>
-     <event><itemvalue>document.eventid</itemvalue></event>
-</model>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Email from <itemvalue>document.sender</itemvalue> in language <itemvalue>document.language</itemvalue> and type <itemvalue>document.type</itemvalue> is classified. Routing email to its relevant workflow.
-
+          <imixs:value><![CDATA[
 ]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_FiPdVQ"><![CDATA[The relevant workflow is found for the email sent by <itemvalue>document.sender</itemvalue> in the language <itemvalue>document.language</itemvalue> for the type <itemvalue>document.type</itemvalue> . And it is redirecting to the relevant workflow.
-]]></bpmn2:documentation>
+      <bpmn2:documentation id="documentation_FiPdVQ"/>
       <bpmn2:incoming>sequenceFlow_5UDImg</bpmn2:incoming>
-      <bpmn2:outgoing>sequenceFlow_0tXCag</bpmn2:outgoing>
       <bpmn2:dataOutput id="dataOutput_JeHNBQ" name="Signal_2_Output"/>
       <bpmn2:dataOutputAssociation id="dataOutputAssociation_afq3Ug">
         <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
@@ -683,7 +709,11 @@ WORKFLOW LIST:
         <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
       </bpmn2:outputSet>
       <bpmn2:incoming>sequenceFlow_7t6YqQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Lk0V9A</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_Lk0V9A" sourceRef="event_tSLHgg" targetRef="task_sZKNUg">
+      <bpmn2:documentation id="documentation_z0J6Zg"/>
+    </bpmn2:sequenceFlow>
     <bpmn2:textAnnotation id="TextAnnotation_1" textFormat="">
       <bpmn2:text><![CDATA[For the OCR Adapter the following minimal options should be set:
 
@@ -807,7 +837,7 @@ if (workitem.getItemValueInteger('$file.count')==0) {
     <bpmn2:association id="association_9ORDTg" sourceRef="IntermediateCatchEvent_3" targetRef="TextAnnotation_1">
       <bpmn2:documentation id="documentation_L7fB8Q"/>
     </bpmn2:association>
-    <bpmn2:task id="task_jXzK6g" imixs:processid="130" name="Manual Review">
+    <bpmn2:task id="task_jXzK6g" imixs:processid="130" name="Ask">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -841,7 +871,7 @@ if (workitem.getItemValueInteger('$file.count')==0) {
       <bpmn2:incoming>sequenceFlow_HvTD0g</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_Wnq0vg</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:intermediateCatchEvent id="event_lsZq4g" imixs:activityid="210" name="Classification incomplete">
+    <bpmn2:intermediateCatchEvent id="event_lsZq4g" imixs:activityid="210" name="[next]">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
           <imixs:value><![CDATA[2]]></imixs:value>
@@ -890,14 +920,14 @@ if (workitem.getItemValueInteger('$file.count')==0) {
         <imixs:item name="keyownershipmode" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Starte Rechnungseingang]]></imixs:value>
+        </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
         </imixs:item>
-        <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Classifying the email is incomplete. It is routed to the manager for manual review]]></imixs:value>
-        </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_FQkm8Q"><![CDATA[Classifying the email from <itemvalue>document.sender</itemvalue> in language <itemvalue>document.language</itemvalue> and type <itemvalue>document.type</itemvalue> is incomplete and is routing to the manager for manual review.]]></bpmn2:documentation>
+      <bpmn2:documentation id="documentation_FQkm8Q"/>
       <bpmn2:incoming>sequenceFlow_vEJ59A</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_HvTD0g</bpmn2:outgoing>
       <bpmn2:dataOutput id="dataOutput_NQYaUg" name="Signal_2_Output"/>
@@ -968,7 +998,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="action">home</item>
 <validation name="required">false</validation>
-]]></imixs:value>
+<item name="process">Contract Management</item>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
@@ -1073,7 +1103,7 @@ if (workitem.getItemValueInteger('$file.count')==0) {
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[AI starts its task to identify the new email.]]></imixs:value>
+          <imixs:value><![CDATA[Start the AI Assistant.]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -1096,7 +1126,7 @@ if (workitem.getItemValueInteger('$file.count')==0) {
 ]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_CZ29zA"><![CDATA[AI Assistance is started to classify the email received]]></bpmn2:documentation>
+      <bpmn2:documentation id="documentation_CZ29zA"><![CDATA[Start the AI Assistant.]]></bpmn2:documentation>
       <bpmn2:outgoing>sequenceFlow_lhODPQ</bpmn2:outgoing>
       <bpmn2:dataOutput id="dataOutput_0c8l5w" name="Signal_2_Output"/>
       <bpmn2:dataOutputAssociation id="dataOutputAssociation_H9TU5g">
@@ -1247,7 +1277,7 @@ Use update_workitem with this $uniqueid to write category and workflow field val
     <bpmn2:association id="association_q6wZjA" sourceRef="dataObject_hvISxg" targetRef="task_uB6BGQ">
       <bpmn2:documentation id="documentation_A4MUPg"/>
     </bpmn2:association>
-    <bpmn2:task id="task_NLzV0A" imixs:processid="299" name="Classification of the Email is Completed">
+    <bpmn2:task id="task_NLzV0A" imixs:processid="299" name="Completed">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowabstract" type="xs:string">
           <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
@@ -1277,16 +1307,167 @@ Use update_workitem with this $uniqueid to write category and workflow field val
           <imixs:value><![CDATA[<itemvalue>document.sender</itemvalue> - <itemvalue>document.type</itemvalue> (<itemvalue>document.language</itemvalue>)]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_qm5IGg"><![CDATA[Email from <itemvalue>document.sender</itemvalue> in language <itemvalue>document.language</itemvalue> and type <itemvalue>document.type</itemvalue> is classified. It is automatically routed to its appropiate workflow.]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_0tXCag</bpmn2:incoming>
+      <bpmn2:documentation id="documentation_qm5IGg"><![CDATA[New Wworkflow started]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_WLrBMA</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_LZX10Q</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="sequenceFlow_0tXCag" sourceRef="event_tSLHgg" targetRef="task_NLzV0A">
-      <bpmn2:documentation id="documentation_I0tMsQ"/>
+    <bpmn2:boundaryEvent attachedToRef="task_sZKNUg" id="event_bXa7Jw" name="">
+      <bpmn2:documentation id="documentation_iEgbAw"/>
+      <bpmn2:outgoing>sequenceFlow_FnHESg</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="timerEventDefinition_I0n0vQ"/>
+    </bpmn2:boundaryEvent>
+    <bpmn2:intermediateCatchEvent id="event_xX0LcA" imixs:activityid="200" name="Start Workflow">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5000]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Speichern]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Starte Workflow]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<model>     
+     <version><itemvalue>document.modelversion</itemvalue></version>
+     <task><itemvalue>document.taskid</itemvalue></task>
+     <event><itemvalue>document.eventid</itemvalue></event>
+</model>
+]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_27ZK0Q"/>
+      <bpmn2:incoming>sequenceFlow_FnHESg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_WLrBMA</bpmn2:outgoing>
+      <bpmn2:dataOutput id="dataOutput_GdceMw" name="Signal_2_Output"/>
+      <bpmn2:dataOutputAssociation id="dataOutputAssociation_2LiPfw">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="outputSet_UkkbSA" name="Output Set 1">
+        <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+      <bpmn2:incoming>sequenceFlow_7t6YqQ</bpmn2:incoming>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_FnHESg" sourceRef="event_bXa7Jw" targetRef="event_xX0LcA">
+      <bpmn2:documentation id="documentation_kb5dAA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_WLrBMA" sourceRef="event_xX0LcA" targetRef="task_NLzV0A">
+      <bpmn2:documentation id="documentation_OIsKKg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_P5CJEg" imixs:activityid="1" name="Back">
+      <bpmn2:extensionElements>
+        <imixs:item name="keylogtimeformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyarchive" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaccessmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyscheduledactivity" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
+
+Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
+<itemvalue>_description</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keymailreceiverfields" type="xs:string"/>
+        <imixs:item name="keyversion" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyaddwritefields" type="xs:string"/>
+        <imixs:item name="numnextactivityid" type="xs:int">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyfollowup" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keylogdateformat" type="xs:string">
+          <imixs:value><![CDATA[2]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipfields" type="xs:string"/>
+        <imixs:item name="numnextid" type="xs:int">
+          <imixs:value><![CDATA[5005]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtnextprocesstree" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<item name="action">home</item>
+<validation name="required">false</validation>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtname" type="xs:string">
+          <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyownershipmode" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keyupdateacl" type="xs:boolean">
+          <imixs:value>false</imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_sqGFbA"/>
+      <bpmn2:outgoing>sequenceFlow_o5nAYA</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_o5nAYA" sourceRef="event_P5CJEg" targetRef="task_sZKNUg">
+      <bpmn2:documentation id="documentation_pjVflw"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Imixs AI" processType="Public">
-    <bpmn2:documentation id="documentation_dDLFbw"><![CDATA[The system utilizes OCR to analyze incoming emails, automatically detecting their document type and language. Once analyzed, the email undergoes classification to determine its core intent. Finally, the email is dynamically routed to the appropriate operational workflow (Support, Sales, Finance, or Legal) for processing.]]></bpmn2:documentation>
+    <bpmn2:documentation id="documentation_dDLFbw"/>
     <bpmn2:extensionElements>
       <open-bpmn:auto-align>true</open-bpmn:auto-align>
     </bpmn2:extensionElements>
@@ -1344,24 +1525,24 @@ Use update_workitem with this $uniqueid to write category and workflow field val
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_jXzK6g" id="BPMNShape_EoGO1g">
-        <dc:Bounds height="50.0" width="110.0" x="1930.0" y="650.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="1750.0" y="650.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_lsZq4g" id="BPMNShape_XqwGjA">
-        <dc:Bounds height="36.0" width="36.0" x="1687.0" y="657.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1617.0" y="657.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_VG0vLQ">
-          <dc:Bounds height="20.0" width="100.0" x="1655.0" y="696.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1583.0" y="703.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_NT0e9g" id="BPMNShape_CjOIQA">
-        <dc:Bounds height="36.0" width="36.0" x="2197.0" y="657.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1937.0" y="657.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_RkqP5Q">
-          <dc:Bounds height="20.0" width="100.0" x="2165.0" y="696.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1905.0" y="696.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="dataObject_84FZxg" id="BPMNShape_h8QoWw">
-        <dc:Bounds height="50.0" width="35.0" x="1950.0" y="550.0"/>
+        <dc:Bounds height="50.0" width="35.0" x="1790.0" y="550.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_lPfqjg">
-          <dc:Bounds height="20.0" width="100.0" x="1914.5" y="628.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1754.5" y="628.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_LIKHpg" id="BPMNShape_ePfIog">
@@ -1385,11 +1566,29 @@ Use update_workitem with this $uniqueid to write category and workflow field val
       <bpmndi:BPMNShape bpmnElement="dataObject_hvISxg" id="BPMNShape_oQN4gQ">
         <dc:Bounds height="50.0" width="35.0" x="740.0" y="520.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_2DxOBA">
-          <dc:Bounds height="20.0" width="100.0" x="723.5" y="581.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="707.5" y="575.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_NLzV0A" id="BPMNShape_ZHI3Ew">
-        <dc:Bounds height="50.0" width="140.0" x="1900.0" y="440.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="2000.0" y="440.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_bXa7Jw" id="BPMNShape_AmU3uQ">
+        <dc:Bounds height="36.0" width="36.0" x="1807.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_jq0y7A">
+          <dc:Bounds height="20.0" width="100.0" x="1775.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_xX0LcA" id="BPMNShape_ftI0kw">
+        <dc:Bounds height="36.0" width="36.0" x="1907.0" y="447.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_uTkkKw">
+          <dc:Bounds height="20.0" width="100.0" x="1875.0" y="486.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_P5CJEg" id="BPMNShape_wgyIjA">
+        <dc:Bounds height="36.0" width="36.0" x="1757.0" y="327.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_z9vHHQ">
+          <dc:Bounds height="20.0" width="100.0" x="1725.0" y="366.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="BPMNEdge_SequenceFlow_2" sourceElement="BPMNShape_BoundaryEvent_1" targetElement="BPMNShape_IntermediateCatchEvent_3">
         <di:waypoint x="823.0" y="465.0"/>
@@ -1444,7 +1643,7 @@ Use update_workitem with this $uniqueid to write category and workflow field val
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_gpPDLg" id="BPMNEdge_oi9YWw" sourceElement="BPMNShape_JG1UQQ" targetElement="BPMNShape_IZvUhg">
         <di:waypoint x="1563.0" y="255.0"/>
-        <di:waypoint x="1910.0" y="255.0"/>
+        <di:waypoint x="2030.0" y="255.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="gateway_gd9zQQ" id="BPMNShape_PyGqlg">
         <dc:Bounds height="50.0" width="50.0" x="960.0" y="440.0"/>
@@ -1471,7 +1670,7 @@ Use update_workitem with this $uniqueid to write category and workflow field val
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_1Cou8Q" id="BPMNShape_IZvUhg">
-        <dc:Bounds height="50.0" width="110.0" x="1910.0" y="230.0"/>
+        <dc:Bounds height="50.0" width="110.0" x="2030.0" y="230.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_T74r2A" id="BPMNShape_iAg5Vg">
         <dc:Bounds height="36.0" width="36.0" x="2197.0" y="237.0"/>
@@ -1480,9 +1679,12 @@ Use update_workitem with this $uniqueid to write category and workflow field val
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_VqjGQg" id="BPMNEdge_WBoZsA" sourceElement="BPMNShape_IZvUhg" targetElement="BPMNShape_iAg5Vg">
-        <di:waypoint x="2020.0" y="255.0"/>
+        <di:waypoint x="2140.0" y="255.0"/>
         <di:waypoint x="2197.0" y="255.0"/>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="task_sZKNUg" id="BPMNShape_OR9EVA">
+        <dc:Bounds height="50.0" width="110.0" x="1710.0" y="440.0"/>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="event_uJ1fgA" id="BPMNShape_9Gb2iQ">
         <dc:Bounds height="36.0" width="36.0" x="2197.0" y="447.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_Wxj7vQ">
@@ -1490,7 +1692,7 @@ Use update_workitem with this $uniqueid to write category and workflow field val
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_LZX10Q" id="BPMNEdge_1pYuRg" sourceElement="BPMNShape_ZHI3Ew" targetElement="BPMNShape_9Gb2iQ">
-        <di:waypoint x="2040.0" y="465.0"/>
+        <di:waypoint x="2110.0" y="465.0"/>
         <di:waypoint x="2197.0" y="465.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="dataObject_QalZ1A" id="BPMNShape_AJy4vQ">
@@ -1506,11 +1708,15 @@ Use update_workitem with this $uniqueid to write category and workflow field val
         <di:waypoint x="1288.0" y="360.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="event_tSLHgg" id="BPMNShape_NFkpAQ">
-        <dc:Bounds height="36.0" width="36.0" x="1677.0" y="447.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="1617.0" y="447.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_ayoeGw">
-          <dc:Bounds height="20.0" width="100.0" x="1645.0" y="486.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1585.0" y="486.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Lk0V9A" id="BPMNEdge_OAwUuQ" sourceElement="BPMNShape_NFkpAQ" targetElement="BPMNShape_OR9EVA">
+        <di:waypoint x="1653.0" y="465.0"/>
+        <di:waypoint x="1710.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_RUf6TA" id="BPMNEdge_BmOWRA" sourceElement="BPMNShape_Cn1HMQ" targetElement="BPMNShape_ELW5JA">
         <di:waypoint x="285.0" y="544.0"/>
         <di:waypoint x="415.0" y="544.0"/>
@@ -1545,39 +1751,39 @@ Use update_workitem with this $uniqueid to write category and workflow field val
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_vEJ59A" id="BPMNEdge_yF5Rpw" sourceElement="BPMNShape_UxYL0A" targetElement="BPMNShape_XqwGjA">
         <di:waypoint x="1549.0" y="486.0"/>
         <di:waypoint x="1549.0" y="675.0"/>
-        <di:waypoint x="1687.0" y="675.0"/>
+        <di:waypoint x="1617.0" y="675.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_HvTD0g" id="BPMNEdge_0dUw4g" sourceElement="BPMNShape_XqwGjA" targetElement="BPMNShape_EoGO1g">
-        <di:waypoint x="1723.0" y="675.0"/>
-        <di:waypoint x="1930.0" y="675.0"/>
+        <di:waypoint x="1653.0" y="675.0"/>
+        <di:waypoint x="1750.0" y="675.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_C3KIYA" id="BPMNEdge_u47pMQ" sourceElement="BPMNShape_CjOIQA" targetElement="BPMNShape_PyGqlg">
-        <di:waypoint x="2215.0" y="693.0"/>
-        <di:waypoint x="2215.0" y="767.0"/>
+        <di:waypoint x="1955.0" y="693.0"/>
+        <di:waypoint x="1955.0" y="767.0"/>
         <di:waypoint x="985.0" y="767.0"/>
         <di:waypoint x="985.0" y="490.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Wnq0vg" id="BPMNEdge_b3utSQ" sourceElement="BPMNShape_EoGO1g" targetElement="BPMNShape_CjOIQA">
-        <di:waypoint x="2040.0" y="675.0"/>
-        <di:waypoint x="2197.0" y="675.0"/>
+        <di:waypoint x="1860.0" y="675.0"/>
+        <di:waypoint x="1937.0" y="675.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_qJDgXA" id="BPMNEdge_VMcR2A" sourceElement="BPMNShape_h8QoWw" targetElement="BPMNShape_EoGO1g">
-        <di:waypoint x="1968.0" y="600.0"/>
-        <di:waypoint x="1968.0" y="624.0"/>
-        <di:waypoint x="1985.0" y="624.0"/>
-        <di:waypoint x="1985.0" y="650.0"/>
+        <di:waypoint x="1808.0" y="600.0"/>
+        <di:waypoint x="1808.0" y="624.0"/>
+        <di:waypoint x="1805.0" y="624.0"/>
+        <di:waypoint x="1805.0" y="650.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_5UDImg" id="BPMNEdge_BGiqzg" sourceElement="BPMNShape_UxYL0A" targetElement="BPMNShape_NFkpAQ">
         <di:waypoint x="1570.0" y="465.0"/>
-        <di:waypoint x="1677.0" y="465.0"/>
+        <di:waypoint x="1617.0" y="465.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_lhODPQ" id="BPMNEdge_KSEs6Q" sourceElement="BPMNShape_ePfIog" targetElement="BPMNShape_027JKQ">
         <di:waypoint x="1133.0" y="465.0"/>
         <di:waypoint x="1240.0" y="465.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_yhNfvw" id="BPMNEdge_q9imlg" sourceElement="BPMNShape_IZvUhg" targetElement="BPMNShape_75r3eg">
-        <di:waypoint x="1965.0" y="230.0"/>
-        <di:waypoint x="1965.0" y="155.0"/>
+        <di:waypoint x="2083.0" y="230.0"/>
+        <di:waypoint x="2083.0" y="155.0"/>
         <di:waypoint x="1843.0" y="155.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Q6A4Tw" id="BPMNEdge_NQMncA" sourceElement="BPMNShape_75r3eg" targetElement="BPMNShape_Task_2">
@@ -1592,13 +1798,23 @@ Use update_workitem with this $uniqueid to write category and workflow field val
         <di:waypoint x="755.0" y="490.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="association_q6wZjA" id="BPMNEdge_sC8JiQ" sourceElement="BPMNShape_oQN4gQ" targetElement="BPMNShape_027JKQ">
-        <di:waypoint x="775.0" y="535.0"/>
-        <di:waypoint x="1295.0" y="535.0"/>
+        <di:waypoint x="775.0" y="547.0"/>
+        <di:waypoint x="1295.0" y="547.0"/>
         <di:waypoint x="1295.0" y="490.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_0tXCag" id="BPMNEdge_li7etw" sourceElement="BPMNShape_NFkpAQ" targetElement="BPMNShape_ZHI3Ew">
-        <di:waypoint x="1713.0" y="465.0"/>
-        <di:waypoint x="1900.0" y="465.0"/>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_FnHESg" id="BPMNEdge_93HGJw" sourceElement="BPMNShape_AmU3uQ" targetElement="BPMNShape_ftI0kw">
+        <di:waypoint x="1843.0" y="465.0"/>
+        <di:waypoint x="1907.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_WLrBMA" id="BPMNEdge_WAlD0w" sourceElement="BPMNShape_ftI0kw" targetElement="BPMNShape_ZHI3Ew">
+        <di:waypoint x="1943.0" y="465.0"/>
+        <di:waypoint x="2000.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_o5nAYA" id="BPMNEdge_SRHmAQ" sourceElement="BPMNShape_wgyIjA" targetElement="BPMNShape_OR9EVA">
+        <di:waypoint x="1775.0" y="363.0"/>
+        <di:waypoint x="1775.0" y="402.0"/>
+        <di:waypoint x="1765.0" y="402.0"/>
+        <di:waypoint x="1765.0" y="440.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
