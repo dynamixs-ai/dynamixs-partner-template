@@ -1,56 +1,53 @@
 # Dynamixs.AI – Partner Integration Guide
 
-The Dynamixs.AI – Partner Template contains artifacts and examples that help you to get started with you custom project.
+Dynamixs.AI is an Agentic Enterprise AI Plattform for modern Business Process Management. 
 
-- The folder `/bpmn` contains BPMN Models examples and basic templates.
-- The folder `/docker` contains docker templates
-- The folder `/src` contains a scaffold for a custom web application
+## Two Ways to Use This Template
 
-To integrate the Dynamixs.AI platform into a customer project, there are two fundamentally different approaches — choose the one that fits your needs.
+This template is the starting point for **every** Dynamixs.AI partner project — but it can be used in two very different ways, depending on your needs:
+
+- **🚀 Run it as-is (Docker only).** Use the pre-built Dynamixs.AI Docker image and only work inside the `/bpmn` folder to model your business processes visually. No Java or Maven knowledge required. This is comparable to running WordPress: you don't modify the core application, you configure and extend it through content (here: BPMN models).
+- **🛠️ Customize it (Java/Maven).** Build your own WAR overlay on top of the platform to add custom UI components, branding, or backend logic in Java. This requires familiarity with Maven and Java, and is meant for partners with deeper integration needs.
 
 ---
 
+Not sure which one you need? Start with the Docker option -  you can always move to the Maven-based customization later without losing your BPMN models.
+
+## Choosing Your Deployment Option
+
+|                | **Option A – Docker Compose** | **Option B – Maven Build (WAR Overlay)** |
+| -------------- | ------------------------------ | ------------------------------------------ |
+| Effort         | Low                             | Higher                                     |
+| Skills needed  | Docker only                     | Java 17+, Maven 3.9+                       |
+| Customizable   | BPMN models only                | UI, CDI beans, Java services, branding     |
+| Best for       | Evaluation, standard deployments, external ERP integration via REST | Deep UI customization, long-lived partner products |
+| Get started →  | [Jump to Option A](#option-a-quick-start-with-docker-compose) | [Jump to Option B](#option-b-custom-build-war-overlay) |
+
+Both options run on the same Docker infrastructure underneath - the difference is only whether you use the pre-built image or build your own WAR first.
+
+
+
 ## Low-Code with BPMN
 
-Dynamixs.AI is a **Low-Code platform**. Business processes, AI conditions, and document handling rules are all defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
+Dynamix.AI follows a **Low-Code approach** to model Business processes with BPMN 2.0 including process flows, AI integration, Agents, AI conditions and business rules. Business processes are defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
 
-[![Open-BPMN Modeler](https://www.open-bpmn.org/images/imixs-bpmn-001.png)](https://www.open-bpmn.org/)
+
+[![Open-BPMN Modeler](https://camo.githubusercontent.com/bab1d0e514e639c59ef8c1b60ae1a071b2840cbbf03bd26cb4b62130cb480667/68747470733a2f2f7777772e6f70656e2d62706d6e2e6f72672f696d616765732f696d6978732d62706d6e2d3030312e706e67)](https://www.open-bpmn.org/)
 
 - 📦 [Install Open-BPMN](https://www.open-bpmn.org/install.html)
 - 🎓 [How to Model](https://www.open-bpmn.org/how_to_model.html)
 - 🔷 [BPMN Model Library](https://github.com/dynamixs-ai/bpmn-library)
 
----
+The Dynamixs.AI – Partner Template contains artifacts and examples that help you to get started with your custom project.
 
-## Two Ways to Deploy Dynamixs.AI
+This repository is organized as follows:
 
-### Option A – Quick Start with Docker Compose
-
-The fastest way to get started. You run the pre-built Dynamixs.AI image using the official
-Docker Compose setup. No build step is required. This approach is ideal for:
-
-- Evaluating the platform
-- Standard deployments without UI customizations
-- Projects where customer-specific logic lives in external services (e.g. ERP connectors via REST)
-
-All you need is Docker, a `docker-compose.yml`, and an LLM endpoint configuration file. You can find in the directory of this project:
-
-- 📦 [`docker/docker-compose.yaml`](./docker/docker-compose.yaml) – Standard deployment
-- 📦 [`docker/docker-compose-dev.yaml`](./docker/docker-compose-dev.yaml) – Developer deployment for custom builds
-
-### Option B – Custom Build (WAR Overlay)
-
-A Maven-based build that extends the Dynamixs.AI platform with your own UI components,
-CDI beans, and Java services. This approach is ideal for:
-
-- Deep UI customization (branding, custom JSF components, form parts)
-- Customer-specific Java services deployed inside the application server
-- Long-lived partner products maintained across platform upgrades
-
-Both options use the same Docker infrastructure underneath — the difference is
-whether you use the pre-built image or build your own WAR first.
+- `/bpmn` – BPMN model examples and basic templates
+- `/docker` – Docker Compose templates
+- `/src` – scaffold for a custom web application (only relevant for Option B)
 
 ---
+
 
 ## Prerequisites
 
@@ -160,7 +157,7 @@ Login you docker to the registry:
 
     echo YOUR_PERSONAL_ACCESS_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
 
-**Setp 1b - login with kubernetes**
+**Step 2b - login with kubernetes**
 
 For **Kubernetes Cluster** create a so called Image Pull Secret:
 
@@ -293,7 +290,7 @@ https://github.com/settings/tokens
 ### 2. Clone the partner template
 
 ```bash
-git clone https://github.com/dynamixs-ai/partner-template.git acme-workflow
+git clone https://github.com/dynamixs-ai/dynamixs-partner-template.git acme-workflow
 cd acme-workflow
 ```
 
