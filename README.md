@@ -1,6 +1,16 @@
 # Dynamixs.AI – Partner Integration Guide
 
-Dynamixs.AI is an Agentic Enterprise AI Plattform for modern Business Process Management. 
+Dynamixs.AI is an Agentic Enterprise AI Plattform for modern Business Process Management. It follows a **Low-Code approach** to model Business processes with BPMN 2.0 including process flows, AI integration, Agents, AI conditions and business rules. Business processes are defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
+
+
+[![Open-BPMN Modeler](https://camo.githubusercontent.com/bab1d0e514e639c59ef8c1b60ae1a071b2840cbbf03bd26cb4b62130cb480667/68747470733a2f2f7777772e6f70656e2d62706d6e2e6f72672f696d616765732f696d6978732d62706d6e2d3030312e706e67)](https://www.open-bpmn.org/)
+
+- 📦 [Install Open-BPMN](https://www.open-bpmn.org/install.html)
+- 🎓 [How to Model](https://www.open-bpmn.org/how_to_model.html)
+- 🔷 [BPMN Model Library](https://github.com/dynamixs-ai/bpmn-library)
+
+---
+
 
 ## Two Ways to Use This Template
 
@@ -25,19 +35,29 @@ Not sure which one you need? Start with the Docker option -  you can always move
 Both options run on the same Docker infrastructure underneath - the difference is only whether you use the pre-built image or build your own WAR first.
 
 
+## Getting Started: Create Your Own Repository
 
-## Low-Code with BPMN
+Regardless of which option you choose, you start the same way: create your **own, independent repository** from this template — don't fork it and don't clone it directly.
 
-Dynamixs.AI follows a **Low-Code approach** to model Business processes with BPMN 2.0 including process flows, AI integration, Agents, AI conditions and business rules. Business processes are defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
+1. Go to the [dynamixs-partner-template](https://github.com/dynamixs-ai/dynamixs-partner-template) repository on GitHub.
+2. Click the green **"Use this template"** button (top right, next to "Code") and select **"Create a new repository"**.
+3. Choose a name for your project (e.g. `acme-workflow`) and select your own account or organization as the owner.
+4. Clone *your new repository* to your machine:
 
+```bash
+   git clone https://github.com/YOUR_ACCOUNT/acme-workflow.git
+   cd acme-workflow
+```
 
-[![Open-BPMN Modeler](https://camo.githubusercontent.com/bab1d0e514e639c59ef8c1b60ae1a071b2840cbbf03bd26cb4b62130cb480667/68747470733a2f2f7777772e6f70656e2d62706d6e2e6f72672f696d616765732f696d6978732d62706d6e2d3030312e706e67)](https://www.open-bpmn.org/)
+> **Why not fork or clone the template directly?** A fork stays linked to the original Dynamixs.AI repository and shares its commit history — that's meant for contributing back to the template itself, not for building your own project on top of it. "Use this template" gives you a clean, independent repository with your own history, owned by you, containing all the files (`/bpmn`, `/docker`, `/src`) you need for both Option A and Option B.
 
-- 📦 [Install Open-BPMN](https://www.open-bpmn.org/install.html)
-- 🎓 [How to Model](https://www.open-bpmn.org/how_to_model.html)
-- 🔷 [BPMN Model Library](https://github.com/dynamixs-ai/bpmn-library)
+From here, both options continue inside *your* repository:
 
----
+- **Option A** — you'll mainly work in `/bpmn` and `/docker`.
+- **Option B** — you'll additionally work in `/src` and `pom.xml`.
+
+--- 
+
 
 ## Prerequisites
 
