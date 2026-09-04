@@ -35,19 +35,36 @@ Not sure which one you need? Start with the Docker option -  you can always move
 Both options run on the same Docker infrastructure underneath - the difference is only whether you use the pre-built image or build your own WAR first.
 
 
+
+
 ## Getting Started: Create Your Own Repository
 
-Regardless of which option you choose, you start the same way: create your **own, independent repository** from this template — don't fork it and don't clone it directly.
+Regardless of which option you choose, you start the same way: create your **own, independent repository** based on this template — don't fork it and don't clone it directly, since that would keep it linked to the Dynamixs.AI repository.
 
-1. Go to the [dynamixs-partner-template](https://github.com/dynamixs-ai/dynamixs-partner-template) repository on GitHub.
-2. Click the green **"Use this template"** button (top right, next to "Code") and select **"Create a new repository"**.
-3. Choose a name for your project (e.g. `acme-workflow`) and select your own account or organization as the owner.
-4. Clone *your new repository* to your machine:
+### If you're using GitHub
+
+1. Go to the [dynamixs-partner-template](https://github.com/dynamixs-ai/dynamixs-partner-template) repository.
+2. Click **"Use this template" → "Create a new repository"**.
+3. Choose a name and owner for your project, then clone *your new repository* locally.
+
+### If you're using your own git repo
+
+1. Create a new, empty repository on your platform (e.g. `acme-workflow`).
+2. Clone this template without its Git history and re-point it to your own remote:
 
 ```bash
-   git clone https://github.com/YOUR_ACCOUNT/acme-workflow.git
+   git clone --depth 1 https://github.com/dynamixs-ai/dynamixs-partner-template.git acme-workflow
    cd acme-workflow
+   rm -rf .git
+   git init
+   git remote add origin <URL_OF_YOUR_NEW_REPO>
+   git add .
+   git commit -m "Initial commit from dynamixs-partner-template"
+   git push -u origin main
 ```
+
+Either way, you end up with your own repository containing all files (`/bpmn`, `/docker`, `/src`) — with no ongoing link back to Dynamixs.AI.
+
 
 > **Why not fork or clone the template directly?** A fork stays linked to the original Dynamixs.AI repository and shares its commit history — that's meant for contributing back to the template itself, not for building your own project on top of it. "Use this template" gives you a clean, independent repository with your own history, owned by you, containing all the files (`/bpmn`, `/docker`, `/src`) you need for both Option A and Option B.
 
