@@ -9,9 +9,8 @@ This template is the starting point for **every** Dynamixs.AI partner project �
 - **🚀 Run it as-is (Docker only).** Use the pre-built Dynamixs.AI Docker image and only work inside the `/bpmn` folder to model your business processes visually. No Java or Maven knowledge required. This is comparable to running WordPress: you don't modify the core application, you configure and extend it through content (here: BPMN models).
 - **🛠️ Customize it (Java/Maven).** Build your own WAR overlay on top of the platform to add custom UI components, branding, or backend logic in Java. This requires familiarity with Maven and Java, and is meant for partners with deeper integration needs.
 
----
-
 Not sure which one you need? Start with the Docker option -  you can always move to the Maven-based customization later without losing your BPMN models.
+
 
 ## Choosing Your Deployment Option
 
@@ -29,7 +28,7 @@ Both options run on the same Docker infrastructure underneath - the difference i
 
 ## Low-Code with BPMN
 
-Dynamix.AI follows a **Low-Code approach** to model Business processes with BPMN 2.0 including process flows, AI integration, Agents, AI conditions and business rules. Business processes are defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
+Dynamixs.AI follows a **Low-Code approach** to model Business processes with BPMN 2.0 including process flows, AI integration, Agents, AI conditions and business rules. Business processes are defined visually using [Open-BPMN](https://www.open-bpmn.org/) — a free BPMN 2.0 modeler that runs in VS Code, Eclipse, or directly in the browser.
 
 
 [![Open-BPMN Modeler](https://camo.githubusercontent.com/bab1d0e514e639c59ef8c1b60ae1a071b2840cbbf03bd26cb4b62130cb480667/68747470733a2f2f7777772e6f70656e2d62706d6e2e6f72672f696d616765732f696d6978732d62706d6e2d3030312e706e67)](https://www.open-bpmn.org/)
@@ -37,6 +36,10 @@ Dynamix.AI follows a **Low-Code approach** to model Business processes with BPMN
 - 📦 [Install Open-BPMN](https://www.open-bpmn.org/install.html)
 - 🎓 [How to Model](https://www.open-bpmn.org/how_to_model.html)
 - 🔷 [BPMN Model Library](https://github.com/dynamixs-ai/bpmn-library)
+
+---
+
+## Prerequisites
 
 The Dynamixs.AI – Partner Template contains artifacts and examples that help you to get started with your custom project.
 
@@ -46,10 +49,7 @@ This repository is organized as follows:
 - `/docker` – Docker Compose templates
 - `/src` – scaffold for a custom web application (only relevant for Option B)
 
----
-
-
-## Prerequisites
+Before you start make sure you have: 
 
 - Docker & Docker Compose
 - A Dynamixs.AI Partner Account on GitHub (required for Option B)
@@ -153,7 +153,7 @@ To Pull the Docker Image, first, authenticate with GHCR using your PAT:
 
 **Step 2a - login with docker**
 
-Login you docker to the registry:
+Log your Docker CLI in to the registry:
 
     echo YOUR_PERSONAL_ACCESS_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
 
@@ -170,7 +170,7 @@ $ kubectl create secret docker-registry ghcr-pull-secret \
   -n NAMESPACE
 ```
 
-And set the secret into you deployment config:
+And set the secret into your deployment config:
 
 ```yaml
 apiVersion: apps/v1
