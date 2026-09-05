@@ -329,14 +329,9 @@ Add the following to your local `~/.m2/settings.xml`:
 Create a GitHub Personal Access Token with `read:packages` permission here:
 https://github.com/settings/tokens
 
-### 2. Clone the partner template
 
-```bash
-git clone https://github.com/dynamixs-ai/dynamixs-partner-template.git acme-workflow
-cd acme-workflow
-```
 
-### 3. Customize `pom.xml`
+### 2. Customize `pom.xml`
 
 Change `groupId`, `artifactId`, and `finalName` to match your customer project:
 
@@ -347,13 +342,24 @@ Change `groupId`, `artifactId`, and `finalName` to match your customer project:
 <finalName>acme-workflow</finalName>
 ```
 
-### 4. Build
+### 3. Build
 
 ```bash
 mvn clean package
 ```
 
 The custom WAR file will appear in `target/`.
+
+You can also use the buil.sh script:
+
+
+```bash
+./build.sh
+```
+
+This script can also used for a server side build process. 
+
+
 
 ---
 
