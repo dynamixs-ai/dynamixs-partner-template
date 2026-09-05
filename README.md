@@ -34,9 +34,6 @@ Not sure which one you need? Start with the Docker option -  you can always move
 
 Both options run on the same Docker infrastructure underneath - the difference is only whether you use the pre-built image or build your own WAR first.
 
-
-
-
 ## Getting Started: Create Your Own Repository
 
 Regardless of which option you choose, you start the same way: create your **own, independent repository** based on this template — don't fork it and don't clone it directly, since that would keep it linked to the Dynamixs.AI repository.
@@ -60,7 +57,7 @@ Regardless of which option you choose, you start the same way: create your **own
    git remote add origin <URL_OF_YOUR_NEW_REPO>
    git add .
    git commit -m "Initial commit from dynamixs-partner-template"
-   git push -u origin main
+   git push -u origin master
 ```
 
 Either way, you end up with your own repository containing all files (`/bpmn`, `/docker`, `/src`) — with no ongoing link back to Dynamixs.AI.
@@ -78,7 +75,7 @@ From here, both options continue inside *your* repository:
 
 ## Prerequisites
 
-The Dynamixs.AI – Partner Template contains artifacts and examples that help you to get started with your custom project.
+The Dynamixs.AI - Partner Template contains artifacts and examples that help you to get started with your custom project.
 
 This repository is organized as follows:
 
@@ -94,6 +91,8 @@ Before you start make sure you have:
 
 > **Becoming a Partner**
 > Contact us at partner@dynamixs.ai to get access to the Dynamixs.AI GitHub packages and partner resources.
+
+For development (custom build) you should be familiar with Java and Maven. 
 
 ---
 
@@ -112,6 +111,20 @@ services out of the box:
 | Apache Tika          | OCR service                   |
 | Collabora Online     | Document editing (WOPI)       |
 | Prometheus + Grafana | Monitoring                    |
+
+The setup uses environment variable placeholders like `${env.LLM_API_KEY}` which are resolved at runtime.
+You can define them in a file named `.env`:
+
+```
+# Docker Config
+PROJECT_PREFIX=dynamixs-ai-infinigate
+# LLM Config
+LLM_API_ENDPOINT=https://my.llama.cpp.foo.com/
+LLM_API_KEY=your-api-key-here
+```
+
+**Note:** The place holder `PROJECT_PREFIX` is mandatory  and should be set to your internal project name - e.g. dynamixs-ai-acme
+
 
 ### 2. Configure the LLM endpoint
 
@@ -164,14 +177,6 @@ Endpoints are referenced by their `id` in the BPMN process configuration:
     <endpoint-completion>my-llm</endpoint-completion>
     <endpoint-embeddings>my-embeddings</endpoint-embeddings>
 </imixs-ai>
-```
-
-Environment variable placeholders like `${env.LLM_API_KEY}` are resolved at runtime.
-You can define them in `./docker/.env`:
-
-```
-LLM_API_ENDPOINT=https://my.llama.cpp.foo.com/
-LLM_API_KEY=your-api-key-here
 ```
 
 ### 3. Docker Image
