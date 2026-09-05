@@ -35,12 +35,12 @@
   </bpmn2:extensionElements>
   <bpmn2:signal id="Signal_1" name="org.imixs.workflow.documents.OCRDocumentAdapter"/>
   <bpmn2:collaboration id="Collaboration_1" name="Default Collaboration">
-    <bpmn2:participant id="Participant_1" name="Inbox" processRef="Process_1">
-      <bpmn2:documentation id="documentation_m9vQ5g"><![CDATA[The system utilizes OCR to analyze incoming emails, automatically detecting their document type and language. Once analyzed, the email undergoes classification to determine its core intent. Finally, the email is dynamically routed to the appropriate operational workflow (Support, Sales, Finance, or Legal) for processing.]]></bpmn2:documentation>
+    <bpmn2:participant id="Participant_1" name="Document Import" processRef="Process_1">
+      <bpmn2:documentation id="documentation_m9vQ5g"><![CDATA[The system utilizes OCR to analyze incoming documents and emails, automatically detecting their document type and language. Once analyzed, the docuent undergoes classification to determine its core intent. Finally, the document is dynamically routed to the appropriate operational workflow (e.g Support, Sales, Finance, or Legal) for further processing.]]></bpmn2:documentation>
     </bpmn2:participant>
     <bpmn2:participant id="participant_GUMWGQ" name="Default Process" processRef="process_2"/>
   </bpmn2:collaboration>
-  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Inbox" processType="Private">
+  <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="Process_1" isExecutable="false" name="Document Import" processType="Private">
     <bpmn2:laneSet id="LaneSet_1" name="Lane Set 1">
       <bpmn2:lane id="Lane_2" name="Team">
         <bpmn2:flowNodeRef>BoundaryEvent_1</bpmn2:flowNodeRef>
@@ -420,7 +420,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
       <bpmn2:documentation id="documentation_AJkXtg"/>
       <bpmn2:conditionExpression id="formalExpression_WutmBw" xsi:type="bpmn2:tFormalExpression"><![CDATA[''!=workitem.getItemValueString('adapter.error_code'); ]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:task id="task_fQzylQ" imixs:processid="100" name="Import Document">
+    <bpmn2:task id="task_fQzylQ" imixs:processid="100" name="Import">
       <bpmn2:extensionElements>
         <imixs:item name="txteditorid" type="xs:string">
           <imixs:value><![CDATA[form_basic]]></imixs:value>

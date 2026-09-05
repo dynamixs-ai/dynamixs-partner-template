@@ -19,6 +19,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <!-- Wildfly  -->
+        <custom.webResources>src/main/webapp</custom.webResources>
+        <custom.unpackTypes>war</custom.unpackTypes>
+
         <!-- =========================================================
              STEP 2: Set the Dynamixs.AI platform version you target.
              Ask your Dynamixs.AI partner contact for the current version.
