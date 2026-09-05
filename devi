@@ -26,15 +26,19 @@ if [[ "$(strip_dash $1)" == "setup" ]]; then
     echo " starting dev environment..."
     mvn clean install -Pdebug
     cp ./*-app/target/*.war ./docker/deployments/
-    docker compose -f ./docker/docker-compose-dev.yaml up
+    docker compose -f ./docker-compose-dev.yaml up
 fi
 
 
 if [[ "$(strip_dash $1)" == "start" ]]; then
     echo " Start Dev Environment..."
-    docker compose -f ./docker/docker-compose.yaml up
+    docker compose -f ./docker-compose.yaml up
 fi
 
+if [[ "$(strip_dash $1)" == "docker" ]]; then
+    echo " Build Docker image..."
+    mvn clean install -DskipTests -Pdocker
+fi
 
 if [[ "$(strip_dash $1)" == "build" ]]; then
     echo " Build and Autodeploy..."

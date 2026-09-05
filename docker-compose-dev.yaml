@@ -15,6 +15,7 @@ services:
   #######################
   app:
     image: ghcr.io/dynamixs-ai/ai-platform:latest
+    #image: dynamixs-ai/dynamixs-ai-acme
     depends_on:
       - db
     environment:
