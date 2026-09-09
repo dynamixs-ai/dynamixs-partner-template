@@ -1093,6 +1093,7 @@ if (workitem.getItemValueInteger('$file.count')==0) {
         <agent.debug>true</agent.debug>
     </document>
 </eventlog>
+
 ]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
@@ -1242,11 +1243,11 @@ if (workitem.getItemValueInteger('$file.count')==0) {
     <bpmn2:sequenceFlow id="sequenceFlow_0tXCag" sourceRef="event_tSLHgg" targetRef="task_NLzV0A">
       <bpmn2:documentation id="documentation_I0tMsQ"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_bh4DIw" sourceRef="gateway_gd9zQQ" targetRef="event_LIKHpg">
-      <bpmn2:documentation id="documentation_0EzFwA"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_lhODPQ" sourceRef="event_LIKHpg" targetRef="task_uB6BGQ">
       <bpmn2:documentation id="documentation_DZmGQA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_bh4DIw" sourceRef="gateway_gd9zQQ" targetRef="event_LIKHpg">
+      <bpmn2:documentation id="documentation_0EzFwA"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Default Process" processType="Public">
