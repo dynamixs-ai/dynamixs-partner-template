@@ -217,7 +217,7 @@
 <imixs-form-section  label="Invoice Details:" columns="3"> 
   
      <item name="inovice.number" type="text"   label="Invoice ID" />
-     <item name="contact.name"   type="text"   label="Contact Name:" span="4" />
+     <item name="contact.name"   type="text"   label="Contact Name:" span="2" />
      <item name="customer.name"  type="text"   label="Customer Name" />
      <item name="customer.id"    type="text"   label="Customer ID" />
      <item name="product.name"   type="selectOneMenu"     label="Product Name :" 
@@ -442,6 +442,12 @@ result.isValid=true;
     </bpmn2:dataObject>
     <bpmn2:task id="task_ec0v7Q" imixs:processid="5100" name="Create Invoice">
       <bpmn2:extensionElements>
+        <imixs:item name="txteditorid" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
+        </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[in Prüfung]]></imixs:value>
         </imixs:item>
@@ -449,7 +455,7 @@ result.isValid=true;
           <imixs:value><![CDATA[typcn-download|typcn-info,imixs-info,icon-sub-ne]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>customer.name</itemvalue>,<itemvalue>invoice.number</itemvalue>, <itemvalue>pricing.total</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> (EUR <itemvalue>invoice.total</itemvalue>) <itemvalue>space.name</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -463,25 +469,10 @@ result.isValid=true;
           <imixs:value><![CDATA[namspaceteam]]></imixs:value>
           <imixs:value><![CDATA[namspacemanager]]></imixs:value>
         </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[Customer Name: <itemvalue>customer.name</itemvalue>
-Invoice Number: <itemvalue>invoice.number</itemvalue>
-Amount total:  <itemvalue>pricing.total</itemvalue>]]></imixs:value>
-        </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_6"><![CDATA[The invoice is created for the customer for his purchased items.]]></bpmn2:documentation>
+      <bpmn2:documentation id="Documentation_6"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
     </bpmn2:task>
     <bpmn2:task id="task_8eLtlw" imixs:processid="100" name="In Invoice Validation">
-      <bpmn2:extensionElements>
-        <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>customer.name</itemvalue>,<itemvalue>invoice.number</itemvalue>, <itemvalue>pricing.total</itemvalue>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[Customer Name: <itemvalue>customer.name</itemvalue>
-Invoice Number: <itemvalue>invoice.number</itemvalue>
-Amount total:  <itemvalue>pricing.total</itemvalue>]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_t5bIAA"/>
       <bpmn2:incoming>sequenceFlow_8odIaw</bpmn2:incoming>
     </bpmn2:task>
@@ -774,8 +765,11 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-download|typcn-credit-card,imixs-info,icon-sub-ne]]></imixs:value>
+        </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>customer.name</itemvalue>,<itemvalue>invoice.number</itemvalue>, <itemvalue>pricing.total</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> (EUR <itemvalue>invoice.total</itemvalue>) <itemvalue>space.name</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -790,13 +784,8 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
         </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[Customer Name: <itemvalue>customer.name</itemvalue>
-Invoice Number: <itemvalue>invoice.number</itemvalue>
-Amount total:  <itemvalue>pricing.total</itemvalue>]]></imixs:value>
-        </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_27"><![CDATA[Inovice is successfully generated.]]></bpmn2:documentation>
+      <bpmn2:documentation id="Documentation_27"><![CDATA[Inovice is successfully genrated.]]></bpmn2:documentation>
     </bpmn2:task>
     <bpmn2:intermediateCatchEvent id="intermediateCatchEvent_7VX7Pg" imixs:activityid="60" name="Send invoice to customer">
       <bpmn2:extensionElements>
@@ -856,11 +845,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Generated invoice is <itemvalue>invoice.number</itemvalue> forwarded to the customer Customer Name: <itemvalue>customer.name</itemvalue> via email.
-
-
-
-]]></imixs:value>
+          <imixs:value><![CDATA[Generated invoice is forwarded to the customer via email.]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -874,11 +859,20 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     </bpmn2:endEvent>
     <bpmn2:task id="task_7H90vw" imixs:processid="5200" name="Approval">
       <bpmn2:extensionElements>
+        <imixs:item name="txteditorid" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>txtlastcomment</itemvalue>]]></imixs:value>
+        </imixs:item>
         <imixs:item name="txtname" type="xs:string">
           <imixs:value><![CDATA[Rechnung erhalten]]></imixs:value>
         </imixs:item>
+        <imixs:item name="txtimageurl" type="xs:string">
+          <imixs:value><![CDATA[typcn-download|typcn-input-checked,imixs-warning,icon-sub-se]]></imixs:value>
+        </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>customer.name</itemvalue>,<itemvalue>invoice.number</itemvalue>, <itemvalue>pricing.total</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>cdtr.name</itemvalue> <itemvalue>invoice.number</itemvalue> (EUR <itemvalue>invoice.total</itemvalue>) <itemvalue>space.name</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>true</imixs:value>
@@ -892,13 +886,8 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
         </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[Customer Name: <itemvalue>customer.name</itemvalue>
-Invoice Number: <itemvalue>invoice.number</itemvalue>
-Amount total:  <itemvalue>pricing.total</itemvalue>]]></imixs:value>
-        </imixs:item>
       </bpmn2:extensionElements>
-      <bpmn2:documentation id="Documentation_3"><![CDATA[Since the total amount purchased is big amount, it needs Approval from Manager.]]></bpmn2:documentation>
+      <bpmn2:documentation id="Documentation_3"><![CDATA[<textblock><itemvalue>$workflowgroup</itemvalue> - <itemvalue>$workflowstatus</itemvalue></textblock>]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_FML91Q</bpmn2:incoming>
     </bpmn2:task>
     <bpmn2:task id="task_xyW0ZQ" imixs:processid="5400" name="Invoice generation sucessful">
@@ -924,11 +913,6 @@ Amount total:  <itemvalue>pricing.total</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="txttype" type="xs:string">
           <imixs:value><![CDATA[workitem]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtworkflowabstract" type="xs:string">
-          <imixs:value><![CDATA[Customer Name: <itemvalue>customer.name</itemvalue>
-Invoice Number: <itemvalue>invoice.number</itemvalue>
-Amount total:  <itemvalue>pricing.total</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="Documentation_27"><![CDATA[Inovice is successfully genrated.]]></bpmn2:documentation>
@@ -1144,6 +1128,12 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:endEvent id="endEvent_UT2PnQ" name="End">
       <bpmn2:documentation id="documentation_0v0EHg"/>
     </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_904FiQ" sourceRef="intermediateCatchEvent_n6aS3w" targetRef="task_ec0v7Q">
+      <bpmn2:documentation id="documentation_K46cbA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_pUAOwQ" sourceRef="task_7H90vw" targetRef="eventBasedGateway_HIk7ew">
+      <bpmn2:documentation id="documentation_WmlE0A"/>
+    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_p5HePw" sourceRef="eventBasedGateway_Xaztbw" targetRef="intermediateCatchEvent_anpJYA">
       <bpmn2:documentation id="documentation_VnMkng"/>
     </bpmn2:sequenceFlow>
@@ -1152,6 +1142,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_8fVVoA" sourceRef="eventBasedGateway_HIk7ew" targetRef="intermediateCatchEvent_Xlgk3Q">
       <bpmn2:documentation id="documentation_xR1h2g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_nvjgNQ" sourceRef="intermediateCatchEvent_anpJYA" targetRef="task_ec0v7Q">
+      <bpmn2:documentation id="documentation_RJ0rag"/>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_ji12sw" sourceRef="task_8eLtlw" targetRef="eventBasedGateway_Xaztbw">
       <bpmn2:documentation id="documentation_CyIb1Q"/>
@@ -1162,6 +1155,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="sequenceFlow_R805ZQ" sourceRef="eventBasedGateway_Xaztbw" targetRef="intermediateCatchEvent_dT0fIA">
       <bpmn2:documentation id="documentation_pF6o0w"/>
     </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_FvWThw" sourceRef="task_ec0v7Q" targetRef="task_8eLtlw">
+      <bpmn2:documentation id="documentation_eKK3Hw"/>
+    </bpmn2:sequenceFlow>
     <bpmn2:association id="association_Dq5yPA" sourceRef="dataObject_9qIkxg" targetRef="task_XYptBw">
       <bpmn2:documentation id="documentation_wFJb5g"/>
     </bpmn2:association>
@@ -1170,6 +1166,9 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_DlFT8Q" sourceRef="StartEvent_1" targetRef="task_XYptBw">
       <bpmn2:documentation id="documentation_N2aRzw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_FML91Q" sourceRef="intermediateCatchEvent_iMAcUw" targetRef="task_7H90vw">
+      <bpmn2:documentation id="documentation_sBZTGg"/>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_Ap1HKg" name="yes" sourceRef="exclusiveGateway_ykUV3w" targetRef="intermediateCatchEvent_iMAcUw">
       <bpmn2:documentation id="documentation_40YxRg"/>
@@ -1183,12 +1182,6 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="sequenceFlow_4Dev3g" sourceRef="intermediateCatchEvent_Xlgk3Q" targetRef="intermediateCatchEvent_BAwS6A">
       <bpmn2:documentation id="documentation_hjgYhg"/>
     </bpmn2:sequenceFlow>
-<<<<<<< HEAD
-    <bpmn2:sequenceFlow id="sequenceFlow_3AOB2g" sourceRef="eventBasedGateway_46MM3A" targetRef="intermediateCatchEvent_QAsYKw">
-      <bpmn2:documentation id="documentation_vaz28Q"/>
-    </bpmn2:sequenceFlow>
-=======
->>>>>>> 7bca7627f0f3e23ed4e3a026387de7f9303a7dff
     <bpmn2:sequenceFlow id="sequenceFlow_0DC0Ug" sourceRef="intermediateCatchEvent_fmMehw" targetRef="intermediateThrowEvent_IPdBbw">
       <bpmn2:documentation id="documentation_HQmjgQ"/>
     </bpmn2:sequenceFlow>
@@ -1216,25 +1209,6 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
     <bpmn2:sequenceFlow id="sequenceFlow_z5e0RA" sourceRef="intermediateCatchEvent_UHM02A" targetRef="endEvent_UT2PnQ">
       <bpmn2:documentation id="documentation_vOr6CQ"/>
     </bpmn2:sequenceFlow>
-<<<<<<< HEAD
-    <bpmn2:sequenceFlow id="sequenceFlow_FML91Q" sourceRef="intermediateCatchEvent_iMAcUw" targetRef="task_7H90vw">
-      <bpmn2:documentation id="documentation_sBZTGg"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_pUAOwQ" sourceRef="task_7H90vw" targetRef="eventBasedGateway_HIk7ew">
-      <bpmn2:documentation id="documentation_WmlE0A"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_904FiQ" sourceRef="intermediateCatchEvent_n6aS3w" targetRef="task_ec0v7Q">
-      <bpmn2:documentation id="documentation_K46cbA"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_FvWThw" sourceRef="task_ec0v7Q" targetRef="task_8eLtlw">
-      <bpmn2:documentation id="documentation_eKK3Hw"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_RCvIlw" sourceRef="intermediateCatchEvent_QAsYKw" targetRef="task_ec0v7Q">
-      <bpmn2:documentation id="documentation_Dge3vg"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_nvjgNQ" sourceRef="intermediateCatchEvent_anpJYA" targetRef="task_ec0v7Q">
-      <bpmn2:documentation id="documentation_RJ0rag"/>
-=======
     <bpmn2:intermediateCatchEvent id="intermediateCatchEvent_Q4lDvg" imixs:activityid="20" name="Rechnung DE anlegen">
       <bpmn2:extensionElements>
         <imixs:item name="keyarchive" type="xs:string">
@@ -1713,7 +1687,6 @@ Bei Fragen wenden Sie sich bitte an info@imixs.com
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_8odIaw" sourceRef="intermediateCatchEvent_I4bYgg" targetRef="task_8eLtlw">
       <bpmn2:documentation id="documentation_0Xaptw"/>
->>>>>>> 7bca7627f0f3e23ed4e3a026387de7f9303a7dff
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:process definitionalCollaborationRef="Collaboration_1" id="process_xPOlPw" name="Default Process" processType="Public">
