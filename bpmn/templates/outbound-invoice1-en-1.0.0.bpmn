@@ -211,7 +211,7 @@
 <imixs-form-section  label="Invoice Details:" columns="3"> 
   
      <item name="inovice.number" type="text"   label="Invoice ID" />
-     <item name="contact.name"   type="text"   label="Contact Name:" span="2" />
+     <item name="contact.name"   type="text"   label="Contact Name:" span="4" />
      <item name="customer.name"  type="text"   label="Customer Name" />
      <item name="customer.id"    type="text"   label="Customer ID" />
      <item name="product.name"   type="selectOneMenu"     label="Product Name :" 
