@@ -1,0 +1,276 @@
+{
+  "messages":
+    [
+      {
+        "role": "system",
+        "content": "\nYou are a workflow assistant.\n\nWORKFLOW LIST:\n# Model: contract-en-1.0\nThis Contract workflow help us in maintaing the contract details like leasing contracts, rental contracts etc.\n\n## Process: Contract\nThis Contract workflow help us in maintaing the contract details like leasing contracts, rental contracts etc.\n\n### Task: Contract  data Validation\nChecks the contract data provided.\n\n**Events:** \n  - Data Validated\n    All prerequisites are fulfilled\n    (modelversion: contract-en-1.0, taskid: 100, eventid: 20)\n  - Resubmission request\n    Customer Validation check detected some missing data. An Automatic Email is sent to Customer requesting to refill the form and resubmit it again.\n    (modelversion: contract-en-1.0, taskid: 100, eventid: 10)\n  - Import\n    (modelversion: contract-en-1.0, taskid: 100, eventid: 100)\n\n**Form Fields:**\n- `customer.ref` (type=custom): Customer Details:\n- `contract.type` (type=selectOneMenu, required): Contract Type:\n- `contract.id` (type=text): Contract ID:\n- `contract.customer.firstname` (type=text): Firstname:\n- `contract.customer.lastname` (type=text): Lastname:\n- `contract.customer.email` (type=text): Email:\n- `contract.vehicle.name` (type=text): Vehicle name:\n- `contract.plate.number` (type=text): Vehicle Number:\n- `contract.customer.zip` (type=text): ZIP:\n- `contract.customer.city` (type=text): City:\n- `contract.customer.country` (type=custom): Membership Country:\n- `contract.start.date` (type=date): Start date\n- `contract.end.date` (type=date): End date\n- `contract.payment.amount` (type=currency): Amount:\n- `contract.payment.bank.name` (type=text): Bank Name:\n- `contract.payment.iban` (type=text): IBAN:\n- `contract.payment.bic` (type=text): BIC:\n- `contract.payment.account.number` (type=text): Account Number:\n- `contract.payment.currency` (type=selectOneMenu): Currency:\n- `contract.deposit.amount` (type=currency): Deposit Amount:\n\n# Model: finemanagement-en-1.0\nThis is the fine management work flow which validates the traffic violations assigned by traffic authorities. The system cross-references the vehicle's number plate from the violation notice with active rental contracts to accurately identify the responsible driver.\n\n## Process: Fine Management\nThis is the fine management work flow which validates the traffic violations assigned by traffic authorities. The system cross-references the vehicle's number plate from the violation notice with active rental contracts to accurately identify the responsible driver.\nThis work flow is linked with contract workflow to identify the vehicle owner by validating the Rental acontracts and this workflow also contains payment sub work flow for completing payment process.\n\n### Task: Import\n$workflowgroup - $workflowstatus\n\n**Events:** \n  - Import\n    (modelversion: finemanagement-en-1.0, taskid: 1000, eventid: 100)\n\n# Model: logistics-en-1.0\nThis workflow outlines the specific procedures for preparing, picking, and packing goods within the warehouse once a signed agreement for a particular order is received.\n\n## Process: Logistics\nThis workflow outlines the specific procedures for preparing, picking, and packing goods within the warehouse once a signed agreement for a particular order is received.\n\n### Task: In Order Verification\nChecks the received order and verifies items, quantity, delivery address and delivery requirements for goods packing.\n\n**Events:** \n  - Submit\n    (modelversion: logistics-en-1.0, taskid: 100, eventid: 10)\n  - Import\n    Start the logistics management once the warehouse receives new signed agreement for particular order.\n    (modelversion: logistics-en-1.0, taskid: 100, eventid: 100)\n\n**Form Fields:**\n- `purchaseagreement.ref` (type=custom): Customer Details:\n- `customer.id` (type=text): Customer ID\n- `customer.company.name` (type=text): Customer Company name:\n- `customer.firstname` (type=text): Firstname:\n- `customer.lastname` (type=text): Lastname:\n- `customer.office` (type=text): Telephone:\n- `customer.mobile` (type=text): Mobile:\n- `customer.email` (type=text): E-Mail:\n- `customer.zip` (type=text): ZIP:\n- `customer.city` (type=text): City:\n- `customer.country` (type=custom): Membership Country:\n- `supplier.name` (type=text): Contact Person:\n- `order.id` (type=text): Order ID\n- `product.name` (type=selectOneMenu): Product Name :\n- `quantity.number` (type=text): Quantity :\n- `delivery.date` (type=date): Delivery Date: \n- `delivery.conditions` (type=text): Delivery Conditions: \n- `shippment.service` (type=selectOneMenu): Shipping Service :\n\n# Model: logisticsmanagement-en-1.0\nThis workflow outlines the specific procedures for preparing, picking, and packing goods within the warehouse once a signed agreement for a particular order is received.\n\n## Process: Logistics Management\nThis workflow outlines the specific procedures for preparing, picking, and packing goods within the warehouse once a signed agreement for a particular order is received.\n\n### Task: In Order Verification\nChecks the received order and verifies items, quantity, delivery address and delivery requirements for goods packing.\n\n**Events:** \n  - Submit\n    (modelversion: logisticsmanagement-en-1.0, taskid: 100, eventid: 10)\n  - Import\n    Start the logistics management once the warehouse receives new signed agreement for particular order.\n    (modelversion: logisticsmanagement-en-1.0, taskid: 100, eventid: 100)\n\n**Form Fields:**\n- `customer.id` (type=text): Customer ID\n- `customer.company.name` (type=text): Customer Company name:\n- `customer.firstname` (type=text): Firstname:\n- `customer.lastname` (type=text): Lastname:\n- `customer.office` (type=text): Telephone:\n- `customer.mobile` (type=text): Mobile:\n- `customer.email` (type=text): E-Mail:\n- `customer.zip` (type=text): ZIP:\n- `customer.city` (type=text): City:\n- `customer.country` (type=custom): Membership Country:\n- `supplier.name` (type=text): Contact Person:\n- `order.id` (type=text): Order ID\n- `product.name` (type=selectOneMenu): Product Name :\n- `quantity.number` (type=text): Quantity :\n- `delivery.date` (type=date): Delivery Date: \n- `delivery.conditions` (type=text): Delivery Conditions: \n- `shippment.service` (type=selectOneMenu): Shipping Service :\n\n# Model: offer-en-1.0\nThis workflow is specifically for preparing the offers, when the company receives the request from the customer about the particular product or services. This Workflow Prepares, creates, validates, aprroves the offers to customers and also monitors the response from the customer and records the response as well.\n\n## Process: Offer\nThis workflow is specifically for preparing the offers, when the company receives the request from the customer about the particular product or services.\n\n### Task: In Offer Preparation\nChecks all preliminary and prerequisite information needed inorder to generate an offer.\n\n**Events:** \n  - Submit\n    (modelversion: offer-en-1.0, taskid: 100, eventid: 10)\n  - Save\n    (modelversion: offer-en-1.0, taskid: 100, eventid: 200)\n\n**Form Fields:**\n- `customer.ref` (type=custom): Customer Details:\n- `customer.number` (type=text): Customer ID:\n- `customer.vatid` (type=text): VAT ID:\n- `customer.zip` (type=text): ZIP:\n- `customer.city` (type=text): City:\n- `customer.country` (type=custom): Membership Country:\n- `order.number` (type=text): Order Id:\n- `product.name` (type=selectOneMenu): Product Name :\n- `quantity.number` (type=text): Quantity :\n- `payment.terms` (type=text): Payment Terms: \n- `offer.validity` (type=text): Offer Validity: \n- `pricing.actual` (type=text): Sub Total:\n- `tax.charges` (type=text): Tax 19,00%: \n- `pricing.total` (type=text): Total Price: \n- `payment.currency` (type=selectOneMenu): Currency:\n- `shipping.company.name` (type=selectOneMenu): Shipping Company :\n- `shipping.terms` (type=text): Shipping Terms:\n- `delivery.date` (type=date): Delivery Date: \n- `delivery.conditions` (type=text): Delivery Conditions: \n\n# Model: offermanagement-en-1.0\nThis workflow is specifically for preparing the offers, when the company receives the request from the customer about the particular product or services. This Workflow Prepares, creates, validates, aprroves the offers to customers and also monitors the response from the customer and records the response as well.\n\n## Process: Offermanagement\nThis workflow is specifically for preparing the offers, when the company receives the request from the customer about the particular product or services.\n\n### Task: In Offer Preparation\nChecks all preliminary and prerequisite information needed inorder to generate an offer.\n\n**Events:** \n  - Submit\n    (modelversion: offermanagement-en-1.0, taskid: 100, eventid: 10)\n  - Save\n    (modelversion: offermanagement-en-1.0, taskid: 100, eventid: 200)\n\n**Form Fields:**\n- `customer.ref` (type=custom): Customer Details:\n- `customer.number` (type=text): Customer ID:\n- `customer.vatid` (type=text): VAT ID:\n- `customer.zip` (type=text): ZIP:\n- `customer.city` (type=text): City:\n- `customer.country` (type=custom): Membership Country:\n- `order.number` (type=text): Order Id:\n- `product.name` (type=selectOneMenu): Product Name :\n- `quantity.number` (type=text): Quantity :\n- `payment.terms` (type=text): Payment Terms: \n- `offer.validity` (type=text): Offer Validity: \n- `pricing.actual` (type=text): Sub Total:\n- `tax.charges` (type=text): Tax 19,00%: \n- `pricing.total` (type=text): Total Price: \n- `payment.currency` (type=selectOneMenu): Currency:\n- `shipping.company.name` (type=selectOneMenu): Shipping Company :\n- `shipping.terms` (type=text): Shipping Terms:\n- `delivery.date` (type=date): Delivery Date: \n- `delivery.conditions` (type=text): Delivery Conditions: \n\n# Model: outbound-invoice-en-1.0\nThe outbound invoice workflow verifies order and agreement details to generate and send accurate customer invoices.\n\n## Process: Outbound Invoice\nThe outbound invoice workflow verifies order and agreement details to generate and send accurate customer invoices. It imports agreement made between customer and supplier regarding the order enquired.\n\n### Task: In Billing Validation\nValidate billing data and forward further for invoice generation.\n\n**Events:** \n  - Stop\n    Vertrag beenden.\n    (modelversion: outbound-invoice-en-1.0, taskid: 5050, eventid: 30)\n  - Generate DE Invoice\n    New Invoice generated\n    (modelversion: outbound-invoice-en-1.0, taskid: 5050, eventid: 20)\n  - Generate EN Invoice\n    New Invoice in English generated.\n    (modelversion: outbound-invoice-en-1.0, taskid: 5050, eventid: 21)\n  - Save\n    (modelversion: outbound-invoice-en-1.0, taskid: 5050, eventid: 10)\n\n**Form Fields:**\n- `customer.ref` (type=custom): Customer Details:\n- `customer.number` (type=text): Customer ID:\n- `customer.vatid` (type=text): VAT ID:\n- `customer.zip` (type=text): ZIP:\n- `customer.city` (type=text): City:\n- `customer.country` (type=custom): Membership Country:\n- `invoice.number` (type=text): Invoice ID\n- `order.number` (type=text): Order.ID\n- `invoice.date` (type=date): Invoice Date: \n- `pricing.actual` (type=text): Sub Total:\n- `tax.charges` (type=text): Tax 19,00%: \n- `pricing.total` (type=text): Total Price: \n- `payment.currency` (type=selectOneMenu): Currency:\n- `payment.duedate` (type=date): Due Date:\n\n# Model: payment-en-1.0\nThis is the Payment sub-workflow used to validate the fine repayments submitted by drivers via email in response to traffic violations. The system extracts the transaction details from the incoming email to match the payment against the validated rental contract and violation records.\n\n\n\n## Process: Payment\nThis Payment workflow is to validate the fine repayments submitted by drivers via email in response to traffic violations. The system extracts the transaction details from the incoming email to match the payment against the validated rental contract and violation records.\n\nThis workflow is used as subworkflow in the finemanagement workflow.\n\n### Task: AI Summarization\nHey you have received an Email with ID No: fine.id, Vehicle Number: fine.plate.number.\n\n**Events:** \n  - Open\n    Opens the Payment received\n    (modelversion: payment-en-1.0, taskid: 100, eventid: 100)\n  - summarize\n    Summarizes OCR scanned document.\n    (modelversion: payment-en-1.0, taskid: 100, eventid: 200)\n\n**Form Fields:**\n- `payment.summary` (type=custom): \n\n# Model: purchaseagreement-en-1.0\nThis workflow is specifically for preparing the Purchase Agreement between the company and the customer once the customer accepts the offer generated by the company for the purchase of a particular product or service.\n\n## Process: PurchaseAgreement\nThis workflow outlines the process for drafting the Purchase Agreement once a customer accepts a company-generated offer for products or services.\n\n### Task: In Agreement Preperation\nChecks all preliminary and prerequisite information needed inorder to prepare an Agreement.\n\n**Events:** \n  - Submit\n    (modelversion: purchaseagreement-en-1.0, taskid: 100, eventid: 10)\n  - Import\n    Start the purchase agreement once the offer provided by the company is accepted by customer for purchase of particular product or service.\n    (modelversion: purchaseagreement-en-1.0, taskid: 100, eventid: 100)\n  - save\n    (modelversion: purchaseagreement-en-1.0, taskid: 100, eventid: 200)\n\n**Form Fields:**\n- `customer.ref` (type=custom): Customer Details:\n- `customer.number` (type=text): Customer ID:\n- `customer.vatid` (type=text): VAT ID:\n- `customer.zip` (type=text): ZIP:\n- `customer.city` (type=text): City:\n- `customer.country` (type=custom): Membership Country:\n- `offer.ref` (type=custom): Order Details: \n- `order.number` (type=text): Order Id:\n- `offer.number` (type=text): Offer Id:\n- `product.name` (type=selectOneMenu): Product Name :\n- `quantity.number` (type=text): Quantity :\n- `payment.terms` (type=text): Payment Terms: \n- `pricing.actual` (type=text): Sub Total:\n- `tax.charges` (type=text): Tax 19,00%: \n- `pricing.total` (type=text): Total Price: \n- `payment.currency` (type=selectOneMenu): Currency:\n- `offer.validity` (type=text): Offer Validity: \n- `shipping.company.name` (type=selectOneMenu): Shipping Company :\n- `shipping.terms` (type=text): Shipping Terms:\n- `delivery.date` (type=date): Delivery Date: \n- `delivery.conditions` (type=text): Delivery Conditions: \n\n\n\nYOUR TASK:\n\n1. Workflow Matching Logic\n   Evaluate the document text against the WORKFLOW LIST above:\n   - Identify the core intent of the document (e.g. an order, an inquiry, a complaint, an offer, an agreement, a purchase)\n     and match it against the purpose/goal described for each Model/Process/Task in the WORKFLOW LIST.\n   - If the intent clearly matches exactly one Task/Event group, extract its `modelversion`, `taskid`, and `eventid`.\n   - If no Task/Event group matches clearly, leave `document.modelversion`, `document.taskid`, and `document.eventid` empty.\n\n2. Extract the following fields from the document:\n   - document.date: Date of the document\n   - document.company: The company name of the sender. (Not Dr. Dietrich Müller GmbH)\n   - document.reference: An optional reference number (e.g. customer number, order number, purchase order number, etc.)\n   - document.topic: Construct the value exactly according to the following pattern:\n     \"{date} {company}\" – where {date} is to be given in YYYY-MM-DD format –\n     optionally supplemented with \" - Ref: {reference number}\",\n     if a unique reference/document number is present in the document.\n     Do NOT use the content/subject matter of the document (e.g. no article, part, or product descriptions) – only the four elements mentioned above.\n     Example: \"2026-08-04 Order Steinert GmbH - Ref: 200PO26-108104\"\n   - document.sender: The email address of the sending person, if the document is an email\n     or contains a clear \"Von:\"/\"From:\" header. This field is optional. Leave this field empty\n     if no corresponding sender email address can be identified in the document.\n   - document.goal: The purpose of the matched workflow (empty if none was matched).\n   - comment.user:\n     - If a workflow could be assigned: A short sentence confirming the assignment,\n       e.g. \"{company} is inquiring about {topic} – forwarded to the {process} workflow.\"\n     - If no workflow could be assigned: Exactly ONE targeted question to the user, the answer to which would help\n       assign the document to a workflow.\n\n3. Output — do not output any explanatory text, proceed directly to the tool call:\n   Call `update_workitem` with the following fields:\n   `document.date`, `document.company`, `document.reference`, `document.topic`, `document.sender`,\n   `document.country`, `document.language`, `document.modelversion`, `document.taskid`, `document.eventid`,\n   `document.goal`, `comment.user`.\n   If no workflow matches, leave `document.modelversion`, `document.taskid`, and `document.eventid` empty,\n   but still submit all other fields.\n\n4. Decide:\n   - YES (workflow was assigned) → call `task_complete`.\n   - NO (no workflow assigned) → respond in free text, repeating exactly the same question already written in `comment.user`.\n\n  ",
+      },
+      {
+        "role": "user",
+        "content": "Kennzeichen M-KA4311, (D), OB-Nr ...\n-202,25€\nWero - Betrag me\nFU CW}\nTeile jetzt deine Ausgaben\nmit Freunden auf, ohne viel zu\notal a\nJetzt registrieren\nDY=t eT\nBuchungsdatum\n20.03.2026\nWertstellungsdatum\n20.03.2026\nName\nAMT FUR FINANZDIENSTLEISTUNGEN\nDES KANTONS ST.GALLEN\nVerwendungszweck\nKennzeichen M-KA4311, (D), OB-Nr\n9001131060824 DATUM 20.03.2026,\nMyers M Ul al",
+      },
+    ],
+  "tools":
+    [
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "find_skill",
+            "description": "Searches for available skills by category. Returns a list of skills with their name, description and uniqueid. Use the name and description to select the most appropriate skill for the current task. Then call get_skill with the uniqueid to retrieve the full skill content.",
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "category":
+                      {
+                        "type": "string",
+                        "description": "The skill category to search for",
+                      },
+                  },
+                "required": ["category"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "aggregate_workitems",
+            "description": "Searches for workitems by a set of index field/value criteria and computes a single aggregate value (sum, count, avg, min or max) over a numeric field of the matches. The computation always runs server-side - individual field values of the matched workitems are never returned. Each criteria value can be a literal, or reference a field of the CURRENT workitem using <item>itemname</item> syntax instead of retyping its value, e.g. <item>$uniqueid</item> - always prefer this for identifiers already present on the current workitem. A 'filter' can further narrow down the matches for special cases not covered by criteria - use a non-empty value only if the task instructions explicitly give you a filter expression, and pass it through exactly as given; never invent one yourself. This field is required - pass an empty value when no filter is needed. Which index field names, numeric fields, and filter expressions are available is described in the current task instructions. Do not attempt to compute sums, counts or averages yourself from other tool results - always use this tool for that purpose.",
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "criteria":
+                      {
+                        "type": "object",
+                        "description": 'Map of index field name to search value, combined with AND. A value is either a literal, or contains <item>itemname</item> to reference a field of the current workitem instead of retyping its value - always prefer this for identifiers already present on the current workitem, e.g. <item>$uniqueid</item>. Example: {"$workflowgroup": "Efforts", "$workitemref": "<item>$uniqueid</item>"}',
+                        "additionalProperties": { "type": "string" },
+                      },
+                    "filter":
+                      {
+                        "type": "string",
+                        "description": "Additional condition to narrow down the selected workitems further, applied after criteria, or an empty value when no filter is needed. Only use a non-empty value if the task instructions explicitly provide a filter expression - copy it exactly as given, do not construct or modify it yourself. This field must always be present in the call, even when empty. Example: (service.billable:true)",
+                      },
+                    "aggregateField":
+                      {
+                        "type": "string",
+                        "description": "Name of the numeric field to aggregate, e.g. 'service.hours'. Required unless function is 'count'.",
+                      },
+                    "function":
+                      {
+                        "type": "string",
+                        "enum": ["sum", "count", "avg", "min", "max"],
+                        "description": "The aggregation function to apply.",
+                      },
+                    "targetField":
+                      {
+                        "type": "string",
+                        "description": "Optional name of a field on the current workitem the computed scalar result is written into. If omitted, the result is only returned, not persisted.",
+                      },
+                    "matchIdsField":
+                      {
+                        "type": "string",
+                        "description": "Optional name of a field on the current workitem the list of matched $uniqueids is written into, for traceability. Independent of targetField.",
+                      },
+                  },
+                "required": ["criteria", "function", "filter"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "task_complete",
+            "description": "Call this when your task is fully completed and no more user input is needed. Do NOT call this if you still have open questions for the user.",
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "result":
+                      {
+                        "type": "string",
+                        "description": "The final result or summary of the completed task",
+                      },
+                  },
+                "required": ["result"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "update_workitem",
+            "description": "Writes a set of field/value/type entries directly into the current workitem. Which field names are available and what they mean is described in the current task instructions. Fields starting with '$' are reserved and will be ignored. Date values must be formatted as ISO 8601 (YYYY-MM-DD). Amount/number values must be formatted as plain decimal numbers (e.g. '46.77'), without currency symbols or thousands separators.",
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "values":
+                      {
+                        "type": "object",
+                        "description": 'Map of workitem field name to value and type. Example: {"payment.iban": {"value": "DE98500109000022175010", "type": "string"}, "payment.amount": {"value": "46.77", "type": "double"}, "payment.duedate": {"value": "2026-06-27", "type": "date"}}',
+                        "additionalProperties":
+                          {
+                            "type": "object",
+                            "properties":
+                              {
+                                "value":
+                                  {
+                                    "type": "string",
+                                    "description": "The value as a string. For type 'date' use ISO 8601 (YYYY-MM-DD). For type 'double' use a plain decimal number.",
+                                  },
+                                "type":
+                                  {
+                                    "type": "string",
+                                    "enum": ["string", "double", "date"],
+                                    "description": "Target data type of the field",
+                                  },
+                              },
+                            "required": ["value", "type"],
+                          },
+                      },
+                  },
+                "required": ["values"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "get_skill",
+            "description": "Retrieves the full content of a skill by its uniqueid. The uniqueid is provided by a prior find_skill call. The returned content contains the full instructions for the current task.",
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "uniqueid":
+                      {
+                        "type": "string",
+                        "description": "The uniqueid of the skill as returned by find_skill",
+                      },
+                  },
+                "required": ["uniqueid"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "link_workitem",
+            "description": 'Searches for workitems by a set of index field/value criteria (same mechanism as find_workitem) and links every match directly to the current workitem (max 10 matches). Use this instead of find_workitem when the goal is to actually create the link, not just look at candidates. Each criteria value can be a literal string, or can reference a field of the CURRENT workitem using <item>itemname</item> syntax instead of retyping its value - e.g. <item>$uniqueid</item> or <item>fine.plate.number</item>, optionally combined with surrounding literal text such as "INV-<item>project.id</item>". Always prefer <item>itemname</item> over retyping a value yourself whenever that value already exists as a field on the current workitem - this is especially important for long or unstructured values such as $uniqueid, where retyping risks a transcription mistake that would silently produce a wrong result set. An optional ''filter'' can further narrow down the matches for special cases not covered by criteria - only use it if the task instructions explicitly give you a filter expression, and pass it through exactly as given; never invent one yourself. Which index field names and filter expressions are available is described in the current task instructions.',
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "criteria":
+                      {
+                        "type": "object",
+                        "description": 'Map of index field name to search value, combined with AND. A value is either a literal, or contains <item>itemname</item> to reference a field of the current workitem instead of retyping its value - always prefer this for identifiers already present on the current workitem, e.g. <item>$uniqueid</item>. Example: {"$workflowgroup": "contract", "id": "M-AH-4524"} or {"$workflowgroup": "Efforts", "$workitemref": "<item>$uniqueid</item>"}',
+                        "additionalProperties": { "type": "string" },
+                      },
+                    "filter":
+                      {
+                        "type": "string",
+                        "description": 'Optional additional condition to narrow down the selected workitems further, applied after criteria. Only use this if the task instructions explicitly provide a filter expression - copy it exactly as given, do not construct or modify it yourself. Example: "(service.billable:true)"',
+                      },
+                    "refField":
+                      {
+                        "type": "string",
+                        "description": "Optional name of an additional workitem field to store the link(s) in. The link is always also stored in '$workitemref' regardless of this parameter.",
+                      },
+                  },
+                "required": ["criteria"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "find_workitem",
+            "description": 'Searches for workitems by a set of index field/value criteria, combined with AND. Each criteria value can be a literal string, or can reference a field of the CURRENT workitem using <item>itemname</item> syntax instead of retyping its value - e.g. <item>$uniqueid</item> or <item>fine.plate.number</item>. The actual value is then read directly from the current workitem before the search runs. A <item>itemname</item> reference can also be combined with surrounding literal text, e.g. "INV-<item>project.id</item>". Always prefer <item>itemname</item> over retyping a value yourself whenever that value already exists as a field on the current workitem - this is especially important for long or unstructured values such as $uniqueid, where retyping risks a transcription mistake that would silently produce a wrong result set. An optional ''filter'' can further narrow down the matches for special cases not covered by criteria - only use it if the task instructions explicitly give you a filter expression, and pass it through exactly as given; never invent one yourself. Returns a list of matching workitems with their $uniqueid and $workflowsummary (max 20 results). This is a read-only lookup - it does not modify the current workitem. Which index field names and filter expressions are available is described in the current task instructions. Use link_workitem instead if the goal is to link a match to the current workitem.',
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "criteria":
+                      {
+                        "type": "object",
+                        "description": 'Map of index field name to search value, combined with AND. A value is either a literal, or contains <item>itemname</item> to reference a field of the current workitem instead of retyping its value - always prefer this for identifiers already present on the current workitem, e.g. <item>$uniqueid</item>. Example: {"$workflowgroup": "contract", "id": "M-AH-4524"} or {"$workflowgroup": "Efforts", "$workitemref": "<item>$uniqueid</item>"}',
+                        "additionalProperties": { "type": "string" },
+                      },
+                    "filter":
+                      {
+                        "type": "string",
+                        "description": 'Optional additional condition to narrow down the selected workitems further, applied after criteria. Only use this if the task instructions explicitly provide a filter expression - copy it exactly as given, do not construct or modify it yourself. Example: "(service.billable:true)"',
+                      },
+                  },
+                "required": ["criteria"],
+              },
+          },
+      },
+      {
+        "type": "function",
+        "function":
+          {
+            "name": "aggregate_dataview",
+            "description": "Computes a single aggregate value (sum, count, avg, min or max) over a numeric field of the workitems returned by a predefined DataView, identified only by its name. The computation always runs server-side - individual field values of the matched workitems are never returned. A 'filter' can further narrow down the matches for special cases not covered by the DataView itself - use a non-empty value only if the task instructions explicitly give you a filter expression, and pass it through exactly as given; never invent one yourself. This field is required - pass an empty value when no filter is needed. The DataView name, aggregateField, and any filter expression must come from the task instructions - never guess or invent them. Do not attempt to compute sums, counts or averages yourself from other tool results - always use this tool for that purpose.",
+            "parameters":
+              {
+                "type": "object",
+                "properties":
+                  {
+                    "dataView":
+                      {
+                        "type": "string",
+                        "description": "Name of the DataView to use, exactly as given in the task instructions.",
+                      },
+                    "filter":
+                      {
+                        "type": "string",
+                        "description": "Additional condition to narrow down the DataView's results further, or an empty value when no filter is needed. Only use a non-empty value if the task instructions explicitly provide a filter expression - copy it exactly as given, do not construct or modify it yourself. This field must always be present in the call, even when empty. Example: (service.billable:true)",
+                      },
+                    "aggregateField":
+                      {
+                        "type": "string",
+                        "description": "Name of the numeric field to aggregate, e.g. 'service.hours'. Required unless function is 'count'.",
+                      },
+                    "function":
+                      {
+                        "type": "string",
+                        "enum": ["sum", "count", "avg", "min", "max"],
+                        "description": "The aggregation function to apply.",
+                      },
+                    "targetField":
+                      {
+                        "type": "string",
+                        "description": "Optional name of a field on the current workitem the computed scalar result is written into. If omitted, the result is only returned, not persisted.",
+                      },
+                    "matchIdsField":
+                      {
+                        "type": "string",
+                        "description": "Optional name of a field on the current workitem the list of matched $uniqueids is written into, for traceability. Independent of targetField.",
+                      },
+                  },
+                "required": ["dataView", "function", "filter"],
+              },
+          },
+      },
+    ],
+  "tool_choice": "auto",
+  "n_predict": 4096,
+  "temperature": 0,
+}

@@ -154,7 +154,7 @@
         <imixs:item name="txtactivityresult" type="xs:string">
           <imixs:value><![CDATA[<item name="comment" ignore="true"/>
 <imixs-ocr name="RMETA">
-  <filepattern>(pdf|PDF|eml|msg)$</filepattern>
+  <filepattern>(pdf|PDF|eml|msg|jpg|png)$</filepattern>
   <embeddingsPattern>(pdf|PDF)$</embeddingsPattern>
   <maxpdfpages>20</maxpdfpages>
   <option>X-Tika-PDFocrStrategy=AUTO</option>
@@ -195,9 +195,6 @@
       </bpmn2:timerEventDefinition>
       <bpmn2:documentation id="documentation_xBAZWg"/>
     </bpmn2:boundaryEvent>
-    <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="BoundaryEvent_1" targetRef="IntermediateCatchEvent_3">
-      <bpmn2:documentation id="documentation_yRaNRg"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:dataObject id="dataObject_FS1r0Q" imixs:datatype="form-data" name="Form">
       <bpmn2:documentation id="documentation_ccrk4A"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
@@ -246,9 +243,6 @@
 Assign documents to process 'Front Desk']]></bpmn2:text>
       <bpmn2:documentation id="documentation_vNKNMA"/>
     </bpmn2:textAnnotation>
-    <bpmn2:sequenceFlow id="sequenceFlow_VlPVJg" sourceRef="IntermediateCatchEvent_3" targetRef="gateway_gd9zQQ">
-      <bpmn2:documentation id="documentation_mCzUDA"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_PgyOMw" sourceRef="task_uB6BGQ" targetRef="gateway_qDAhHw">
       <bpmn2:documentation id="documentation_8vVNCA"/>
     </bpmn2:sequenceFlow>
@@ -379,7 +373,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>adapter.error_code</itemvalue>: <itemvalue>adapter.error_message</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[Error <itemvalue>adapter.error_code</itemvalue>: <itemvalue>adapter.error_message</itemvalue>]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -609,7 +603,7 @@ YOUR TASK:
    - NO (no workflow assigned) → respond in free text, repeating exactly the same question already written in `comment.user`.
 ]]]]><![CDATA[>
   </prompt>
-  <prompt role="user"><FILECONTEXT>(?i)^.+\.(eml|msg|pdf)$</FILECONTEXT></prompt>
+  <prompt role="user"><FILECONTEXT>(?i)^.+\.(eml|msg|pdf|jpg|png)$</FILECONTEXT></prompt>
 </PromptDefinition>]]></bpmn2:documentation>
     </bpmn2:dataObject>
     <bpmn2:association id="association_je321g" sourceRef="task_uB6BGQ" targetRef="dataObject_QalZ1A">
@@ -1029,9 +1023,6 @@ if (workitem.getItemValueInteger('$file.count')==0) {
     <bpmn2:association id="association_qJDgXA" sourceRef="dataObject_84FZxg" targetRef="task_jXzK6g">
       <bpmn2:documentation id="documentation_ep0xcg"/>
     </bpmn2:association>
-    <bpmn2:sequenceFlow id="sequenceFlow_5UDImg" sourceRef="gateway_qDAhHw" targetRef="event_tSLHgg">
-      <bpmn2:documentation id="documentation_w2af0g"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:intermediateCatchEvent id="event_LIKHpg" imixs:activityid="100" name="Start AI Assistant">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
@@ -1168,7 +1159,7 @@ if (workitem.getItemValueInteger('$file.count')==0) {
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Starte Rechnungseingang]]></imixs:value>
+          <imixs:value><![CDATA[Restared analysis]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyupdateacl" type="xs:boolean">
           <imixs:value>false</imixs:value>
@@ -1249,14 +1240,23 @@ if (workitem.getItemValueInteger('$file.count')==0) {
       <bpmn2:incoming>sequenceFlow_0tXCag</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_LZX10Q</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="sequenceFlow_0tXCag" sourceRef="event_tSLHgg" targetRef="task_NLzV0A">
-      <bpmn2:documentation id="documentation_I0tMsQ"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_lhODPQ" sourceRef="event_LIKHpg" targetRef="task_uB6BGQ">
       <bpmn2:documentation id="documentation_DZmGQA"/>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_bh4DIw" sourceRef="gateway_gd9zQQ" targetRef="event_LIKHpg">
       <bpmn2:documentation id="documentation_0EzFwA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="BoundaryEvent_1" targetRef="IntermediateCatchEvent_3">
+      <bpmn2:documentation id="documentation_yRaNRg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_VlPVJg" sourceRef="IntermediateCatchEvent_3" targetRef="gateway_gd9zQQ">
+      <bpmn2:documentation id="documentation_mCzUDA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_0tXCag" sourceRef="event_tSLHgg" targetRef="task_NLzV0A">
+      <bpmn2:documentation id="documentation_I0tMsQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_5UDImg" sourceRef="gateway_qDAhHw" targetRef="event_tSLHgg">
+      <bpmn2:documentation id="documentation_w2af0g"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Default Process" processType="Public">

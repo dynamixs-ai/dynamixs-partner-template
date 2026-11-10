@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:BPMN2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:imixs="http://www.imixs.org/bpmn2" xmlns:open-bpmn="http://open-bpmn.org/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="org.openbpmn" exporterVersion="1.0.0" targetNamespace="http://open-bpmn.org">
+  <bpmn2:extensionElements>
+    <imixs:item name="txtworkflowmodelversion" type="xs:string">
+      <imixs:value><![CDATA[payment-en-1.0]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txtplugins" type="xs:string">
+      <imixs:value><![CDATA[org.imixs.workflow.documents.OCRDocumentPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.office.plugins.WorkitemLinkPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ResultPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.RulePlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.ProfilePlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.plugins.CommentPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.plugins.SequenceNumberPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.team.TeamPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.DeputyPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.OwnerPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.HistoryPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.LogPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.ApplicationPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.marty.profile.MailPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.IntervalPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.workflow.engine.plugins.SplitAndJoinPlugin]]></imixs:value>
+      <imixs:value><![CDATA[org.imixs.ai.rag.workflow.RAGIndexPlugin]]></imixs:value>
+    </imixs:item>
+    <imixs:item name="txtfieldmapping" type="xs:string">
+      <imixs:value><![CDATA[Creator|$creator]]></imixs:value>
+      <imixs:value><![CDATA[Owner|$owner]]></imixs:value>
+      <imixs:value><![CDATA[Editor|$editor]]></imixs:value>
+    </imixs:item>
+  </bpmn2:extensionElements>
+  <bpmn2:collaboration id="collaboration_1" name="Default Collaboration">
+    <bpmn2:participant id="participant_i00umQ" name="Default Process" processRef="process_1"/>
+    <bpmn2:participant id="participant_b0ZB6w" name="Payment" processRef="process_W6vEog">
+      <bpmn2:documentation id="documentation_MwcHNw"><![CDATA[This Payment workflow is to validate the fine repayments submitted by drivers via email in response to traffic violations. The system extracts the transaction details from the incoming email to match the payment against the validated rental contract and violation records.
+
+This workflow is used as subworkflow in the finemanagement workflow.]]></bpmn2:documentation>
+    </bpmn2:participant>
+  </bpmn2:collaboration>
+  <bpmn2:process definitionalCollaborationRef="collaboration_1" id="process_1" name="Default Process" processType="Public">
+    <bpmn2:documentation id="documentation_0tkjlg"><![CDATA[This is the Payment sub-workflow used to validate the fine repayments submitted by drivers via email in response to traffic violations. The system extracts the transaction details from the incoming email to match the payment against the validated rental contract and violation records.
+
+]]></bpmn2:documentation>
+    <bpmn2:extensionElements>
+      <open-bpmn:auto-align>true</open-bpmn:auto-align>
+    </bpmn2:extensionElements>
+  </bpmn2:process>
+  <bpmn2:process definitionalCollaborationRef="collaboration_1" id="process_W6vEog" isExecutable="true" name="Payment" processType="Private">
+    <bpmn2:laneSet id="laneset_TSyZkA" name="Lane Set">
+      <bpmn2:lane id="lane_lzK15Q" name="SoftwareSystemSupport">
+        <bpmn2:documentation id="documentation_hsYmDQ"/>
+        <bpmn2:flowNodeRef>event_6xCj2g</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_RjumqA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_6df4bw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_MuxmWQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_rITI2A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_bKSyqQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_0WvrSg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_GGb9RQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_9eYrew</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_DqTGPw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_tktNhw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_KB0Qhw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>textAnnotation_VNAX5g</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_gzO04w</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_WNqoxw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_Kqb1BA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_JCHBIg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_akVcbw</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_Ub1hoQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_clVJAQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_6bBjGQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_rXriJA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_nLQmAA</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_wmXMzg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>textAnnotation_W6Ah1A</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_5jEfXg</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>event_GcPFBw</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+    </bpmn2:laneSet>
+    <bpmn2:startEvent id="event_5jEfXg" name="Start">
+      <bpmn2:documentation id="documentation_O06GKQ"/>
+      <bpmn2:outgoing>sequenceFlow_CJE3iQ</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="task_6bBjGQ" imixs:processid="100" name="AI Summarization">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Fine Details:
+Fine Id : <itemvalue>fine.id</itemvalue>
+
+Vehicle Details:
+Vehicle Plate Number :<itemvalue>fine.plate.number</itemvalue>,
+Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>
+
+Payment Details:
+Reference number: <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.category.name</itemvalue> <itemvalue>fine.plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_vvhU6g"><![CDATA[Hey you have received an Email with ID No: <itemvalue>fine.id</itemvalue>, Vehicle Number: <itemvalue>fine.plate.number</itemvalue>. ]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_JxJnfg</bpmn2:incoming>
+      <bpmn2:incoming>association_zKhaZg</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="event_WNqoxw" imixs:activityid="200" name="summarize">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Validation check cleared]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Required data is provided is validated.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<imixs-ai name="PROMPT">
+  <endpoint>api.llama.cpp.imixs.com</endpoint>
+  <result-item>payment.summary</result-item>
+  <debug>true</debug>
+</imixs-ai>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[AI summarizes the OCR scanning document.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_tJ3gjQ"><![CDATA[Summarizes OCR scanned document.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_tJ0FBQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_GY0R0w</bpmn2:outgoing>
+      <bpmn2:outgoing>association_DtmExw</bpmn2:outgoing>
+      <bpmn2:signalEventDefinition id="signalEventDefinition_4R0LdA" signalRef="signal_2"/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:intermediateCatchEvent id="event_6xCj2g" imixs:activityid="140" name="Accept">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[New Payment]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Transferred payment details matches with desired fine payment details. Payment gets accepted. ]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<split name="origin_update">
+       <modelversion>finemanagement-en-1.0</modelversion>
+	<event>210</event>
+        <task>(1\d{3})</task>
+	<items>(^transferred)</items>
+        <debug>true</debug>
+</split>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_iepIIw"><![CDATA[Transferred payment details matches with desired fine payment details. Payment gets accepted.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_ha7MAw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_uzDSHA</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:task id="task_RjumqA" imixs:processid="170" name="Case Closed">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.plate.number</itemvalue>, Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Fine Details:
+Fine Id : <itemvalue>fine.id</itemvalue>
+
+Vehicle Details:
+Vehicle Plate Number :<itemvalue>fine.plate.number</itemvalue>,
+Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>
+
+Payment Details:
+Reference number: <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txttype" type="xs:string">
+          <imixs:value><![CDATA[workitemarchive]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_xwDG0Q"><![CDATA[Driver accepts violation and transfers the amount.
+Payment process is successful for the driver with Vehicle Number: <itemvalue>fine.plate.number</itemvalue>. Case with Fine Id <itemvalue>fine.id</itemvalue> is closed.]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_sgjE2A</bpmn2:outgoing>
+      <bpmn2:incoming>sequenceFlow_mg0Lqg</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="event_6df4bw" imixs:activityid="150" name="Email notification">
+      <bpmn2:extensionElements>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Email sent to customer about successful payment. ]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Paymnet sucessful-Account Updation with reference to <itemvalue>fine.id</itemvalue>  <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Dear Driver,
+
+Thank you for your payment. This email confirms that we have successfully received and processed your recent transaction.This payment fully settles the outstanding balance regarding your:Payment. Our system has been updated, and your account is now back in good standing regarding this specific matter. No further action is required from your side.You can view your updated balance and download your official payment receipt by logging into your bank account at any time.Thank you for your prompt cooperation in resolving this case.
+
+With best regards.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_zG03tQ"><![CDATA[An Email has been sent to customer about the successful payment.]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_BKYNmg</bpmn2:outgoing>
+      <bpmn2:messageEventDefinition id="messageEventDefinition_VXuujw" messageRef="message_1"/>
+      <bpmn2:incoming>sequenceFlow_ixy9qQ</bpmn2:incoming>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:endEvent id="event_MuxmWQ" name="End">
+      <bpmn2:documentation id="documentation_FTWUDw"/>
+      <bpmn2:incoming>sequenceFlow_sgjE2A</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:exclusiveGateway default="sequenceFlow_ha7MAw" gatewayDirection="Diverging" id="gateway_rITI2A" name="">
+      <bpmn2:documentation id="documentation_jjXWfw"><![CDATA[This Gateway is to decide whether the payment is accepted/rejected.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_Ppr9AA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_ha7MAw</bpmn2:outgoing>
+      <bpmn2:outgoing>sequenceFlow_YuBSmw</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="sequenceFlow_ha7MAw" sourceRef="gateway_rITI2A" targetRef="event_6xCj2g">
+      <bpmn2:documentation id="documentation_Bj6NrQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_bKSyqQ" imixs:activityid="130" name="Decline">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Payment process is not sucessful. Case is put still in hold.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[New Payment]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<split name="origin_update">
+       <modelversion>finemanagement-en-1.0</modelversion>
+       <event>220</event>
+       <task>(1\d{3})</task>
+       <items>(^transferred)</items>
+       <debug>true</debug>
+</split>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_rrixVQ"><![CDATA[Payment process is not sucessful for the driver with Vehicle Number: <itemvalue>fine.plate.number</itemvalue>. Case with FineId<itemvalue>fine.id</itemvalue> is put in still hold.
+
+]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_YuBSmw</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_sNKESg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_YuBSmw" sourceRef="gateway_rITI2A" targetRef="event_bKSyqQ">
+      <bpmn2:documentation id="documentation_JAiJhw"><![CDATA[Transferred bank details doesn't match with the desired payment details.]]></bpmn2:documentation>
+      <bpmn2:conditionExpression id="formalExpression_xJrB5g" xsi:type="bpmn2:tFormalExpression"><![CDATA[workitem.getItemValueDouble('transferred.payment.amount')!=workitem.getItemValueDouble('payment.amount');
+workitem.getItemValueString('transferred.payment.plate.number')!=workitem.getItemValueString('fine.plate.number');
+workitem.getItemValueString('transferred.payment.reference')!=workitem.getItemValueString('payment.reference');
+workitem.getItemValueString('transferred.payment.dbtr.iban')!=workitem.getItemValueString('payment.dbtr.iban');
+workitem.getItemValueString('transferred.payment.dbtr.bic')!=workitem.getItemValueString('payment.dbtr.bic');
+
+
+
+
+]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_0WvrSg" imixs:processid="180" name="Failed Transaction">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Fine Details:
+Fine Id : <itemvalue>fine.id</itemvalue>
+
+Vehicle Details:
+Vehicle Plate Number :<itemvalue>fine.plate.number</itemvalue>,
+Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>
+
+Payment Details:
+Reference number: <itemvalue>payment.reference.number</itemvalue>
+]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.plate.number</itemvalue>, Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_SQYMVw"><![CDATA[Payment processing is unsuccessful for the Vehicle: <itemvalue>fine.plate.number</itemvalue>. Case with Fine Id <itemvalue>fine.id</itemvalue> is put in still hold.
+
+<itemvalue>rejected.reason</itemvalue>
+
+]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_Pl6iSQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_k5d6ng</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_sNKESg" sourceRef="event_bKSyqQ" targetRef="event_tktNhw">
+      <bpmn2:documentation id="documentation_YFs93g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_GGb9RQ" imixs:processid="160" name="Payment Successful">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>fine.id</itemvalue> <itemvalue>fine.plate.number</itemvalue>, Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Fine Details:
+Fine Id : <itemvalue>fine.id</itemvalue>
+Violation:<itemvalue>fine.category.name</itemvalue>
+
+Vehicle Details:
+Vehicle Plate Number :<itemvalue>fine.plate.number</itemvalue>,
+Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>
+
+Payment Details:
+Reference number: <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_0bsuzg"><![CDATA[Update the Payment as successful.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_uzDSHA</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_ixy9qQ</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="sequenceFlow_uzDSHA" sourceRef="event_6xCj2g" targetRef="task_GGb9RQ">
+      <bpmn2:documentation id="documentation_SNvZIA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_9eYrew" imixs:activityid="160" name="Status Closed">
+      <bpmn2:extensionElements>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Updated in system as paid and case is closed.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_gYJkRw"><![CDATA[Update status as paid. Case is closed.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_BKYNmg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_mg0Lqg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_ixy9qQ" sourceRef="task_GGb9RQ" targetRef="event_6df4bw">
+      <bpmn2:documentation id="documentation_UILZxw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_mg0Lqg" sourceRef="event_9eYrew" targetRef="task_RjumqA">
+      <bpmn2:documentation id="documentation_0O3tWA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_sgjE2A" sourceRef="task_RjumqA" targetRef="event_MuxmWQ">
+      <bpmn2:documentation id="documentation_1V14Eg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:endEvent id="event_DqTGPw" name="End">
+      <bpmn2:documentation id="documentation_A4MvzQ"/>
+      <bpmn2:incoming>sequenceFlow_k5d6ng</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_k5d6ng" sourceRef="task_0WvrSg" targetRef="event_DqTGPw">
+      <bpmn2:documentation id="documentation_stMYyw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:intermediateCatchEvent id="event_tktNhw" imixs:activityid="170" name="Status Active">
+      <bpmn2:extensionElements>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[The case status is updated in system as active and payment is still due.]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_06mUjA"><![CDATA[Payment process is not sucessful for the driver with Vehicle Number: <itemvalue>fine.plate.number</itemvalue>. Case with FineId<itemvalue>fine.id</itemvalue> is put in still hold.
+]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_sNKESg</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_DR8xfQ</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_DR8xfQ" sourceRef="event_tktNhw" targetRef="event_rXriJA">
+      <bpmn2:documentation id="documentation_dLP9Hg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_BKYNmg" sourceRef="event_6df4bw" targetRef="event_9eYrew">
+      <bpmn2:documentation id="documentation_HLhquQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:task id="task_Ub1hoQ" imixs:processid="140" name="AI Extract">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtworkflowsummary" type="xs:string">
+          <imixs:value><![CDATA[<itemvalue>payment.id</itemvalue> <itemvalue>payment.reference</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtworkflowabstract" type="xs:string">
+          <imixs:value><![CDATA[Fine Details:
+Fine Id : <itemvalue>fine.id</itemvalue>
+
+Vehicle Details:
+Vehicle Plate Number :<itemvalue>fine.plate.number</itemvalue>,
+Vehicle Name: <itemvalue>fine.vehicle.name</itemvalue>
+
+Payment Details:
+Reference number: <itemvalue>payment.reference.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_3sijqg"><![CDATA[AI Extracts the scanned and summaraized data.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_GY0R0w</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_AI7amA</bpmn2:outgoing>
+      <bpmn2:incoming>association_QgZw8w</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:intermediateCatchEvent id="event_Kqb1BA" imixs:activityid="200" name="Extract data">
+      <bpmn2:extensionElements>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Validation check cleared]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[Required data is provided is validated.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtactivityresult" type="xs:string">
+          <imixs:value><![CDATA[<imixs-ai name="PROMPT">
+ <endpoint>api.llama.cpp.imixs.com</endpoint>
+ <result-event>XML</result-event>
+ <debug>true</debug>
+</imixs-ai>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Extracts Data]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_AbRJmw"><![CDATA[AI Extracts the summaraized data.]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_AI7amA</bpmn2:incoming>
+      <bpmn2:incoming>sequenceFlow_GHQBJQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_Ppr9AA</bpmn2:outgoing>
+      <bpmn2:signalEventDefinition id="signalEventDefinition_ty1Pbg" signalRef="signal_2"/>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_tJ0FBQ" sourceRef="event_GcPFBw" targetRef="event_WNqoxw">
+      <bpmn2:documentation id="documentation_RGsP8g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_GY0R0w" sourceRef="event_WNqoxw" targetRef="task_Ub1hoQ">
+      <bpmn2:documentation id="documentation_DotVjw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_AI7amA" sourceRef="task_Ub1hoQ" targetRef="event_Kqb1BA">
+      <bpmn2:documentation id="documentation_TOCCFQ"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_KB0Qhw" imixs:datatype="prompt-data" name="Prompt">
+      <bpmn2:documentation id="documentation_PKObIA"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+    <prompt_options>{"n_predict": 1024, "temperature": 0.2, "top_p": 0.9}</prompt_options>
+    <prompt role="system"><![CDATA[
+You are a Finance manager. You are reviewing drivers reply regarding a traffic violation.
+The input may contain:
+1. The original traffic violation notice.
+2. The drivers reply email.
+3. Optional attachments.
+
+Important:
+A NEW payment exists only if the drivers email or an attachment contains evidence of a completed payment, such as:
+
+Bank transfer, Transaction Confirmation, Payment receipt, Payment confirmation, Bank statement showing the transfer. If such evidence exists, extract transferred.payment.* fields from that evidence.
+
+If the driver email contains rejection of payment or rejection of violation leave transferred.payment.* as empty.
+
+Create a short briefing for each of the bellow topics with a short summary and bullet points for each key items:
+
+step 1:
+
+check whether driver rejects the violation.
+only if driver clearly states in email that:
+-they reject violation,
+-they were not drivers,
+-they are not responsible,
+-its not their vehicle
+-any other rejection arguments
+
+If rejected extract rejected reasons in rejected.reason 
+
+
+**Violation details:**
+Information about the Violation: [key items: why was the violation happened, violation date and time, violation location, vioaltion country, fine id]
+
+**Payment details:**
+Check whether driver has provided new proof of his payment. It may contain: bank transfer receipt, screenshot, payment confirmation, transaction receipt, bank confirmation.
+
+ Payment information: [key items: Amount, due date,IBAN, BIC, Account Number,Currency,Bank Name,Reference]
+
+
+Rules:
+- No sub-bullets or nested lists
+- No recommendations or action items
+- Fine-specific facts only
+- do not include 'Reasons for the Rejection' if the payment was accepted by the driver and payment was sucessful. Do not provide any information regarding rejection if payment is sucessful.
+- Donot populate 'payment' fields with original violation notice. Original violation notice is not proof of payment. If no proof of payment is provided leave all payment fields as empty.
+- Populate transferred.payment.* only if OCR text explicitly contains a payment confirmation, transfer receipt, transaction receipt, or proof of the payment from the driver.
+
+
+
+]]]]><![CDATA[>
+    </prompt>
+    <prompt role="user"><FILECONTEXT>^.+\.(pdf|jpg|png|eml)$</FILECONTEXT></prompt>
+</PromptDefinition>    ]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:dataObject id="dataObject_wmXMzg" imixs:datatype="form-data" name="Payment Details">
+      <bpmn2:documentation id="documentation_s4049Q"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section label="AI Assistant" path="ai/agent_status" />
+  <imixs-form-section columns="1" label="Payment Summary" readonly="true" >
+    <item name="payment.summary" type="custom" path="markdown" />
+  </imixs-form-section>
+</imixs-form>]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:dataObject id="dataObject_JCHBIg" imixs:datatype="prompt-data" name="Extract">
+      <bpmn2:documentation id="documentation_U2sA9g"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<PromptDefinition>
+  <options>{"n_predict": 4096, "temperature": 0 }</options>
+  <tools>task_complete</tools>
+  <prompt role="system"><![CDATA[
+
+You are a Finanace Manager. You have to review payment details received.
+The payment or violation can either be accepted or rejected by the driver. 
+
+**Payment or Violation rejected**
+
+When you see vioaltion rejection or payment rejection in the email from the driver, and no payment attachment is provided in the email then set transferred.rejection.payment as true otherwise set it as false. When transferred.rejection.payment is false then populate transferred.payment.* 
+if transferred.rejection.payment. is true then leave transferred.payment* empty.
+
+**Payment accepted**
+If driver sends you any payment and new payment has been received, then you donot need to give any rejection reasons. 
+
+Transfer the payment data into an XML object with the following structure:
+
+<payment>
+  <fine.category.name>...</fine.category.name>
+  <transferred.payment.plate.number type="text">...</transferred.payment.plate.number>
+  <transferred.payment.amount type="double">...</transferred.payment.amount>
+  <transferred.payment.duedate type="date">...</transferred.payment.duedate>
+  <transferred.payment.dbtr.iban>...</transferred.payment.dbtr.iban>
+  <transferred.payment.dbtr.bic>...</transferred.payment.dbtr.bic>
+  <transferred.payment.bank.name>...</transferred.payment.bank.name>
+  <transferred.payment.currency>...</transferred.payment.currency>
+  <transferred.payment.account.number>...</transferred.payment.account.number>
+  <transferred.payment.reference>...</transferred.payment.reference>
+  <rejected.reason>...></rejected.reason>
+  <rejection.payment>true|false</rejection.payment>
+ </payment>
+ 
+ - transferred payment amount ==>"transferred.payment.amount" (amount need to pay)
+ - transferred payment duedate ==>"transferred.payment.duedate" (before when amount should be paid)
+ - transferred paymnet iban ==>>"transferred.payment.iban"(IBAN given in the payment details, to where the customer need to transfer amount)
+ - transferred payment bic ==>>"transferred.payment.bic" (BIC given in the payment details, to where the customer need to transfer amount)
+ - transferred payment bank name==>"transferred.payment.bank.name" (Bank Name)
+ - transferred payment currency==>"transferred.payment.currency" (Type of currency to pay fine)
+ - transferred payment account number==>"transferred.payment.account.number" (Account number  given in payment details section in the file where amount should be transferred)
+ - reference number==>"transferred.payment.reference" (The bank reference number given in payment details section in the file)
+ - violation category name==>"fine.category.name" (The violation category because of which violation happened example: Overspeeding, illegal parking, Red light violation, Toll violation, No parking, etc.)
+ -rejection reason==>"rejected.reason" (The reasons for rejection of payment or vioaltion given)
+ -rejection payment==>"rejection.payment" (The rejection of payment or violation)
+ -payment plate number==>"transferred.payment.plate.number"( (string) - the plate number. Extract the vehicle registration as it
+   appears, preserve spaces, hyphens and capitalization. Do not concatenate or normalize it.)
+
+Note: Output only the XML object! Don't add explanations or comments. Use only the XML structure specified in this example and do not create any other XML tags. If you don't have data for some fields, leave the corresponding XML tags blank. Format date values (type="date") into the ISO 8601 format (YYYY-MM-DD). Format numbers and amounts (type="double") according to ISO 4217. In fine.volation.category extract violation category into this using a standardized category name. If not mentioned leave XML tag empty.Extract the account number if given as it appears, preserve spaces, hyphens and capitalization. Do not concatanate or normalize the account number. Any ambiquity leave it empty. For IBAN and BIC donot preserve spaces. Donot copy payment information from original violation notice to trasferred.payment. This is not proof of payment. Populate transferred.payment.* only if OCR text explicitly contains a payment confirmation, transfer receipt, transaction receipt, or proof of the payment from the driver in the email. 
+
+]]]]><![CDATA[>
+</prompt>
+<prompt role="user"><itemvalue>payment.summary</itemvalue></prompt>
+</PromptDefinition>    
+
+]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:association id="association_DtmExw" sourceRef="event_WNqoxw" targetRef="dataObject_KB0Qhw">
+      <bpmn2:documentation id="documentation_Vvs7XA"/>
+    </bpmn2:association>
+    <bpmn2:association id="association_QgZw8w" sourceRef="dataObject_wmXMzg" targetRef="task_Ub1hoQ">
+      <bpmn2:documentation id="documentation_VMQqog"/>
+    </bpmn2:association>
+    <bpmn2:association id="association_uGgimQ" sourceRef="dataObject_JCHBIg" targetRef="event_Kqb1BA">
+      <bpmn2:documentation id="documentation_SqxTLQ"/>
+    </bpmn2:association>
+    <bpmn2:textAnnotation id="textAnnotation_VNAX5g" textFormat="">
+      <bpmn2:documentation id="documentation_rb3Y4g"/>
+      <bpmn2:text id="text_Mtne9A"><![CDATA[Updates the status to Origin Process.]]></bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="association_gvZuxw" sourceRef="event_6xCj2g" targetRef="textAnnotation_VNAX5g">
+      <bpmn2:documentation id="documentation_TOXMWQ"/>
+    </bpmn2:association>
+    <bpmn2:textAnnotation id="textAnnotation_W6Ah1A" textFormat="">
+      <bpmn2:documentation id="documentation_P2n7nA"/>
+      <bpmn2:text id="text_ZKy2DA"><![CDATA[Updates the status to Origin Process.]]></bpmn2:text>
+    </bpmn2:textAnnotation>
+    <bpmn2:association id="association_Y2gcIw" sourceRef="event_bKSyqQ" targetRef="textAnnotation_W6Ah1A">
+      <bpmn2:documentation id="documentation_P6h9Cw"/>
+    </bpmn2:association>
+    <bpmn2:association id="association_zKhaZg" sourceRef="dataObject_wmXMzg" targetRef="task_6bBjGQ">
+      <bpmn2:documentation id="documentation_IQ5nnw"/>
+    </bpmn2:association>
+    <bpmn2:boundaryEvent attachedToRef="task_Ub1hoQ" id="event_clVJAQ" name="">
+      <bpmn2:documentation id="documentation_ctqQ5A"/>
+      <bpmn2:outgoing>sequenceFlow_GHQBJQ</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="timerEventDefinition_noZ9ow">
+        <bpmn2:timeDuration id="FormalExpression_0" xsi:type="bpmn2:tFormalExpression"/>
+      </bpmn2:timerEventDefinition>
+    </bpmn2:boundaryEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_GHQBJQ" sourceRef="event_clVJAQ" targetRef="event_Kqb1BA">
+      <bpmn2:documentation id="documentation_Dgi1ow"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_gzO04w" imixs:datatype="form-data" name="Payment Data">
+      <bpmn2:documentation id="documentation_nF5BVg"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+<imixs-form-section columns="3">   
+      <item name="finemanagement.ref"
+        type="custom"
+        path="workitemlink"
+        readonly="false"
+        options="$workflowgroup:finemanagement"
+        label="Payment Category" />    
+      <item name="fine.category.name" type="text" label="Violation Category:" />
+      <item name="fine.id"    type="text"  label="Fine ID:" />
+      <item name="contract.customer.firstname" type="text"  label="Firstname:" />
+      <item name="contract.customer.lastname"  type="text"  label="Lastname:" />
+      <item name="contract.customer.email"  type="text"    label="Email:"  />
+      <item name="transferred.payment.bank.name" type="text" label="Bank Name:" />
+      <item name="payment.account.number" type="text" label="Account Number" />
+      <item name="payment.reference" type="text" label="Payment Reference:" />
+      <item name="payment.type" type="selectOneMenu"     label="Payment Type:" 
+       options = "EC; VISA; PayPal" required="false"/>
+      <item name="payment.amount" type="currency" label="Amount:" />
+      <item name="payment.currency" type="selectOneMenu"
+            label="Currency:"
+            options="EUR;CHF;SEK;NOK;GBP;USD" />
+      <item name="payment.dbtr.iban" type="iban" label="IBAN" />
+      <item name="payment.dbtr.bic" type="bic" label="BIC/SWIFT" /> 
+</imixs-form-section>
+ <imixs-form-section columns="1" label="Payment Summary" readonly="true" >
+      <item name="payment.summary" type="custom" path="markdown" />
+</imixs-form-section>
+</imixs-form>
+
+
+
+
+
+
+]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:intermediateCatchEvent id="event_akVcbw" imixs:activityid="100" name="Open">
+      <bpmn2:extensionElements>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[0]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Opens the payment received]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_WlZCqA"><![CDATA[Opens the Payment received]]></bpmn2:documentation>
+      <bpmn2:incoming>sequenceFlow_CJE3iQ</bpmn2:incoming>
+      <bpmn2:outgoing>sequenceFlow_JxJnfg</bpmn2:outgoing>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:intermediateCatchEvent id="event_rXriJA" imixs:activityid="150" name="Email notification">
+      <bpmn2:extensionElements>
+        <imixs:item name="rtfresultlog" type="xs:string">
+          <imixs:value><![CDATA[Email sent to driver about failed payment and requested him to clear the fine asap. The case is still open.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="txtmailsubject" type="xs:string">
+          <imixs:value><![CDATA[Payment Incompleted with reference to <itemvalue>fine.id</itemvalue>  <itemvalue>plate.number</itemvalue>]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="rtfmailbody" type="xs:string">
+          <imixs:value><![CDATA[
+Dear Driver,
+
+Thank you for your patience while we processed your recent account review or dispute submission. Our team has completed the investigation into your file. Based on our review of the records, we have identified an outstanding discrepancy or non-compliance issue that requires your immediate attention and financial rectification.Please be patient while our administration team finalizes your file details. We will get back to you within [3 to 5] business days with the formal breakdown, the exact amount required for repayment, and secure instructions on how to settle the balance.If you have already made a payment regarding this matter, or if you have additional supporting documents to upload, please reply directly to this email.Thank you for your prompt cooperation in bringing your account back into alignment.
+
+With best regards.]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="keypublicresult" type="xs:string">
+          <imixs:value><![CDATA[1]]></imixs:value>
+        </imixs:item>
+      </bpmn2:extensionElements>
+      <bpmn2:documentation id="documentation_i8qubw"><![CDATA[An Email has been sent to driver stating that payment is pending and case in hold and is still active.]]></bpmn2:documentation>
+      <bpmn2:outgoing>sequenceFlow_Pl6iSQ</bpmn2:outgoing>
+      <bpmn2:messageEventDefinition id="messageEventDefinition_Roc0bQ" messageRef="message_1"/>
+      <bpmn2:incoming>sequenceFlow_DR8xfQ</bpmn2:incoming>
+    </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_Pl6iSQ" sourceRef="event_rXriJA" targetRef="task_0WvrSg">
+      <bpmn2:documentation id="documentation_sOHc6Q"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_nLQmAA" imixs:datatype="form-data" name="Payment Data">
+      <bpmn2:documentation id="documentation_bFAOXQ"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+<imixs-form-section columns="3">   
+     
+      <item name="fine.id"    type="text"  label="Fine ID:" />
+      <item name="contract.customer.firstname" type="text"  label="Firstname:" />
+      <item name="contract.customer.lastname"  type="text"  label="Lastname:" />
+      <item name="contract.customer.email"  type="text"    label="Email:"  />
+      <item name="transferred.payment.bank.name" type="text" label="Bank Name:" />
+      <item name="transferred.payment.account.number" type="text" label="Account Number" />
+      <item name="payment.reference" type="text" label="Payment Reference:" />
+      <item name="transferred.payment.type" type="selectOneMenu"     label="Payment Type:" 
+       options = "EC; VISA; PayPal" required="false"/>
+     <item name="transferred.payment.amount" type="currency" label="Payment Amount:" />
+      <item name="transferred.payment.currency" type="selectOneMenu"
+            label="Currency:"
+            options="EUR;CHF;SEK;NOK;GBP;USD" />
+      <item name="transferred.payment.dbtr.iban" type="iban" label="IBAN" />
+      <item name="transferred.payment.dbtr.bic" type="bic" label="BIC/SWIFT" />
+</imixs-form-section>
+
+<imixs-form-section columns="1" label="Payment Summary" readonly="true">
+      <item name="payment.summary" type="custom" path="markdown" />
+</imixs-form-section>
+</imixs-form>
+
+ ]]></bpmn2:documentation>
+    </bpmn2:dataObject>
+    <bpmn2:sequenceFlow id="sequenceFlow_Ppr9AA" sourceRef="event_Kqb1BA" targetRef="gateway_rITI2A">
+      <bpmn2:documentation id="documentation_bvCB0w"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:association id="association_mierxw" sourceRef="task_GGb9RQ" targetRef="dataObject_nLQmAA">
+      <bpmn2:documentation id="documentation_0ENUbg"/>
+    </bpmn2:association>
+    <bpmn2:sequenceFlow id="sequenceFlow_CJE3iQ" sourceRef="event_5jEfXg" targetRef="event_akVcbw">
+      <bpmn2:documentation id="documentation_3gBrhg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_JxJnfg" sourceRef="event_akVcbw" targetRef="task_6bBjGQ">
+      <bpmn2:documentation id="documentation_1Acklw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:boundaryEvent attachedToRef="task_6bBjGQ" id="event_GcPFBw" name="">
+      <bpmn2:documentation id="documentation_SDBUdw"/>
+      <bpmn2:outgoing>sequenceFlow_tJ0FBQ</bpmn2:outgoing>
+      <bpmn2:timerEventDefinition id="timerEventDefinition_2I5G7g"/>
+    </bpmn2:boundaryEvent>
+  </bpmn2:process>
+  <bpmn2:message id="message_1" name="Message 1">
+    <bpmn2:documentation id="documentation_WI2Vow"/>
+  </bpmn2:message>
+  <bpmn2:signal id="signal_1" name="org.imixs.archive.documents.OCRDocumentAdapter"/>
+  <bpmn2:signal id="signal_2" name="org.imixs.ai.workflow.OpenAIAPIAdapter"/>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="OpenBPMN Diagram">
+    <bpmndi:BPMNPlane bpmnElement="process_1" id="BPMNPlane_KZogpQ">
+      <bpmndi:BPMNShape bpmnElement="message_1" id="BPMNShape_R6Houg">
+        <dc:Bounds height="20.0" width="30.0" x="0.0" y="0.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_JqhYSw">
+          <dc:Bounds height="20.0" width="100.0" x="-35.0" y="25.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+    <bpmndi:BPMNPlane bpmnElement="collaboration_1" id="BPMNPlane_F9MYwA">
+      <bpmndi:BPMNShape bpmnElement="participant_b0ZB6w" id="BPMNShape_YhSHww">
+        <dc:Bounds height="1060.0" width="2360.0" x="140.0" y="60.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="lane_lzK15Q" id="BPMNShape_smVZkw">
+        <dc:Bounds height="1060.0" width="2330.0" x="170.0" y="60.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_5jEfXg" id="BPMNShape_yfRPcA">
+        <dc:Bounds height="36.0" width="36.0" x="217.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_icK91A">
+          <dc:Bounds height="20.0" width="100.0" x="185.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_6bBjGQ" id="BPMNShape_nduh3g">
+        <dc:Bounds height="50.0" width="110.0" x="440.0" y="160.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_WNqoxw" id="BPMNShape_tHd7HA">
+        <dc:Bounds height="36.0" width="36.0" x="1137.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_QGtYnw">
+          <dc:Bounds height="20.0" width="100.0" x="1105.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_6xCj2g" id="BPMNShape_gaKm3w">
+        <dc:Bounds height="36.0" width="36.0" x="1567.0" y="327.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_XOv6Bg">
+          <dc:Bounds height="20.0" width="100.0" x="1535.0" y="366.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_RjumqA" id="BPMNShape_6eTeUA">
+        <dc:Bounds height="50.0" width="110.0" x="2090.0" y="320.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_6df4bw" id="BPMNShape_kWe30g">
+        <dc:Bounds height="36.0" width="36.0" x="1877.0" y="327.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_El1Rdw">
+          <dc:Bounds height="20.0" width="100.0" x="1850.0" y="371.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_MuxmWQ" id="BPMNShape_N8a0fw">
+        <dc:Bounds height="36.0" width="36.0" x="2237.0" y="327.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_BnZeyA">
+          <dc:Bounds height="20.0" width="100.0" x="2205.0" y="366.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="gateway_rITI2A" id="BPMNShape_ydLt4Q">
+        <dc:Bounds height="50.0" width="50.0" x="1560.0" y="160.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_2vrCRw">
+          <dc:Bounds height="20.0" width="100.0" x="1535.0" y="213.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_bKSyqQ" id="BPMNShape_9YzI3w">
+        <dc:Bounds height="36.0" width="36.0" x="1717.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_VmVhrw">
+          <dc:Bounds height="20.0" width="100.0" x="1685.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_0WvrSg" id="BPMNShape_K6IqQw">
+        <dc:Bounds height="50.0" width="110.0" x="2090.0" y="160.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_GGb9RQ" id="BPMNShape_8tYmtw">
+        <dc:Bounds height="50.0" width="110.0" x="1690.0" y="320.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_9eYrew" id="BPMNShape_IcLnpw">
+        <dc:Bounds height="36.0" width="36.0" x="2007.0" y="327.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_iY86Ww">
+          <dc:Bounds height="20.0" width="100.0" x="1975.0" y="366.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_DqTGPw" id="BPMNShape_ooQniA">
+        <dc:Bounds height="36.0" width="36.0" x="2257.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_DfSW4w">
+          <dc:Bounds height="20.0" width="100.0" x="2225.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_tktNhw" id="BPMNShape_YYq00g">
+        <dc:Bounds height="36.0" width="36.0" x="1827.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_TPZZ1Q">
+          <dc:Bounds height="20.0" width="100.0" x="1795.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_Ub1hoQ" id="BPMNShape_ye2rWg">
+        <dc:Bounds height="50.0" width="110.0" x="1240.0" y="160.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_Kqb1BA" id="BPMNShape_6nmQQw">
+        <dc:Bounds height="36.0" width="36.0" x="1407.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_TMy2eg">
+          <dc:Bounds height="20.0" width="100.0" x="1375.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_KB0Qhw" id="BPMNShape_LJcfJg">
+        <dc:Bounds height="50.0" width="35.0" x="1140.0" y="270.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_cWQx0w">
+          <dc:Bounds height="20.0" width="100.0" x="1107.5" y="325.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_wmXMzg" id="BPMNShape_PKB1yw">
+        <dc:Bounds height="50.0" width="35.0" x="1110.0" y="60.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_0ARP9g">
+          <dc:Bounds height="20.0" width="100.0" x="1077.5" y="115.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_JCHBIg" id="BPMNShape_jaPTtg">
+        <dc:Bounds height="50.0" width="35.0" x="1450.0" y="80.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_UcBesQ">
+          <dc:Bounds height="20.0" width="100.0" x="1417.5" y="135.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="textAnnotation_VNAX5g" id="BPMNShape_y4obTQ">
+        <dc:Bounds height="56.0" width="151.0" x="1330.0" y="360.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="textAnnotation_W6Ah1A" id="BPMNShape_hJdCew">
+        <dc:Bounds height="50.0" width="172.0" x="1690.0" y="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_clVJAQ" id="BPMNShape_p7NAYQ">
+        <dc:Bounds height="36.0" width="36.0" x="1317.0" y="137.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_77xrVw">
+          <dc:Bounds height="20.0" width="100.0" x="1285.0" y="176.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_gzO04w" id="BPMNShape_ReOwTg">
+        <dc:Bounds height="50.0" width="35.0" x="1870.0" y="460.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3f0X2Q">
+          <dc:Bounds height="20.0" width="100.0" x="1837.5" y="515.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_akVcbw" id="BPMNShape_2waY6A">
+        <dc:Bounds height="36.0" width="36.0" x="317.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_J80QCA">
+          <dc:Bounds height="20.0" width="100.0" x="285.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_rXriJA" id="BPMNShape_fYj6Kw">
+        <dc:Bounds height="36.0" width="36.0" x="1927.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_U690TA">
+          <dc:Bounds height="20.0" width="100.0" x="1895.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_nLQmAA" id="BPMNShape_oyggNw">
+        <dc:Bounds height="50.0" width="35.0" x="1840.0" y="230.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_MYT21w">
+          <dc:Bounds height="20.0" width="100.0" x="1807.5" y="285.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="event_GcPFBw" id="BPMNShape_tYOF2A">
+        <dc:Bounds height="36.0" width="36.0" x="527.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_9ofdsQ">
+          <dc:Bounds height="20.0" width="100.0" x="495.0" y="206.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ha7MAw" id="BPMNEdge_RKgmeg" sourceElement="BPMNShape_ydLt4Q" targetElement="BPMNShape_gaKm3w">
+        <di:waypoint x="1585.0" y="210.0"/>
+        <di:waypoint x="1585.0" y="327.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_YuBSmw" id="BPMNEdge_8eOv6Q" sourceElement="BPMNShape_ydLt4Q" targetElement="BPMNShape_9YzI3w">
+        <di:waypoint x="1610.0" y="185.0"/>
+        <di:waypoint x="1717.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sNKESg" id="BPMNEdge_qx70YQ" sourceElement="BPMNShape_9YzI3w" targetElement="BPMNShape_YYq00g">
+        <di:waypoint x="1753.0" y="185.0"/>
+        <di:waypoint x="1827.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_uzDSHA" id="BPMNEdge_SzJVRQ" sourceElement="BPMNShape_gaKm3w" targetElement="BPMNShape_8tYmtw">
+        <di:waypoint x="1603.0" y="345.0"/>
+        <di:waypoint x="1690.0" y="345.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_ixy9qQ" id="BPMNEdge_Etz1hw" sourceElement="BPMNShape_8tYmtw" targetElement="BPMNShape_kWe30g">
+        <di:waypoint x="1800.0" y="345.0"/>
+        <di:waypoint x="1877.0" y="345.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_mg0Lqg" id="BPMNEdge_c1AfcA" sourceElement="BPMNShape_IcLnpw" targetElement="BPMNShape_6eTeUA">
+        <di:waypoint x="2043.0" y="345.0"/>
+        <di:waypoint x="2090.0" y="345.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_sgjE2A" id="BPMNEdge_GfwUZw" sourceElement="BPMNShape_6eTeUA" targetElement="BPMNShape_N8a0fw">
+        <di:waypoint x="2200.0" y="345.0"/>
+        <di:waypoint x="2237.0" y="345.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_k5d6ng" id="BPMNEdge_7U6nUw" sourceElement="BPMNShape_K6IqQw" targetElement="BPMNShape_ooQniA">
+        <di:waypoint x="2200.0" y="185.0"/>
+        <di:waypoint x="2257.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_DR8xfQ" id="BPMNEdge_0reRFQ" sourceElement="BPMNShape_YYq00g" targetElement="BPMNShape_fYj6Kw">
+        <di:waypoint x="1863.0" y="185.0"/>
+        <di:waypoint x="1927.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_BKYNmg" id="BPMNEdge_aOlZcA" sourceElement="BPMNShape_kWe30g" targetElement="BPMNShape_IcLnpw">
+        <di:waypoint x="1913.0" y="345.0"/>
+        <di:waypoint x="2007.0" y="345.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_tJ0FBQ" id="BPMNEdge_hSlArQ" sourceElement="BPMNShape_tYOF2A" targetElement="BPMNShape_tHd7HA">
+        <di:waypoint x="563.0" y="185.0"/>
+        <di:waypoint x="1137.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GY0R0w" id="BPMNEdge_y3YZbg" sourceElement="BPMNShape_tHd7HA" targetElement="BPMNShape_ye2rWg">
+        <di:waypoint x="1173.0" y="185.0"/>
+        <di:waypoint x="1240.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_AI7amA" id="BPMNEdge_nPJcqg" sourceElement="BPMNShape_ye2rWg" targetElement="BPMNShape_6nmQQw">
+        <di:waypoint x="1350.0" y="185.0"/>
+        <di:waypoint x="1407.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_DtmExw" id="BPMNEdge_vlt0Pg" sourceElement="BPMNShape_tHd7HA" targetElement="BPMNShape_LJcfJg">
+        <di:waypoint x="1155.0" y="203.0"/>
+        <di:waypoint x="1155.0" y="236.0"/>
+        <di:waypoint x="1158.0" y="236.0"/>
+        <di:waypoint x="1158.0" y="270.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_QgZw8w" id="BPMNEdge_EX0Eqg" sourceElement="BPMNShape_PKB1yw" targetElement="BPMNShape_ye2rWg">
+        <di:waypoint x="1145.0" y="80.0"/>
+        <di:waypoint x="1295.0" y="80.0"/>
+        <di:waypoint x="1295.0" y="160.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_uGgimQ" id="BPMNEdge_4aFjWA" sourceElement="BPMNShape_jaPTtg" targetElement="BPMNShape_6nmQQw">
+        <di:waypoint x="1472.0" y="130.0"/>
+        <di:waypoint x="1472.0" y="185.0"/>
+        <di:waypoint x="1443.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_gvZuxw" id="BPMNEdge_Nktfcw" sourceElement="BPMNShape_gaKm3w" targetElement="BPMNShape_y4obTQ">
+        <di:waypoint x="1567.0" y="345.0"/>
+        <di:waypoint x="1511.0" y="345.0"/>
+        <di:waypoint x="1511.0" y="388.0"/>
+        <di:waypoint x="1481.0" y="388.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_Y2gcIw" id="BPMNEdge_P5Th6g" sourceElement="BPMNShape_9YzI3w" targetElement="BPMNShape_hJdCew">
+        <di:waypoint x="1735.0" y="167.0"/>
+        <di:waypoint x="1735.0" y="150.0"/>
+        <di:waypoint x="1776.0" y="150.0"/>
+        <di:waypoint x="1776.0" y="130.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_zKhaZg" id="BPMNEdge_yPnrYA" sourceElement="BPMNShape_PKB1yw" targetElement="BPMNShape_nduh3g">
+        <di:waypoint x="1110.0" y="94.0"/>
+        <di:waypoint x="495.0" y="94.0"/>
+        <di:waypoint x="495.0" y="160.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_CJE3iQ" id="BPMNEdge_g0Jx8w" sourceElement="BPMNShape_yfRPcA" targetElement="BPMNShape_2waY6A">
+        <di:waypoint x="253.0" y="185.0"/>
+        <di:waypoint x="317.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GHQBJQ" id="BPMNEdge_suFYqA" sourceElement="BPMNShape_p7NAYQ" targetElement="BPMNShape_6nmQQw">
+        <di:waypoint x="1335.0" y="137.0"/>
+        <di:waypoint x="1335.0" y="114.0"/>
+        <di:waypoint x="1425.0" y="114.0"/>
+        <di:waypoint x="1425.0" y="167.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_JxJnfg" id="BPMNEdge_UwfNYQ" sourceElement="BPMNShape_2waY6A" targetElement="BPMNShape_nduh3g">
+        <di:waypoint x="353.0" y="185.0"/>
+        <di:waypoint x="440.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Pl6iSQ" id="BPMNEdge_CvzHeg" sourceElement="BPMNShape_fYj6Kw" targetElement="BPMNShape_K6IqQw">
+        <di:waypoint x="1963.0" y="185.0"/>
+        <di:waypoint x="2090.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_Ppr9AA" id="BPMNEdge_P8zQ0g" sourceElement="BPMNShape_6nmQQw" targetElement="BPMNShape_ydLt4Q">
+        <di:waypoint x="1443.0" y="185.0"/>
+        <di:waypoint x="1560.0" y="185.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_mierxw" id="BPMNEdge_ygN02g" sourceElement="BPMNShape_8tYmtw" targetElement="BPMNShape_oyggNw">
+        <di:waypoint x="1745.0" y="320.0"/>
+        <di:waypoint x="1745.0" y="315.0"/>
+        <di:waypoint x="1858.0" y="315.0"/>
+        <di:waypoint x="1858.0" y="280.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
