@@ -89,6 +89,7 @@
         <bpmn2:flowNodeRef>event_Cri0Hw</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_0YxVbg</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>dataObject_p6w1rQ</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>dataObject_MbnMpA</bpmn2:flowNodeRef>
       </bpmn2:lane>
       <bpmn2:lane id="lane_wSVPvA" name="Sales Assistant">
         <bpmn2:documentation id="documentation_dwLYgA"/>
@@ -2674,6 +2675,43 @@ Created: <itemvalue>$created</itemvalue>
     <bpmn2:sequenceFlow id="sequenceFlow_5YUBUA" sourceRef="event_KwpMKw" targetRef="event_0YxVbg">
       <bpmn2:documentation id="documentation_MkumDg"/>
     </bpmn2:sequenceFlow>
+    <bpmn2:dataObject id="dataObject_MbnMpA" imixs:datatype="form-data" name="Order Form">
+      <bpmn2:documentation id="Documentation_8"><![CDATA[<?xml version="1.0"?>
+<imixs-form>
+  <imixs-form-section label="KI Assistent:" path="ai/agent_status" />
+  <imixs-form-section columns="3"  readonly="true" >
+    <item name="document.company" type="text" label="Company: "  />
+    <item name="document.type" type="text" label="Doument Type: " />
+    <item name="document.language" type="text" label="Language: " />
+  </imixs-form-section>
+
+  <imixs-form-section columns="1" label="Customer Summary" readonly="true" >
+    <item name="customer.summary" type="custom" path="markdown" />
+  </imixs-form-section>
+
+  
+
+  <imixs-form-section columns="1" label="Product Catalog" readonly="false">
+   <item name="customer.ref" 
+      type="custom"  required="false"
+      path="workitemlink"
+      options="($workflowgroup:Customer)((type:workitem) OR (type:workitemarchive))"
+      label="Customer:" />
+   <item name="product.ref" 
+      type="custom"  required="false"
+      path="workitemlink"
+      options="($workflowgroup:Product)((type:workitem) OR (type:workitemarchive))"
+      label="Products:" />
+
+  </imixs-form-section>
+
+
+</imixs-form>]]></bpmn2:documentation>
+      <bpmn2:dataState id="DataState_1"/>
+    </bpmn2:dataObject>
+    <bpmn2:association id="association_0CueVg" sourceRef="dataObject_MbnMpA" targetRef="task_ol2R9A">
+      <bpmn2:documentation id="documentation_8xmaCQ"/>
+    </bpmn2:association>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Default Process" processType="Public">
     <bpmn2:documentation id="documentation_imRbaw"/>
@@ -2852,7 +2890,7 @@ Created: <itemvalue>$created</itemvalue>
       <bpmndi:BPMNShape bpmnElement="event_5Hf7hA" id="BPMNShape_1rWr8w">
         <dc:Bounds height="36.0" width="36.0" x="1507.0" y="267.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_YnjDsg">
-          <dc:Bounds height="20.0" width="100.0" x="1435.0" y="276.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="1475.0" y="306.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="dataObject_VbiNuQ" id="BPMNShape_3etXvg">
@@ -3024,6 +3062,12 @@ Created: <itemvalue>$created</itemvalue>
         <dc:Bounds height="50.0" width="50.0" x="1470.0" y="620.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_Vg50QA">
           <dc:Bounds height="20.0" width="100.0" x="1445.0" y="673.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="dataObject_MbnMpA" id="BPMNShape_HluYxA">
+        <dc:Bounds height="50.0" width="35.0" x="740.0" y="350.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_pLSFrw">
+          <dc:Bounds height="20.0" width="100.0" x="707.5" y="405.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="Association_2" id="BPMNEdge_Association_2" sourceElement="BPMNShape_DataObject_1" targetElement="BPMNShape_Task_5">
@@ -3361,6 +3405,12 @@ Created: <itemvalue>$created</itemvalue>
         <di:waypoint x="1496.0" y="621.0"/>
         <di:waypoint x="1496.0" y="555.0"/>
         <di:waypoint x="1567.0" y="555.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_0CueVg" id="BPMNEdge_E1Vv7A" sourceElement="BPMNShape_HluYxA" targetElement="BPMNShape_GaaSuQ">
+        <di:waypoint x="758.0" y="350.0"/>
+        <di:waypoint x="758.0" y="330.0"/>
+        <di:waypoint x="745.0" y="330.0"/>
+        <di:waypoint x="745.0" y="310.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_1">
