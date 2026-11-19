@@ -556,7 +556,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
 <PromptDefinition>
     <options>{"n_predict": 4096, "temperature": 0}</options>
     <prompt role="system"><![CDATA[
-You are a workflow assistant.
+You are a workflow assistant at '<propertyvalue>company.name</propertyvalue>'.
 
 WORKFLOW LIST:
 <skill.bpmn/>
@@ -926,22 +926,12 @@ if (workitem.getItemValueInteger('$file.count')==0) {
         <imixs:item name="keyarchive" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
-        <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
-        </imixs:item>
         <imixs:item name="keyaccessmode" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
         <imixs:item name="keyscheduledactivity" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
-        <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
-
-Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
-<itemvalue>_description</itemvalue>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keymailreceiverfields" type="xs:string"/>
         <imixs:item name="keyversion" type="xs:string">
           <imixs:value><![CDATA[0]]></imixs:value>
         </imixs:item>
@@ -989,6 +979,15 @@ if (workitem.getItemValueInteger('$file.count')==0) {
      result.isValid=false;
      result.errorMessage='Bitte fügen Sie eine PDF Datei an.';
 }]]></imixs:value>
+        </imixs:item>
+        <imixs:item name="nammailreceiver" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceivercc" type="xs:string">
+          <imixs:value/>
+        </imixs:item>
+        <imixs:item name="nammailreceiverbcc" type="xs:string">
+          <imixs:value/>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_SUCu3w"><![CDATA[Ask User for additional input]]></bpmn2:documentation>
