@@ -918,9 +918,6 @@ if (workitem.getItemValueInteger('$file.count')==0) {
     <bpmn2:sequenceFlow id="sequenceFlow_HvTD0g" sourceRef="event_lsZq4g" targetRef="task_jXzK6g">
       <bpmn2:documentation id="documentation_Q0zIlQ"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_C3KIYA" sourceRef="event_NT0e9g" targetRef="gateway_gd9zQQ">
-      <bpmn2:documentation id="documentation_M0GRjA"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:intermediateCatchEvent id="event_NT0e9g" imixs:activityid="1" name="Submit">
       <bpmn2:extensionElements>
         <imixs:item name="keylogtimeformat" type="xs:string">
@@ -969,8 +966,7 @@ Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</it
           <imixs:value/>
         </imixs:item>
         <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="action">home</item>
-<validation name="required">false</validation>
+          <imixs:value><![CDATA[<validation name="required">false</validation>
 ]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtname" type="xs:string">
@@ -999,9 +995,6 @@ if (workitem.getItemValueInteger('$file.count')==0) {
       <bpmn2:incoming>sequenceFlow_Wnq0vg</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_C3KIYA</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_Wnq0vg" sourceRef="task_jXzK6g" targetRef="event_NT0e9g">
-      <bpmn2:documentation id="documentation_1CTZXA"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:dataObject id="dataObject_84FZxg" imixs:datatype="form-data" name="Form">
       <bpmn2:documentation id="documentation_z9LoYA"><![CDATA[<?xml version="1.0"?>
 <imixs-form>
@@ -1240,12 +1233,6 @@ if (workitem.getItemValueInteger('$file.count')==0) {
       <bpmn2:incoming>sequenceFlow_0tXCag</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_LZX10Q</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="sequenceFlow_lhODPQ" sourceRef="event_LIKHpg" targetRef="task_uB6BGQ">
-      <bpmn2:documentation id="documentation_DZmGQA"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_bh4DIw" sourceRef="gateway_gd9zQQ" targetRef="event_LIKHpg">
-      <bpmn2:documentation id="documentation_0EzFwA"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="BoundaryEvent_1" targetRef="IntermediateCatchEvent_3">
       <bpmn2:documentation id="documentation_yRaNRg"/>
     </bpmn2:sequenceFlow>
@@ -1257,6 +1244,18 @@ if (workitem.getItemValueInteger('$file.count')==0) {
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_5UDImg" sourceRef="gateway_qDAhHw" targetRef="event_tSLHgg">
       <bpmn2:documentation id="documentation_w2af0g"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_lhODPQ" sourceRef="event_LIKHpg" targetRef="task_uB6BGQ">
+      <bpmn2:documentation id="documentation_DZmGQA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_bh4DIw" sourceRef="gateway_gd9zQQ" targetRef="event_LIKHpg">
+      <bpmn2:documentation id="documentation_0EzFwA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_C3KIYA" sourceRef="event_NT0e9g" targetRef="gateway_gd9zQQ">
+      <bpmn2:documentation id="documentation_M0GRjA"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_Wnq0vg" sourceRef="task_jXzK6g" targetRef="event_NT0e9g">
+      <bpmn2:documentation id="documentation_1CTZXA"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:process id="process_2" name="Default Process" processType="Public">
