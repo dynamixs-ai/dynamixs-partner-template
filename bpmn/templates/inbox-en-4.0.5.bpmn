@@ -51,7 +51,6 @@
         <bpmn2:flowNodeRef>dataObject_FS1r0Q</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>task_uB6BGQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>textAnnotation_CtU05A</bpmn2:flowNodeRef>
-        <bpmn2:flowNodeRef>event_yvr5AA</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>gateway_qDAhHw</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>event_9mJrhQ</bpmn2:flowNodeRef>
         <bpmn2:flowNodeRef>gateway_gd9zQQ</bpmn2:flowNodeRef>
@@ -232,7 +231,6 @@
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_A2VzkA"><![CDATA[Processing Document classification. ]]></bpmn2:documentation>
-      <bpmn2:incoming>sequenceFlow_GAK0SA</bpmn2:incoming>
       <bpmn2:incoming>sequenceFlow_lhODPQ</bpmn2:incoming>
       <bpmn2:outgoing>association_je321g</bpmn2:outgoing>
       <bpmn2:outgoing>sequenceFlow_PgyOMw</bpmn2:outgoing>
@@ -245,76 +243,6 @@ Assign documents to process 'Front Desk']]></bpmn2:text>
     </bpmn2:textAnnotation>
     <bpmn2:sequenceFlow id="sequenceFlow_PgyOMw" sourceRef="task_uB6BGQ" targetRef="gateway_qDAhHw">
       <bpmn2:documentation id="documentation_8vVNCA"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:intermediateCatchEvent id="event_yvr5AA" imixs:activityid="30" name="Save">
-      <bpmn2:extensionElements>
-        <imixs:item name="keylogtimeformat" type="xs:string">
-          <imixs:value><![CDATA[2]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyarchive" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtmailsubject" type="xs:string">
-          <imixs:value><![CDATA[Eingangsrechnung erhalten: <itemvalue>_subject</itemvalue>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyaccessmode" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyscheduledactivity" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="rtfmailbody" type="xs:string">
-          <imixs:value><![CDATA[Wir haben folgende Rechnung erhalten: bitte freigeben.
-
-Betrag: <itemvalue>_amount</itemvalue> (Brutto € <itemvalue>_amount_brutto</itemvalue>)
-<itemvalue>_description</itemvalue>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keymailreceiverfields" type="xs:string"/>
-        <imixs:item name="keyversion" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyaddwritefields" type="xs:string"/>
-        <imixs:item name="numnextactivityid" type="xs:int">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyfollowup" type="xs:string">
-          <imixs:value><![CDATA[2]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keypublicresult" type="xs:string">
-          <imixs:value><![CDATA[1]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keylogdateformat" type="xs:string">
-          <imixs:value><![CDATA[2]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyownershipfields" type="xs:string"/>
-        <imixs:item name="numnextid" type="xs:int">
-          <imixs:value><![CDATA[5005]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtnextprocesstree" type="xs:string">
-          <imixs:value/>
-        </imixs:item>
-        <imixs:item name="txtactivityresult" type="xs:string">
-          <imixs:value><![CDATA[<item name="action">home</item>
-<validation name="required">false</validation>]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="txtname" type="xs:string">
-          <imixs:value><![CDATA[Freigabe einholen]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyownershipmode" type="xs:string">
-          <imixs:value><![CDATA[0]]></imixs:value>
-        </imixs:item>
-        <imixs:item name="keyupdateacl" type="xs:boolean">
-          <imixs:value>false</imixs:value>
-        </imixs:item>
-        <imixs:item name="rtfresultlog" type="xs:string">
-          <imixs:value><![CDATA[Submits the content.]]></imixs:value>
-        </imixs:item>
-      </bpmn2:extensionElements>
-      <bpmn2:documentation id="documentation_LL26tw"/>
-      <bpmn2:outgoing>sequenceFlow_GAK0SA</bpmn2:outgoing>
-    </bpmn2:intermediateCatchEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_GAK0SA" sourceRef="event_yvr5AA" targetRef="task_uB6BGQ">
-      <bpmn2:documentation id="documentation_c6Hn0g"/>
     </bpmn2:sequenceFlow>
     <bpmn2:exclusiveGateway default="sequenceFlow_cY0PYg" gatewayDirection="Diverging" id="gateway_qDAhHw" name="Email routing to its relvant workflow">
       <bpmn2:documentation id="documentation_Cg34hg"/>
@@ -1382,16 +1310,6 @@ if (workitem.getItemValueInteger('$file.count')==0) {
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_PgyOMw" id="BPMNEdge_kptDVQ" sourceElement="BPMNShape_027JKQ" targetElement="BPMNShape_UxYL0A">
         <di:waypoint x="1350.0" y="465.0"/>
         <di:waypoint x="1520.0" y="465.0"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape bpmnElement="event_yvr5AA" id="BPMNShape_PF0K0w">
-        <dc:Bounds height="36.0" width="36.0" x="1277.0" y="537.0"/>
-        <bpmndi:BPMNLabel id="BPMNLabel_LOaumg">
-          <dc:Bounds height="20.0" width="100.0" x="1249.0" y="577.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_GAK0SA" id="BPMNEdge_MRoyvA" sourceElement="BPMNShape_PF0K0w" targetElement="BPMNShape_027JKQ">
-        <di:waypoint x="1295.0" y="537.0"/>
-        <di:waypoint x="1295.0" y="490.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape bpmnElement="gateway_qDAhHw" id="BPMNShape_UxYL0A">
         <dc:Bounds height="50.0" width="50.0" x="1520.0" y="440.0"/>

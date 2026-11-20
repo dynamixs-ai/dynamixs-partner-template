@@ -101,22 +101,22 @@
 </imixs-form-section>
 
 <imixs-form-section label="Rental details:" >
-     <item name="contract.customer.zip" type="text"     label="ZIP:" />
-     <item name="contract.customer.city" type="text"     label="City:" />
-     <item name="contract.customer.country" type="custom"  path="country"  label="Membership Country:" />
+     <item name="contract.customer.zip" type="text"     label="ZIP:" span="2" />
+     <item name="contract.customer.city" type="text"     label="City:"  span="4" />
+     <item name="contract.customer.country" type="custom"  path="country"  label="Membership Country:"   span="6" />
      <item name="contract.start.date" type="date" label="Start date" />
      <item name="contract.end.date" type="date" label="End date" />
 </imixs-form-section>
 
-<imixs-form-section label="Payment details:" >
+<imixs-form-section label="Payment details:" columns="3" >
      <item name="contract.payment.amount" type="currency" label="Amount:" />
-     <item name="contract.payment.bank.name" type="text" label="Bank Name:" />
-     <item name="contract.payment.iban" type="text" label="IBAN:" />
-     <item name="contract.payment.bic" type="text" label="BIC:" />
-     <item name="contract.payment.account.number" type="text" label="Account Number:" />
      <item name="contract.payment.currency" type="selectOneMenu"
             label="Currency:"
             options="EUR;CHF;SEK;NOK;GBP;USD" />
+     <item name="contract.payment.account.number" type="text" label="Account Number:" />
+     <item name="contract.payment.bank.name" type="text" label="Bank Name:" />
+     <item name="contract.payment.iban" type="text" label="IBAN:" />
+     <item name="contract.payment.bic" type="text" label="BIC:" />
      <item name="contract.deposit.amount" type="currency" label="Deposit Amount:" />
 </imixs-form-section>
 </imixs-form>]]></bpmn2:documentation>
@@ -127,7 +127,7 @@
           <imixs:value><![CDATA[Checks the mandatory fields in data form provided by customer]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> - <itemvalue>contract.customer.firstname</itemvalue> <itemvalue>contract.customer.lastname</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_vvhU6g"><![CDATA[Checks the contract data provided.]]></bpmn2:documentation>
@@ -146,7 +146,7 @@
           <imixs:value><![CDATA[Checks for any duplication data. ]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> - <itemvalue>contract.customer.firstname</itemvalue> <itemvalue>contract.customer.lastname</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_0BH6lw"><![CDATA[checks any duplications]]></bpmn2:documentation>
@@ -241,23 +241,17 @@
           <imixs:value><![CDATA[Contract already exists.]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> - <itemvalue>contract.customer.firstname</itemvalue> <itemvalue>contract.customer.lastname</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_neeKww"><![CDATA[Retrives old data]]></bpmn2:documentation>
       <bpmn2:incoming>sequenceFlow_Unq1BA</bpmn2:incoming>
       <bpmn2:outgoing>sequenceFlow_onWk3w</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="sequenceFlow_Unq1BA" sourceRef="event_79KSkQ" targetRef="task_7anuiA">
-      <bpmn2:documentation id="documentation_tMZH7Q"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:endEvent id="event_JeUEVw" name="End">
       <bpmn2:documentation id="documentation_WBZ00g"/>
       <bpmn2:incoming>sequenceFlow_onWk3w</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_onWk3w" sourceRef="task_7anuiA" targetRef="event_JeUEVw">
-      <bpmn2:documentation id="documentation_4jD8wg"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:intermediateCatchEvent id="event_6xCj2g" imixs:activityid="40" name="Create Contract record">
       <bpmn2:extensionElements>
         <imixs:item name="keypublicresult" type="xs:string">
@@ -295,7 +289,7 @@
           <imixs:value><![CDATA[Contract details are added in records]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> - <itemvalue>contract.customer.firstname</itemvalue> <itemvalue>contract.customer.lastname</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_l2LX0g"><![CDATA[New Customer record is created]]></bpmn2:documentation>
@@ -403,7 +397,7 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
           <imixs:value><![CDATA[New contract got activated.]]></imixs:value>
         </imixs:item>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> - <itemvalue>contract.customer.firstname</itemvalue> <itemvalue>contract.customer.lastname</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_XaoaUQ"><![CDATA[New Contract addded is activated.]]></bpmn2:documentation>
@@ -415,16 +409,10 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmn2:documentation id="documentation_FTWUDw"/>
       <bpmn2:incoming>sequenceFlow_sAJc7Q</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="sequenceFlow_MZKczw" sourceRef="event_6df4bw" targetRef="task_0nxEog">
-      <bpmn2:documentation id="documentation_Wwcyow"/>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_sAJc7Q" sourceRef="task_0nxEog" targetRef="event_MuxmWQ">
-      <bpmn2:documentation id="documentation_JnJTlw"/>
-    </bpmn2:sequenceFlow>
     <bpmn2:task id="task_ZBGPcg" imixs:processid="180" name="Data check not cleared">
       <bpmn2:extensionElements>
         <imixs:item name="txtworkflowsummary" type="xs:string">
-          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
+          <imixs:value><![CDATA[<itemvalue>contract.type</itemvalue> - <itemvalue>contract.id</itemvalue> - <itemvalue>contract.customer.firstname</itemvalue> <itemvalue>contract.customer.lastname</itemvalue> <itemvalue>contract.plate.number</itemvalue>]]></imixs:value>
         </imixs:item>
       </bpmn2:extensionElements>
       <bpmn2:documentation id="documentation_S2b4cA"><![CDATA[Data check is not cleared. An automatic email has been sent to Customer to refill data and resbmit it.]]></bpmn2:documentation>
@@ -525,11 +513,27 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmn2:documentation id="documentation_JKm10w"/>
       <bpmn2:outgoing>sequenceFlow_A0I2Rw</bpmn2:outgoing>
     </bpmn2:intermediateCatchEvent>
+    <bpmn2:sequenceFlow id="sequenceFlow_WU68sA" sourceRef="event_kaEHxg" targetRef="event_6df4bw">
+      <bpmn2:documentation id="documentation_n1y6qw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:association id="association_Fez2ug" sourceRef="dataObject_fV6H2w" targetRef="participant_b0ZB6w"/>
+    <bpmn2:association id="association_nt0YAQ" sourceRef="task_0nxEog" targetRef="dataObject_fV6H2w">
+      <bpmn2:documentation id="documentation_GqSH2w"/>
+    </bpmn2:association>
+    <bpmn2:sequenceFlow id="sequenceFlow_sAJc7Q" sourceRef="task_0nxEog" targetRef="event_MuxmWQ">
+      <bpmn2:documentation id="documentation_JnJTlw"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_MZKczw" sourceRef="event_6df4bw" targetRef="task_0nxEog">
+      <bpmn2:documentation id="documentation_Wwcyow"/>
+    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="sequenceFlow_A0I2Rw" sourceRef="event_VcqSrQ" targetRef="task_0nxEog">
       <bpmn2:documentation id="documentation_HVOy9Q"/>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="sequenceFlow_WU68sA" sourceRef="event_kaEHxg" targetRef="event_6df4bw">
-      <bpmn2:documentation id="documentation_n1y6qw"/>
+    <bpmn2:sequenceFlow id="sequenceFlow_onWk3w" sourceRef="task_7anuiA" targetRef="event_JeUEVw">
+      <bpmn2:documentation id="documentation_4jD8wg"/>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="sequenceFlow_Unq1BA" sourceRef="event_79KSkQ" targetRef="task_7anuiA">
+      <bpmn2:documentation id="documentation_tMZH7Q"/>
     </bpmn2:sequenceFlow>
   </bpmn2:process>
   <bpmn2:message id="message_1" name="Message 1">
@@ -566,7 +570,7 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmndi:BPMNShape bpmnElement="dataObject_fV6H2w" id="BPMNShape_tJyeRw">
         <dc:Bounds height="50.0" width="35.0" x="220.0" y="140.0"/>
         <bpmndi:BPMNLabel id="BPMNLabel_VkLfaA">
-          <dc:Bounds height="20.0" width="100.0" x="187.5" y="195.0"/>
+          <dc:Bounds height="20.0" width="100.0" x="188.5" y="195.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="task_6bBjGQ" id="BPMNShape_nduh3g">
@@ -749,6 +753,16 @@ thanks for contacting us. We cant go forward with your enquiry due to missing ma
       <bpmndi:BPMNEdge bpmnElement="sequenceFlow_WU68sA" id="BPMNEdge_qNwh8Q" sourceElement="BPMNShape_vnI0rw" targetElement="BPMNShape_kWe30g">
         <di:waypoint x="1103.0" y="535.0"/>
         <di:waypoint x="1257.0" y="535.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_Fez2ug" id="BPMNEdge_rS1X3g" sourceElement="BPMNShape_tJyeRw" targetElement="BPMNShape_YhSHww">
+        <di:waypoint x="237.5" y="165.0"/>
+        <di:waypoint x="875.0" y="425.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="association_nt0YAQ" id="BPMNEdge_V3Q0EQ" sourceElement="BPMNShape_WT4p1A" targetElement="BPMNShape_tJyeRw">
+        <di:waypoint x="1470.0" y="535.0"/>
+        <di:waypoint x="863.0" y="535.0"/>
+        <di:waypoint x="863.0" y="165.0"/>
+        <di:waypoint x="255.0" y="165.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
